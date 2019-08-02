@@ -1,0 +1,337 @@
+//
+//  ChartPresenter.swift
+//  playTime
+//
+//  Created by kazutoshi miyasaka on 2019/02/17.
+//  Copyright © 2019 po-miyasaka. All rights reserved.
+//
+
+import Foundation
+import RxCocoa
+import RxSwift
+import UIKit
+
+protocol DetailQuestViewModelInput {
+    func setUp()
+    func start()
+    func editLimitTime(_ timeInterval: TimeInterval)
+    func editQuestName(_ name: String)
+
+    func add(comment: String)
+    func editing(_ comment: Comment?)
+    func delete(_ comment: Comment)
+    func close()
+    func segmentChanged(at: SegmentType)
+}
+
+protocol DetailQuestViewModelOutput {
+    var showAlertSignal: Signal<(title: String, message: String)> { get }
+    var selected: Quest? { get }
+    var selectedDriver: Driver<Quest?> { get }
+    var dragon: Dragon? { get }
+    var dragonDriver: Driver<Dragon?> { get }
+    var commentsDriver: Driver<Diff<Comment>> { get }
+    var comments: [Comment] { get }
+    func items(section: Int) -> [DetailQuestCellType]
+    var itemsAll: [DetailQuestSectionType] { get }
+    var itemsAllDriver: Driver<[DetailQuestSectionType]> { get }
+
+    var dragonIllust: UIImage? { get }
+    var dragonIllustDriver: Driver<UIImage?> { get }
+    var editingCommentDriver: Driver<Comment?> { get }
+    var editingComment: Comment? { get }
+}
+
+class DetailQuestViewModel {
+
+    private var _selected = BehaviorRelay<Quest?>(value: nil)
+    private var _items = BehaviorRelay<[DetailQuestSectionType]>(value: [])
+
+    private var _dragon = BehaviorRelay<Dragon?>(value: nil)
+    private var _dragonImage = BehaviorRelay<UIImage?>(value: nil)
+    private var _editing = BehaviorRelay<Comment?>(value: nil)
+    private var _comments = BehaviorRelay<Diff<Comment>>(value: .init(old: [], new: []))
+    private var _segment = BehaviorRelay<SegmentType>(value: .user)
+
+    private var _showAlert = PublishRelay<(title: String, message: String)>()
+
+    let flux: FluxProtocol
+    let disposeBag = DisposeBag()
+    let router: DetailQuestRouterProtocol
+    let isFinished: Bool
+
+    init(flux: FluxProtocol = Flux.default,
+         router: DetailQuestRouterProtocol,
+         isFinished: Bool) {
+        self.router = router
+        self.flux = flux
+        self.isFinished = isFinished
+    }
+
+    func setUp() {
+        flux.settingsStore.isOsNotificationObservable.map {[weak self] _ in
+            guard let self = self else { return }
+            self._items.accept(self.cellData)
+        }.subscribe().disposed(by: disposeBag)
+
+        let questObservable = flux.storiesStore
+            .selectedObservable
+            .filter { $0 != nil }
+            .map { $0! }
+
+        questObservable
+            .bind(onNext: {[weak self] quest in
+                guard let self = self else { return }
+                self._selected.accept(quest)
+                self._items.accept(self.cellData)
+
+                let dragon = self.flux.storiesStore.dragons.first(where: { dragon in quest.dragonName == dragon.name })
+                self._dragon.accept(dragon)
+
+                self._dragonImage.accept(dragon?.images.illust)
+
+                let sorted = quest.comments.sorted(by: {lhs, rhs in
+                    lhs.id.id > rhs.id.id
+                })
+                self._comments.accept(Diff(old: self._comments.value.new, new: sorted))
+            })
+            .disposed(by: disposeBag)
+
+        Observable.combineLatest(questObservable, _segment.asObservable()).map {[weak self] quest, segment in
+            guard let self = self else { return }
+            let sorted = quest.comments.filter { comment in
+                switch segment {
+                case .user:
+                    return comment.type == .user
+                case .play:
+                    return comment.type == .finishQuest
+                case .all:
+                    return true
+
+                }
+
+            }.sorted(by: {lhs, rhs in
+                    lhs.id.id > rhs.id.id
+                })
+
+            self._comments.accept(Diff(old: self._comments.value.new, new: sorted))
+        }.subscribe().disposed(by: disposeBag)
+    }
+
+    var cellData: [DetailQuestSectionType] {
+        guard let quest = self._selected.value else {
+            return []
+        }
+
+        let questInfo: [DetailQuestCellType] = [
+            .timer(
+                SubTextCellData(subject: "timer".localized,
+                                subText: quest.limitTime.displayOnlyMinutesText()
+                )
+            ),
+
+            .notify(
+                SwitchCellData(subject: "notify".localized,
+                               value: quest.isNotify && flux.settingsStore.isOsNotification,
+                               userAction: {[weak self] value in
+                                self?.flux.actionCreator.userSetNotification(userWill: value, quest: quest)
+                    }
+                )
+            )
+        ]
+
+        return [
+            DetailQuestSectionType.items(questInfo.compactMap { $0 }),
+            DetailQuestSectionType.items([])
+        ]
+    }
+}
+
+extension DetailQuestViewModel: DetailQuestViewModelInput {
+    func segmentChanged(at: SegmentType) {
+        self._segment.accept(at)
+    }
+
+    func delete(_ comment: Comment) {
+        guard let quest = _selected.value else { return }
+        _comments.accept(.init(old: _comments.value.new, new: _comments.value.new.filter { $0 != comment }))
+        flux.actionCreator.deleteComment(quest: quest, comment: comment)
+    }
+
+    func editing(_ comment: Comment?) {
+        _editing.accept(comment)
+
+        router.toEditingComment(viewModel: self)
+
+    }
+
+    func add(comment text: String) {
+        guard let quest = _selected.value else { return }
+        guard !text.isEmpty else { return }
+
+        switch _editing.value {
+        case .some(let comment) where comment.type == .user:
+            flux.actionCreator.editComment(quest: quest, comment: comment, expression: text)
+        default:
+            flux.actionCreator.addComment(quest: quest, text: text, type: .user)
+        }
+    }
+
+    func close() {
+        router.close()
+    }
+
+    func editLimitTime(_ timeInterval: TimeInterval) {
+        if let quest = _selected.value {
+            flux.actionCreator.editLimitTime(quest: quest, timeInterval)
+        }
+    }
+
+    func editQuestName(_ name: String) {
+
+        guard name.count <= Quest.maxTitleLength else {
+            _showAlert.accept((title:"overNameCount".localized, message: ""))
+            return
+        }
+
+        if let quest = _selected.value {
+            flux.actionCreator.editQuestTitle(quest: quest, name)
+        }
+    }
+
+    func editStory(to story: Story) {
+        if let quest = _selected.value {
+            flux.actionCreator.changeStory(quest: quest, to: story)
+        }
+    }
+
+    func changeDragon(to dragonName: Dragon.Name) {
+        if let quest = _selected.value {
+            flux.actionCreator.changeDragon(quest: quest, to: dragonName)
+        }
+    }
+
+    func start() {
+        if let quest = _selected.value {
+            flux.actionCreator.start(quest: quest, activeReason: .detail)
+            router.toStart()
+        }
+    }
+}
+
+extension DetailQuestViewModel: DetailQuestViewModelOutput {
+    var editingComment: Comment? {
+        return _editing.value
+    }
+
+    var editingCommentDriver: Driver<Comment?> {
+        return _editing.asDriver()
+    }
+
+    var comments: [Comment] {
+        return _comments.value.new
+    }
+
+    var commentsDriver: Driver<Diff<Comment>> {
+        return _comments.asDriver()
+    }
+
+    var dragonDriver: Driver<Dragon?> {
+        return _dragon.asDriver()
+    }
+
+    var dragonIllust: UIImage? {
+        return _dragonImage.value
+    }
+
+    var dragonIllustDriver: Driver<UIImage?> {
+        return _dragonImage.asDriver()
+    }
+
+    var dragon: Dragon? {
+        return _dragon.value
+    }
+
+    var itemsAll: [DetailQuestSectionType] {
+        return _items.value
+    }
+    var itemsAllDriver: Driver<[DetailQuestSectionType]> {
+        return _items.asDriver()
+    }
+
+    func items(section: Int) -> [DetailQuestCellType] {
+        return _items.value.safeFetch(section)?.items ?? []
+    }
+
+    var selectedDriver: Driver<Quest?> {
+        return _selected.asDriver()
+    }
+
+    var selected: Quest? {
+        return _selected.value
+    }
+
+    var showAlertSignal: Signal<(title: String, message: String)> {
+        return _showAlert.asSignal()
+    }
+
+}
+
+enum DetailQuestSectionType {
+    case items([DetailQuestCellType])
+    var items: [DetailQuestCellType] {
+        switch self {
+        case .items(let types):
+            return types
+        }
+    }
+}
+
+enum DetailQuestCellType {
+    case notify(SwitchCellData)
+    case timer(SubTextCellData)
+
+    func dequeue(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        switch self {
+
+        case .notify(let data):
+            let cell = tableView.dequeue(t: SwitchCell.self, indexPath: indexPath)
+            cell.configure(data: data, indexPath: indexPath)
+            cell.backgroundColor = .clear
+            cell.contentView.backgroundColor = .clear
+            return cell
+
+        case .timer(let data):
+            let cell = tableView.dequeue(t: SubTextCell.self, indexPath: indexPath)
+            cell.configure(data: data, indexPath: indexPath)
+            cell.backgroundColor = .clear
+            cell.contentView.backgroundColor = .clear
+            return cell
+        }
+    }
+
+    var sholudHighlight: Bool {
+        switch self {
+        case .timer :
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+enum SegmentType: Int {
+    case user
+    case play
+    case all
+}
+
+protocol DetailQuestViewModelProtocol {
+    var inputs: DetailQuestViewModelInput { get }
+    var outputs: DetailQuestViewModelOutput { get }
+}
+
+extension DetailQuestViewModel: DetailQuestViewModelProtocol {
+    var inputs: DetailQuestViewModelInput { return self }
+    var outputs: DetailQuestViewModelOutput { return self }
+}

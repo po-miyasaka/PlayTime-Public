@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6XG-JG-fel">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SettingsViewController-->
+        <scene sceneID="EU3-7d-8By">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" title="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6XG-JG-fel" customClass="SettingsViewController" customModule="playTime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RNw-dD-gqw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="60" estimatedRowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Sxz-cv-2HZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAF-6T-m4L">
+                                <rect key="frame" x="10" y="597" width="60" height="60"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SYL-fy-ysO"/>
+                                    <constraint firstAttribute="width" constant="60" id="whB-ez-xCB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="←">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ibCloseButtonTapped:" destination="6XG-JG-fel" eventType="touchUpInside" id="hib-av-3XO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="UAF-6T-m4L" secondAttribute="bottom" constant="10" id="FkU-Xz-zZK"/>
+                            <constraint firstItem="Sxz-cv-2HZ" firstAttribute="top" secondItem="RNw-dD-gqw" secondAttribute="top" id="Fth-qD-Ct7"/>
+                            <constraint firstItem="UAF-6T-m4L" firstAttribute="leading" secondItem="V12-1h-NF2" secondAttribute="leading" constant="10" id="h9L-Tb-uYn"/>
+                            <constraint firstItem="Sxz-cv-2HZ" firstAttribute="trailing" secondItem="V12-1h-NF2" secondAttribute="trailing" id="mc1-lZ-vdl"/>
+                            <constraint firstItem="V12-1h-NF2" firstAttribute="bottom" secondItem="Sxz-cv-2HZ" secondAttribute="bottom" id="t8I-cD-RID"/>
+                            <constraint firstItem="Sxz-cv-2HZ" firstAttribute="leading" secondItem="V12-1h-NF2" secondAttribute="leading" id="zRn-w9-M9H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V12-1h-NF2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="C1Z-kg-IGh"/>
+                    <connections>
+                        <outlet property="ibCloseButton" destination="UAF-6T-m4L" id="LYS-c8-Aku"/>
+                        <outlet property="ibTableView" destination="Sxz-cv-2HZ" id="qvX-qQ-WuV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Egx-0p-r4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2729" y="146"/>
+        </scene>
+    </scenes>
+</document>

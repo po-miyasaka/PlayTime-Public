@@ -1,0 +1,196 @@
+
+"cancel" = "Cancel";
+"close" = "Close";
+"done" = "Done";
+
+
+"sun" = "S";
+"mon" = "M";
+"tue" = "Tu";
+"wed" = "W";
+"thu" = "Th";
+"fri" = "F";
+"sat" = "Sa";
+
+
+
+"count" = "";
+"consectiveDays" = " %d consecutive days　";
+"days" = "%d days";
+
+
+"dateFull" = "dd-MM-yyyy HH:mm:ss";
+"dateDisplay" = "dd-MM-yyyy";
+"dateDisplayDetail" = "dd-MM-yyyy HHH:mm:ss";
+"dateForValidate" = "01/07/2019 00:00:00";
+"dateGragh" = "dd-MM-yyyy";
+"dateGraghddMM" = "dd-MM";
+"dateOrigin" = "dd-MM-yyyy 00:00:00";
+
+
+"newComment" = "New Comment";
+"editComment" = "Edit Comment";
+"finishQuestComment" = "played for %@";
+
+"userComment" = "comments";
+"play" = "play";
+"all" = "all";
+
+"story_tutorial1" = "Thank you for downloading! \
+Play-Time is an app of the concept that\
+”you grow with the dragon in the real world.”";
+
+"story_tutorial2" = "Register as a quest \
+what you want to make a effort.\
+The time you play the quest become\
+the dragon's experience value.";
+
+"story_tutorial3" = "A quest can be created freely\
+from the + button.\
+For example  ”reading”, ”running” and so on.";
+
+"story_tutorial4" = "Stories is a heading\
+for organizing quests.";
+
+"story_tutorial5" = "You can edit stories and delete quests\
+from the settings screen.";
+
+"story_tutorial6" = "Let's start with the goal\
+of the strongest dragon!";
+
+"aQuest" = "Quest";
+
+"startNow" = "Play";
+"questEmpty" = "No quests are here.\
+Let's add it from the + button below.\
+";
+
+"study" = "Study";
+"sports" = "Sports";
+"hobby" = "Hobby";
+
+"selectDragon" = "Select Dragon";
+"createQuest" = "Create Quest";
+"emptyQuestName" = "Please input quest's name";
+"overNameCount" = "Please no more than 25 words";
+"story" = "Story";
+
+"storySelected" = "Select Story";
+"questName" = "Quest Name";
+"newQuest" = "(e.g. Running, Reading)";
+"raisingDragon" = "Dragon To Raise";
+"fixAfterCreated" = "※ Each item can be changed later.";
+"create" = "Create";
+
+
+"setting" = "Settings";
+"totalPlayTime" = "Total Play Time";
+
+"orderOf" = "Order Of";
+"updatedOrder" = "Updated";
+"registedOrder" = "Registed";
+"frequencyOrder" = "Frequency";
+
+"delete" = "Delete";
+"storyEdit" = "Edit Stories";
+"storyEditAddDelete" = "Edit Stories";
+"backup" = "Backup";
+
+"aboutThisApp" = "About this app";
+"aboutThisAppWithLink" = "About this app (web)";
+"getTshirt" = "Present a T-shirt with 300h play!";
+"aboutURL" = "https://po-miyasaka.github.io/playtime/en";
+
+"newStory" = "New Story";
+
+"saveDate" = "Saved Date";
+"activeStories" = "Active Stories";
+"restore" = "Restore";
+"logout" = "Log out";
+"backupReset" = "Data Reset";
+"return" = "←";
+
+"dataNothing" = "Your data for save is nothing";
+"cantBackupLargerData" = "It is not possible to overwrite data beyond the current play time.";
+"cantRestoreLessData" = "You can not restore to data below the current play time.";
+"pleaseRetryAfterMinites" = "Please wait for a while and try again.";
+"noBackupData" = "No backup data";
+"pleaseRetryToLogin" = "Please retry to login.";
+"logouted" = "You have logged out successfully.";
+"noAccurateTime" = "Please adjust the time accurately";
+
+
+"swipeDelete" = "※You can delete quests with swipe";
+
+
+"playTime" = "Play Time";
+"playCount" = "Play Count";
+"createdDate" = "Created Date";
+"continuityDate" = "Max Consecutive Days";
+"consectiveDate" = "Consecutive Days";
+"timer" = "Timer";
+"notify" = "Notifications";
+
+"cant notification for setting title" = "Notification not allowed";
+"cant notification for setting message" = "Please allow notification in the settings app";
+
+"hour" = "h";
+"minutes" = "m";
+"second" = "s";
+
+"activity" = "Activity";
+"writeComment" = "Writing a comment";
+"daysAgo" = "days ago";
+
+
+"returnBase" = "Return to base";
+"willSave" = "※ The play time will be added even if the app is closed.";
+
+"returnBaseExpression" = "is finished.";
+"askWriteComment" = "Writing a comment ▷";
+
+"evolveIn" = "evolve in about";
+
+"nii0" = "Nii Egg";
+
+"momo0" = "Momo Egg";
+
+"sea0" = "Sea Egg";
+
+"leo0" = "Leo Egg";
+
+
+"nii0e" = "It is the egg of dragon that\
+is said to have the strongest mental power.\
+It can roll and move around.";
+
+"momo0e" = "The egg of Dragon that fosters sociability.\
+It can roll and move around.";
+
+"tra0e" = "The egg of dragon said to have the strongest intelligence \
+It can roll and move around.";
+
+"leo0e" = "The Egg of dragon that is said to have the strongest physical ability.\
+It can roll and move around.";
+
+
+
+
+"version" = "Version";
+
+
+"english" = "Japanese Study";
+"reading" = "Reading";
+"listening" = "Listening";
+"writing" = "Writing";
+"speaking" = "Speaking";
+"aword" = "Vocabulary";
+
+"comment0" = "I will try my best!";
+"comment1" = "It is easy to hear Japanese but difficult to talk";
+"comment2" = "”a i u e o” are Vowels";
+"comment3" = "I want vocabulary";
+"comment4" = "I deepened my understanding of the postpositional particles";
+"comment5" = "Nandeyanen is possibly one of the most used phrases in Osaka.\
+It translates to ”What are you talking about?”　or ”You've got to be kidding!” ";
+

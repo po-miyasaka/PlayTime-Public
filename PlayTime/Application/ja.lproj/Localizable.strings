@@ -1,0 +1,209 @@
+"cancel" = "キャンセル";
+"close" = "閉じる";
+"done" = "完了";
+
+"sun" = "日";
+"mon" = "月";
+"tue" = "火";
+"wed" = "水";
+"thu" = "木";
+"fri" = "金";
+"sat" = "土";
+
+"hour" = "時間";
+"minutes" = "分";
+"second" = "秒";
+"count" = "回";
+
+"consectiveDays" = " 連続 %d 日　";
+"days" = "%d 日";
+
+"storySelected" = "ストーリー選択";
+
+"dateFull" = "yyyy-MM-dd HH:mm:ss";
+"dateDisplay" = "yyyy/MM/dd";
+"dateDisplayDetail" = "yyyy/MM/dd HHH:mm:ss";
+"dateForValidate" = "2019/04/01 00:00:00";
+"dateGragh" = "yyyy/MM/dd";
+"dateGraghddMM" = "MM/dd";
+"dateOrigin" = "yyyy/MM/dd 00:00:00";
+
+
+"newComment" = "新規コメント";
+"editComment" = "コメント編集";
+
+"finishQuestComment" = "%@\
+プレイしました";
+
+"userComment" = "コメント";
+"play" = "プレイ";
+"all" = "すべて";
+
+
+
+
+
+"story_tutorial1" = "ダウンロードありがとうございます！\
+\
+このアプリのコンセプトは\
+「現実世界で、ドラゴンと一緒に成長しよう」\
+です。\
+努力の習慣化をサポートします。";
+
+"story_tutorial2" = "あなたがガンバリたいコトを「クエスト」と呼び、\
+クエストをプレイした時間が\
+ドラゴンの経験値となります。";
+
+"story_tutorial3" = "クエストは、 下の+ボタンから\
+自由につくることができます。\
+\
+例えば「読書」や「ランニング」など、\
+自由に登録してみましょう。";
+
+"story_tutorial4" = "ストーリーは\
+クエストをまとめるためのカテゴリです。";
+
+"story_tutorial5" = "設定画面からストーリーの編集や、\
+クエストの削除をすることができます。";
+
+"story_tutorial6" = "最強のドラゴンを目指して、\
+レッツプレイ！";
+
+
+"underQuest" = "クエスト中";
+"aQuest" = "クエスト";
+"startNow" = "プレイ";
+"questEmpty" = "クエストがありません。\
+下の＋ボタンから追加して取り掛かりましょう。\
+";
+
+"study" = "勉強";
+"sports" = "運動";
+"hobby" = "趣味";
+
+
+"selectDragon" = "ドラゴン選択";
+"createQuest" = "クエスト作成";
+"emptyQuestName" = "クエスト名を入力してください。";
+"overNameCount" = "クエスト名は25文字以内にしてください。";
+"story" = "ストーリー";
+"questName" = "クエスト名";
+"newQuest" = "例: 英語、ランニング";
+"raisingDragon" = "育てるドラゴン";
+"fixAfterCreated" = "※ 各項目は後からでも変更できます。";
+"create" = "作成";
+
+
+"setting" = "設定";
+"totalPlayTime" = "合計プレイ時間";
+"orderOf" = "並び順";
+"updatedOrder" = "更新順";
+"registedOrder" = "登録順";
+"frequencyOrder" = "頻度順";
+"delete" = "削除";
+"storyEditAddDelete" = "ストーリー編集";
+"storyEdit" = "ストーリー編集";
+"backup" = "バックアップ";
+
+
+
+"aboutThisAppWithLink" = "このアプリについて(web)";
+"aboutThisApp" = "このアプリについて";
+"getTshirt" = "300時間記念！Tシャツプレゼント！";
+"aboutURL" = "https://po-miyasaka.github.io/playtime/ja";
+
+
+"saveDate" = "保存日時";
+"activeStories" = "アクティブなストーリー";
+"restore" = "復元";
+"logout" = "ログアウト";
+"backupReset" = "バックアップリセット";
+"return" = "←";
+
+"dataNothing" = "保存するデータがありません。";
+"cantBackupLargerData" = "現在のプレイ時間以上のデータを上書きすることはできません。";
+"cantRestoreLessData" = "現在のプレイ時間以下のデータの復元は出来ません。";
+"pleaseRetryAfterMinites" = "しばらく時間をおいてから再度お試しください。";
+"noBackupData" = "バックアップデータがありません。";
+"pleaseRetryToLogin" = "再度ログインしてお試しください。";
+"logouted" = "ログアウトしました。";
+"noAccurateTime" = "正確な時間が取得出来ませんでした。";
+
+
+"swipeDelete" = "※ スワイプで削除ができます";
+
+"newStory" = "新規ストーリー";
+
+"playTime" = "プレイ時間";
+"playCount" = "プレイ回数";
+"createdDate" = "作成日時";
+"consectiveDate" = "連続日数";
+"continuityDate" = "最高連続日数";
+"timer" = "タイマー";
+"notify" = "通知";
+
+"cant notification for setting title" = "通知が許可されていません";
+"cant notification for setting message" = "設定アプリで通知を許可してください";
+
+
+"activity" = "アクティビティ";
+"writeComment" = "コメントを書く";
+"daysAgo" = "日前";
+
+
+"returnBase" = "帰還する";
+"willSave" = "※アプリを閉じてもプレイ時間は加算されます。";
+
+
+"returnBaseExpression" = "から帰還しました。";
+"askWriteComment" = "コメントを書く ▷";
+
+"evolveIn" = "進化まで約";
+
+"nii0" = "ニーの卵";
+
+"momo0" = "モモの卵";
+
+"sea0" = "シーの卵";
+
+"leo0" = "レオの卵";
+
+"nii0e" = "最強の精神力を持つと\
+いわれるドラゴンの卵。\
+ころころと転がって\
+動くことができる。";
+
+"momo0e" = "社交性を育むドラゴンの卵。\
+ころころと転がって\
+動くことができる。";
+
+"tra0e" = "最強の知性を持つと\
+いわれるドラゴンの卵\
+ころころと転がって\
+動くことができる。";
+
+
+"leo0e" = "最強の運動能力を持つと\
+いわれるドラゴンの卵\
+ころころと転がって\
+動くことができる。";
+
+
+"version" = "バージョン";
+
+
+"english" = "英語学習";
+"reading" = "リーディング";
+"listening" = "リスニング";
+"writing" = "ライティング";
+"speaking" = "スピーキング";
+"aword" = "単語";
+
+"comment0" = "今日は緊張して話せなかった気がする。";
+"comment1" = "聞こえなかったときに、聞き返すフレーズを練習しよう。";
+"comment2" = "自分が練習したフレーズなら、ちょっと聞き取れた。";
+"comment3" = "文章でのチャットを交えながらだと、理解できる。";
+"comment4" = "だいぶ聞き取れるようになった。わけがない。";
+"comment5" = "自分で発音できれば聞こえるようになる！";
+"comment6" = "瞬間英作文にはコツがあるらしい。何やらフレーズのテンプレートがあればいいらしい。";
+"comment7" = "「R」発音ほめられた。siriもちゃんと聞き取ってくれる。";

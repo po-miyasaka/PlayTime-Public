@@ -1,0 +1,1309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2402DB69226F50FB00EA170F /* StoriesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB68226F50FB00EA170F /* StoriesStore.swift */; };
+		2402DB6B226F51EA00EA170F /* StoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB6A226F51EA00EA170F /* StoryRepository.swift */; };
+		2402DB6D226F5A4D00EA170F /* Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB6C226F5A4D00EA170F /* Stories.swift */; };
+		2402DB73227336B900EA170F /* QuestListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2402DB72227336B900EA170F /* QuestListViewController.xib */; };
+		2402DB7922734CBF00EA170F /* StoryTitleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB7822734CBF00EA170F /* StoryTitleItem.swift */; };
+		2402DB7B22734CF600EA170F /* StoryTitleItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2402DB7A22734CF600EA170F /* StoryTitleItem.xib */; };
+		2402DB7D22734F1400EA170F /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB7C22734F1400EA170F /* StoriesViewController.swift */; };
+		2402DB832273692D00EA170F /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB822273692D00EA170F /* StoryViewModel.swift */; };
+		2402DB85227407D200EA170F /* StoryTitleCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB84227407D200EA170F /* StoryTitleCollectionView.swift */; };
+		24077F982299F6C200376395 /* SelectStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24077F972299F6C100376395 /* SelectStoryViewController.swift */; };
+		24077F9A2299F77500376395 /* SelectStoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24077F992299F77500376395 /* SelectStoryViewController.xib */; };
+		24077F9C2299F8C100376395 /* SelectStoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24077F9B2299F8C100376395 /* SelectStoryViewModel.swift */; };
+		240902F5229A591500598B92 /* SelectDragonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240902F3229A591500598B92 /* SelectDragonViewController.swift */; };
+		240902F6229A591500598B92 /* SelectDragonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240902F4229A591500598B92 /* SelectDragonViewController.xib */; };
+		240902F9229A636800598B92 /* SelectDragonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240902F7229A636800598B92 /* SelectDragonItem.swift */; };
+		240902FA229A636800598B92 /* SelectDragonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240902F8229A636800598B92 /* SelectDragonItem.xib */; };
+		240902FC229A828E00598B92 /* SelectDragonVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240902FB229A828E00598B92 /* SelectDragonVIewModel.swift */; };
+		240B6B83228B08CD0010B8D6 /* DetailQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B6B82228B08CD0010B8D6 /* DetailQuestRouter.swift */; };
+		240CE8BF2214421700D32E9A /* QuestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8BE2214421700D32E9A /* QuestListViewModel.swift */; };
+		240CE8E12215BFA800D32E9A /* AddQuestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8E02215BFA800D32E9A /* AddQuestStore.swift */; };
+		240CE8E42215BFDA00D32E9A /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8E32215BFDA00D32E9A /* Dispatcher.swift */; };
+		240CE8E82215C05F00D32E9A /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8E72215C05F00D32E9A /* Action.swift */; };
+		240CE8EB2218795E00D32E9A /* MeanTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8EA2218795E00D32E9A /* MeanTime.swift */; };
+		240CE8EE2218FF6200D32E9A /* QuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8ED2218FF6200D32E9A /* QuestRepository.swift */; };
+		240CE8F02218FF7100D32E9A /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8EF2218FF7100D32E9A /* SettingsRepository.swift */; };
+		240CE8F222190D1900D32E9A /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8F122190D1900D32E9A /* SettingsStore.swift */; };
+		240CE8FE2219199300D32E9A /* AppDelegateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8FD2219199300D32E9A /* AppDelegateService.swift */; };
+		240CE90522195B4C00D32E9A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE90422195B4C00D32E9A /* SettingsViewModel.swift */; };
+		240CE90722195C0400D32E9A /* DetailQuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE90622195C0400D32E9A /* DetailQuestViewModel.swift */; };
+		240CE90922195CAB00D32E9A /* DragonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE90822195CAB00D32E9A /* DragonViewModel.swift */; };
+		240CE90D2219880800D32E9A /* ActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE90C2219880800D32E9A /* ActionCreator.swift */; };
+		240CE90F22198F9300D32E9A /* Flux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE90E22198F9300D32E9A /* Flux.swift */; };
+		2410464C228F1D1100328A61 /* PlayingQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2410464B228F1D1100328A61 /* PlayingQuestRouter.swift */; };
+		2412422E22E4351D0028B98E /* CommentWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412422C22E4351D0028B98E /* CommentWriteViewController.swift */; };
+		2412422F22E4351D0028B98E /* CommentWriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2412422D22E4351D0028B98E /* CommentWriteViewController.xib */; };
+		241347F42291A87B007F4A7D /* DragonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347E82291A878007F4A7D /* DragonCell.xib */; };
+		241347F52291A87B007F4A7D /* SubTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347E92291A879007F4A7D /* SubTextCell.swift */; };
+		241347F62291A87B007F4A7D /* DragonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347EA2291A879007F4A7D /* DragonCell.swift */; };
+		241347F72291A87B007F4A7D /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347EB2291A879007F4A7D /* TextFieldCell.xib */; };
+		241347F82291A87B007F4A7D /* GraphCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347EC2291A879007F4A7D /* GraphCell.xib */; };
+		241347F92291A87B007F4A7D /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347ED2291A879007F4A7D /* CommentCell.xib */; };
+		241347FA2291A87B007F4A7D /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347EE2291A879007F4A7D /* SwitchCell.swift */; };
+		241347FB2291A87B007F4A7D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347EF2291A87A007F4A7D /* CommentCell.swift */; };
+		241347FC2291A87B007F4A7D /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347F02291A87A007F4A7D /* SwitchCell.xib */; };
+		241347FD2291A87B007F4A7D /* GraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347F12291A87A007F4A7D /* GraphCell.swift */; };
+		241347FE2291A87B007F4A7D /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347F22291A87A007F4A7D /* TextFieldCell.swift */; };
+		241347FF2291A87B007F4A7D /* SubTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347F32291A87A007F4A7D /* SubTextCell.xib */; };
+		24186DF722F31B0200461EF7 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186DF622F31B0200461EF7 /* Quest.swift */; };
+		24246513228B176600E852C2 /* StartingQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24246512228B176600E852C2 /* StartingQuestRouter.swift */; };
+		24317C7922D1B8A400BA1C3E /* DetailDragonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */; };
+		24317C7A22D1B8A400BA1C3E /* DetailDragonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */; };
+		24317C7C22D1D84A00BA1C3E /* DetailDragonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24317C7B22D1D84A00BA1C3E /* DetailDragonViewModel.swift */; };
+		24317C8022D1FA8200BA1C3E /* DragonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24317C7F22D1FA8200BA1C3E /* DragonRouter.swift */; };
+		243952BE227C6F11001DCB6D /* quest.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 243952BD227C6F11001DCB6D /* quest.xcassets */; };
+		243952C1227C76AB001DCB6D /* PlayingQuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243952C0227C76AB001DCB6D /* PlayingQuestViewController.swift */; };
+		243952C5227CADB0001DCB6D /* PlayingQuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243952C4227CADB0001DCB6D /* PlayingQuestViewController.xib */; };
+		244DEBD7226000D3001855E7 /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DEBD3226000D1001855E7 /* SortCell.swift */; };
+		244DEBD8226000D3001855E7 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244DEBD4226000D1001855E7 /* TextCell.swift */; };
+		244DEBD9226000D3001855E7 /* SortCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DEBD5226000D2001855E7 /* SortCell.xib */; };
+		244DEBDA226000D3001855E7 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 244DEBD6226000D2001855E7 /* TextCell.xib */; };
+		245C9328222ABEB100C1A41C /* DetailQuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C9327222ABEB100C1A41C /* DetailQuestViewController.swift */; };
+		245C932A222AC0CF00C1A41C /* DetailQuestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 245C9329222AC0CF00C1A41C /* DetailQuestViewController.storyboard */; };
+		248F5BE022D7B06B0036F8B3 /* TutorialPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248F5BDF22D7B06B0036F8B3 /* TutorialPresentation.swift */; };
+		2498DBE62278BB0000CB8C24 /* AddQuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498DBE42278BB0000CB8C24 /* AddQuestViewController.swift */; };
+		2498DBE72278BB0100CB8C24 /* AddQuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2498DBE52278BB0000CB8C24 /* AddQuestViewController.xib */; };
+		2498DBE92278BBA000CB8C24 /* AddQuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498DBE82278BBA000CB8C24 /* AddQuestViewModel.swift */; };
+		24A6B90C22959D1B00AE411F /* CommentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A6B90B22959D1B00AE411F /* CommentsView.xib */; };
+		24A6B90E22959E2D00AE411F /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A6B90D22959E2D00AE411F /* CommentsView.swift */; };
+		24A71DC322E99D4900037AC9 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A71DC222E99D4900037AC9 /* RealmSwift.framework */; };
+		24BF9447226E66AA006B5C99 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF9446226E66AA006B5C99 /* Story.swift */; };
+		24C4AC5C22CB5FB300F0ACA0 /* AddQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC5B22CB5FB300F0ACA0 /* AddQuestRouter.swift */; };
+		24C4AC5E22CF1A5D00F0ACA0 /* DragonLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC5D22CF1A5D00F0ACA0 /* DragonLibraryView.swift */; };
+		24C4AC6222CF1C5300F0ACA0 /* DragonLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC6122CF1C5300F0ACA0 /* DragonLibraryViewModel.swift */; };
+		24C4AC6422CF5AD400F0ACA0 /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC6322CF5AD400F0ACA0 /* ImageViewCell.swift */; };
+		24C4AC6622CF5C3000F0ACA0 /* ImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24C4AC6522CF5C3000F0ACA0 /* ImageViewCell.xib */; };
+		24C55C0122EEA69700E66AE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C55C0022EEA69700E66AE2 /* Assets.xcassets */; };
+		24C55C0322EF0C6B00E66AE2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C55C0222EF0C6B00E66AE2 /* Colors.swift */; };
+		24D2DB202222894C00887FB4 /* Quests+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D2DB1F2222894C00887FB4 /* Quests+Realm.swift */; };
+		24DD5D5E2221B5D900904F94 /* DragonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DD5D5D2221B5D800904F94 /* DragonViewController.swift */; };
+		24DD5D622221BCF300904F94 /* Quests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DD5D612221BCF300904F94 /* Quests.swift */; };
+		24DD5D642221BEFF00904F94 /* DragonViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24DD5D632221BEFF00904F94 /* DragonViewController.storyboard */; };
+		24E067A52277F0C0004EEF3C /* StoriesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24E067A42277F0BF004EEF3C /* StoriesViewController.storyboard */; };
+		24E067A722780EC4004EEF3C /* QuestItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E067A622780EC4004EEF3C /* QuestItem.xib */; };
+		24E067AA22789A9A004EEF3C /* AddQuestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E067A822789A9A004EEF3C /* AddQuestItem.swift */; };
+		24E067AB22789A9A004EEF3C /* AddQuestItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24E067A922789A9A004EEF3C /* AddQuestItem.xib */; };
+		24E17DD5227D655100EF70DC /* PlayingQuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E17DD4227D655100EF70DC /* PlayingQuestViewModel.swift */; };
+		24FB5BF92285A80000B0E915 /* EditStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5BF82285A80000B0E915 /* EditStoriesViewController.swift */; };
+		24FB5BFB2285A81400B0E915 /* EditStoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24FB5BFA2285A81400B0E915 /* EditStoriesViewController.xib */; };
+		24FB5BFD2285A9C700B0E915 /* EditStoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5BFC2285A9C700B0E915 /* EditStoriesViewModel.swift */; };
+		24FB5C002285AF4F00B0E915 /* EditStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5BFE2285AF4F00B0E915 /* EditStoryViewController.swift */; };
+		24FB5C012285AF4F00B0E915 /* EditStoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24FB5BFF2285AF4F00B0E915 /* EditStoryViewController.xib */; };
+		24FB5C032285DC8900B0E915 /* EditStoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C022285DC8900B0E915 /* EditStoryViewModel.swift */; };
+		24FB5C0522868C1F00B0E915 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0422868C1F00B0E915 /* Router.swift */; };
+		24FB5C0722868F4500B0E915 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0622868F4400B0E915 /* SettingsRouter.swift */; };
+		24FB5C0A22871C4800B0E915 /* EditStoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */; };
+		24FB5C0C22871C5300B0E915 /* EditStoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */; };
+		24FB5C0E22871CF200B0E915 /* StoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */; };
+		24FE31CF22AD3C1900020756 /* Diffable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FE31CE22AD3C1900020756 /* Diffable.swift */; };
+		6E014EA51FFB520100EFF438 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E014EA31FFB520000EFF438 /* Result.framework */; };
+		6E1B60B92033159E00689218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60872033101700689218 /* AppDelegate.swift */; };
+		6E1B60C02033159E00689218 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60A22033101700689218 /* DateUtility.swift */; };
+		6E1B60C12033159E00689218 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60A32033101700689218 /* Error.swift */; };
+		6E1B60C22033159E00689218 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60A42033101700689218 /* Extensions.swift */; };
+		6E1B60C52033159E00689218 /* QuestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60AC2033101700689218 /* QuestItem.swift */; };
+		6E1B60C62033159E00689218 /* QuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60AE2033101700689218 /* QuestListViewController.swift */; };
+		6E1B60C72033159E00689218 /* QuestListViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60AF2033101700689218 /* QuestListViewControllerDataSource.swift */; };
+		6E1B60C92033159E00689218 /* DeletingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60B22033101700689218 /* DeletingButtonView.swift */; };
+		6E310487205D52580038A80F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E310486205D52580038A80F /* RxCocoa.framework */; };
+		6E3FCC732069661E00ECAC06 /* PlayTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3FCC722069661E00ECAC06 /* PlayTimeCell.xib */; };
+		6E43625C2052BB8100926E78 /* Dragon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E43625B2052BB8100926E78 /* Dragon.swift */; };
+		6E444C26205433A10071C106 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E444C28205433A10071C106 /* Localizable.strings */; };
+		6E444C2C205443D50071C106 /* infoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E444C2E205443D50071C106 /* infoPlist.strings */; };
+		6E5D8C682062E90E002BB925 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E5D8C672062E90E002BB925 /* LaunchScreen.storyboard */; };
+		6E74A8A8203C3D4800AE248F /* questing.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6E74A8A6203C3D4800AE248F /* questing.sks */; };
+		6E7846252039C92E003470FA /* DeletingButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E7846242039C92E003470FA /* DeletingButtonView.xib */; };
+		6E7A84B42052E4B700170DE3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7A84B32052E4B700170DE3 /* RxSwift.framework */; };
+		6E83C0BB1FFEC25100CC7E5E /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E014EA41FFB520100EFF438 /* APIKit.framework */; };
+		6EA0634F2056D14300C5CF61 /* LogConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0634E2056D14300C5CF61 /* LogConstant.swift */; };
+		6EB13888207582E90092942D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB13887207582E90092942D /* NotificationService.swift */; };
+		6EDA9317206AFACA008384C7 /* TimerPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDA9316206AFACA008384C7 /* TimerPickerView.xib */; };
+		6EDA9319206AFC50008384C7 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA9318206AFC50008384C7 /* TimerPickerView.swift */; };
+		6EDD7CE5203C8C5E00289708 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EDD7CE4203C8C5E00289708 /* SettingsViewController.storyboard */; };
+		6EDD7CE7203C8D3700289708 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD7CE6203C8D3700289708 /* SettingsViewController.swift */; };
+		6EDD7CE9203C8DBF00289708 /* SettingsViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD7CE8203C8DBF00289708 /* SettingsViewControllerDataSource.swift */; };
+		6EDD7CEB203C8E0300289708 /* PlayTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDD7CEA203C8E0300289708 /* PlayTimeCell.swift */; };
+		6EFEE98A203F189F00C67DBC /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEE989203F189F00C67DBC /* Quest.swift */; };
+		6EFEE98C203F277600C67DBC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEE98B203F277600C67DBC /* Settings.swift */; };
+		6EFEE98E203F2AD200C67DBC /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFEE98D203F2AD200C67DBC /* RealmService.swift */; };
+		7E3E22BBB94A8C3DC8D14801 /* Pods_PlayTimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A8E987FF73EE96A3D6B336 /* Pods_PlayTimeTests.framework */; };
+		ADF2CB0689E298FD3F4FB9F1 /* Pods_PlayTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594AB30306E28AB5FD86C22C /* Pods_PlayTime.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		240CE8B92212EBDA00D32E9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6E4842981FFA723000DD3CE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E48429F1FFA723000DD3CE0;
+			remoteInfo = playTime;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2402DB68226F50FB00EA170F /* StoriesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesStore.swift; sourceTree = "<group>"; };
+		2402DB6A226F51EA00EA170F /* StoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryRepository.swift; sourceTree = "<group>"; };
+		2402DB6C226F5A4D00EA170F /* Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stories.swift; sourceTree = "<group>"; };
+		2402DB72227336B900EA170F /* QuestListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestListViewController.xib; sourceTree = "<group>"; };
+		2402DB7822734CBF00EA170F /* StoryTitleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleItem.swift; sourceTree = "<group>"; };
+		2402DB7A22734CF600EA170F /* StoryTitleItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTitleItem.xib; sourceTree = "<group>"; };
+		2402DB7C22734F1400EA170F /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
+		2402DB822273692D00EA170F /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
+		2402DB84227407D200EA170F /* StoryTitleCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTitleCollectionView.swift; sourceTree = "<group>"; };
+		24077F972299F6C100376395 /* SelectStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStoryViewController.swift; sourceTree = "<group>"; };
+		24077F992299F77500376395 /* SelectStoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectStoryViewController.xib; sourceTree = "<group>"; };
+		24077F9B2299F8C100376395 /* SelectStoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStoryViewModel.swift; sourceTree = "<group>"; };
+		240902F3229A591500598B92 /* SelectDragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDragonViewController.swift; sourceTree = "<group>"; };
+		240902F4229A591500598B92 /* SelectDragonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDragonViewController.xib; sourceTree = "<group>"; };
+		240902F7229A636800598B92 /* SelectDragonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDragonItem.swift; sourceTree = "<group>"; };
+		240902F8229A636800598B92 /* SelectDragonItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDragonItem.xib; sourceTree = "<group>"; };
+		240902FB229A828E00598B92 /* SelectDragonVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDragonVIewModel.swift; sourceTree = "<group>"; };
+		240B6B82228B08CD0010B8D6 /* DetailQuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuestRouter.swift; sourceTree = "<group>"; };
+		240CE8B42212EBDA00D32E9A /* PlayTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		240CE8B82212EBDA00D32E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		240CE8BE2214421700D32E9A /* QuestListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestListViewModel.swift; sourceTree = "<group>"; };
+		240CE8E02215BFA800D32E9A /* AddQuestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestStore.swift; sourceTree = "<group>"; };
+		240CE8E32215BFDA00D32E9A /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		240CE8E72215C05F00D32E9A /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		240CE8EA2218795E00D32E9A /* MeanTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanTime.swift; sourceTree = "<group>"; };
+		240CE8ED2218FF6200D32E9A /* QuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRepository.swift; sourceTree = "<group>"; };
+		240CE8EF2218FF7100D32E9A /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		240CE8F122190D1900D32E9A /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		240CE8FD2219199300D32E9A /* AppDelegateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateService.swift; sourceTree = "<group>"; };
+		240CE90422195B4C00D32E9A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		240CE90622195C0400D32E9A /* DetailQuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuestViewModel.swift; sourceTree = "<group>"; };
+		240CE90822195CAB00D32E9A /* DragonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonViewModel.swift; sourceTree = "<group>"; };
+		240CE90C2219880800D32E9A /* ActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCreator.swift; sourceTree = "<group>"; };
+		240CE90E22198F9300D32E9A /* Flux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flux.swift; sourceTree = "<group>"; };
+		2410464B228F1D1100328A61 /* PlayingQuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingQuestRouter.swift; sourceTree = "<group>"; };
+		2412422C22E4351D0028B98E /* CommentWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentWriteViewController.swift; sourceTree = "<group>"; };
+		2412422D22E4351D0028B98E /* CommentWriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentWriteViewController.xib; sourceTree = "<group>"; };
+		241347E82291A878007F4A7D /* DragonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DragonCell.xib; sourceTree = "<group>"; };
+		241347E92291A879007F4A7D /* SubTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTextCell.swift; sourceTree = "<group>"; };
+		241347EA2291A879007F4A7D /* DragonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragonCell.swift; sourceTree = "<group>"; };
+		241347EB2291A879007F4A7D /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
+		241347EC2291A879007F4A7D /* GraphCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphCell.xib; sourceTree = "<group>"; };
+		241347ED2291A879007F4A7D /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
+		241347EE2291A879007F4A7D /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		241347EF2291A87A007F4A7D /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		241347F02291A87A007F4A7D /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		241347F12291A87A007F4A7D /* GraphCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCell.swift; sourceTree = "<group>"; };
+		241347F22291A87A007F4A7D /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		241347F32291A87A007F4A7D /* SubTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubTextCell.xib; sourceTree = "<group>"; };
+		24186DF622F31B0200461EF7 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
+		24246512228B176600E852C2 /* StartingQuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingQuestRouter.swift; sourceTree = "<group>"; };
+		24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDragonViewController.swift; sourceTree = "<group>"; };
+		24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDragonViewController.xib; sourceTree = "<group>"; };
+		24317C7B22D1D84A00BA1C3E /* DetailDragonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDragonViewModel.swift; sourceTree = "<group>"; };
+		24317C7F22D1FA8200BA1C3E /* DragonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonRouter.swift; sourceTree = "<group>"; };
+		243952BD227C6F11001DCB6D /* quest.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = quest.xcassets; sourceTree = "<group>"; };
+		243952C0227C76AB001DCB6D /* PlayingQuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingQuestViewController.swift; sourceTree = "<group>"; };
+		243952C4227CADB0001DCB6D /* PlayingQuestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayingQuestViewController.xib; sourceTree = "<group>"; };
+		244DEBD3226000D1001855E7 /* SortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
+		244DEBD4226000D1001855E7 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		244DEBD5226000D2001855E7 /* SortCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortCell.xib; sourceTree = "<group>"; };
+		244DEBD6226000D2001855E7 /* TextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
+		245C9327222ABEB100C1A41C /* DetailQuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuestViewController.swift; sourceTree = "<group>"; };
+		245C9329222AC0CF00C1A41C /* DetailQuestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailQuestViewController.storyboard; sourceTree = "<group>"; };
+		248F5BDF22D7B06B0036F8B3 /* TutorialPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresentation.swift; sourceTree = "<group>"; };
+		2498DBE42278BB0000CB8C24 /* AddQuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestViewController.swift; sourceTree = "<group>"; };
+		2498DBE52278BB0000CB8C24 /* AddQuestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddQuestViewController.xib; sourceTree = "<group>"; };
+		2498DBE82278BBA000CB8C24 /* AddQuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestViewModel.swift; sourceTree = "<group>"; };
+		24A6B90B22959D1B00AE411F /* CommentsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsView.xib; sourceTree = "<group>"; };
+		24A6B90D22959E2D00AE411F /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		24A71DC222E99D4900037AC9 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		24BF9446226E66AA006B5C99 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		24C4AC5B22CB5FB300F0ACA0 /* AddQuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestRouter.swift; sourceTree = "<group>"; };
+		24C4AC5D22CF1A5D00F0ACA0 /* DragonLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonLibraryView.swift; sourceTree = "<group>"; };
+		24C4AC6122CF1C5300F0ACA0 /* DragonLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonLibraryViewModel.swift; sourceTree = "<group>"; };
+		24C4AC6322CF5AD400F0ACA0 /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
+		24C4AC6522CF5C3000F0ACA0 /* ImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewCell.xib; sourceTree = "<group>"; };
+		24C55C0022EEA69700E66AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24C55C0222EF0C6B00E66AE2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		24D2DB1F2222894C00887FB4 /* Quests+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quests+Realm.swift"; sourceTree = "<group>"; };
+		24DD5D5D2221B5D800904F94 /* DragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DragonViewController.swift; path = playTime/Views/Dragon/DragonViewController.swift; sourceTree = SOURCE_ROOT; };
+		24DD5D612221BCF300904F94 /* Quests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quests.swift; sourceTree = "<group>"; };
+		24DD5D632221BEFF00904F94 /* DragonViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DragonViewController.storyboard; sourceTree = "<group>"; };
+		24E067A42277F0BF004EEF3C /* StoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoriesViewController.storyboard; sourceTree = "<group>"; };
+		24E067A622780EC4004EEF3C /* QuestItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestItem.xib; sourceTree = "<group>"; };
+		24E067A822789A9A004EEF3C /* AddQuestItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuestItem.swift; sourceTree = "<group>"; };
+		24E067A922789A9A004EEF3C /* AddQuestItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddQuestItem.xib; sourceTree = "<group>"; };
+		24E17DD4227D655100EF70DC /* PlayingQuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingQuestViewModel.swift; sourceTree = "<group>"; };
+		24FB5BF82285A80000B0E915 /* EditStoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoriesViewController.swift; sourceTree = "<group>"; };
+		24FB5BFA2285A81400B0E915 /* EditStoriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditStoriesViewController.xib; sourceTree = "<group>"; };
+		24FB5BFC2285A9C700B0E915 /* EditStoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoriesViewModel.swift; sourceTree = "<group>"; };
+		24FB5BFE2285AF4F00B0E915 /* EditStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryViewController.swift; sourceTree = "<group>"; };
+		24FB5BFF2285AF4F00B0E915 /* EditStoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditStoryViewController.xib; sourceTree = "<group>"; };
+		24FB5C022285DC8900B0E915 /* EditStoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryViewModel.swift; sourceTree = "<group>"; };
+		24FB5C0422868C1F00B0E915 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		24FB5C0622868F4400B0E915 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditStoryRouter.swift; path = playTime/DataStore/EditStoryRouter.swift; sourceTree = SOURCE_ROOT; };
+		24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoriesRouter.swift; sourceTree = "<group>"; };
+		24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRouter.swift; sourceTree = "<group>"; };
+		24FE31CE22AD3C1900020756 /* Diffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
+		2A3824709A357F9FB8C078F3 /* Pods-PlayTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTimeTests.release.xcconfig"; path = "Target Support Files/Pods-PlayTimeTests/Pods-PlayTimeTests.release.xcconfig"; sourceTree = "<group>"; };
+		594AB30306E28AB5FD86C22C /* Pods_PlayTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59C649A9CAB01F0A8EE15D36 /* Pods-PlayTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTime.debug.xcconfig"; path = "Target Support Files/Pods-PlayTime/Pods-PlayTime.debug.xcconfig"; sourceTree = "<group>"; };
+		6E014EA31FFB520000EFF438 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		6E014EA41FFB520100EFF438 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
+		6E1B60872033101700689218 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6E1B608C2033101700689218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E1B60A22033101700689218 /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		6E1B60A32033101700689218 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		6E1B60A42033101700689218 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6E1B60AC2033101700689218 /* QuestItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestItem.swift; sourceTree = "<group>"; };
+		6E1B60AE2033101700689218 /* QuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestListViewController.swift; sourceTree = "<group>"; };
+		6E1B60AF2033101700689218 /* QuestListViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestListViewControllerDataSource.swift; sourceTree = "<group>"; };
+		6E1B60B22033101700689218 /* DeletingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletingButtonView.swift; sourceTree = "<group>"; };
+		6E310486205D52580038A80F /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		6E3FCC722069661E00ECAC06 /* PlayTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayTimeCell.xib; sourceTree = "<group>"; };
+		6E43625B2052BB8100926E78 /* Dragon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dragon.swift; sourceTree = "<group>"; };
+		6E444C29205433AE0071C106 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6E444C2D205443D50071C106 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/infoPlist.strings; sourceTree = "<group>"; };
+		6E4842A01FFA723000DD3CE0 /* PlayTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E5D8C672062E90E002BB925 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E74A8A6203C3D4800AE248F /* questing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = questing.sks; sourceTree = "<group>"; };
+		6E7846242039C92E003470FA /* DeletingButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletingButtonView.xib; sourceTree = "<group>"; };
+		6E7A84B32052E4B700170DE3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		6EA0634E2056D14300C5CF61 /* LogConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConstant.swift; sourceTree = "<group>"; };
+		6EB13887207582E90092942D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		6ECF3ACD2066479300CE0193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6EDA9316206AFACA008384C7 /* TimerPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerPickerView.xib; sourceTree = "<group>"; };
+		6EDA9318206AFC50008384C7 /* TimerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPickerView.swift; sourceTree = "<group>"; };
+		6EDD7CE4203C8C5E00289708 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		6EDD7CE6203C8D3700289708 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6EDD7CE8203C8DBF00289708 /* SettingsViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDataSource.swift; sourceTree = "<group>"; tabWidth = 4; };
+		6EDD7CEA203C8E0300289708 /* PlayTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTimeCell.swift; sourceTree = "<group>"; };
+		6EFEE989203F189F00C67DBC /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
+		6EFEE98B203F277600C67DBC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		6EFEE98D203F2AD200C67DBC /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		A32F61A669E56E7F64CFF40B /* Pods-PlayTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTimeTests.debug.xcconfig"; path = "Target Support Files/Pods-PlayTimeTests/Pods-PlayTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9A8E987FF73EE96A3D6B336 /* Pods_PlayTimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBCD310A9DD1A05114C51240 /* Pods-PlayTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTime.release.xcconfig"; path = "Target Support Files/Pods-PlayTime/Pods-PlayTime.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		240CE8B12212EBDA00D32E9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E3E22BBB94A8C3DC8D14801 /* Pods_PlayTimeTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E48429D1FFA723000DD3CE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A71DC322E99D4900037AC9 /* RealmSwift.framework in Frameworks */,
+				6E7A84B42052E4B700170DE3 /* RxSwift.framework in Frameworks */,
+				6E310487205D52580038A80F /* RxCocoa.framework in Frameworks */,
+				6E83C0BB1FFEC25100CC7E5E /* APIKit.framework in Frameworks */,
+				6E014EA51FFB520100EFF438 /* Result.framework in Frameworks */,
+				ADF2CB0689E298FD3F4FB9F1 /* Pods_PlayTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2402DB74227338A700EA170F /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				24E067A42277F0BF004EEF3C /* StoriesViewController.storyboard */,
+				2402DB7C22734F1400EA170F /* StoriesViewController.swift */,
+				2402DB84227407D200EA170F /* StoryTitleCollectionView.swift */,
+				2402DB7822734CBF00EA170F /* StoryTitleItem.swift */,
+				2402DB7A22734CF600EA170F /* StoryTitleItem.xib */,
+				6E1B60B22033101700689218 /* DeletingButtonView.swift */,
+				6E7846242039C92E003470FA /* DeletingButtonView.xib */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		240CE8B52212EBDA00D32E9A /* PlayTimeTests */ = {
+			isa = PBXGroup;
+			children = (
+				24186DF622F31B0200461EF7 /* Quest.swift */,
+				240CE8B82212EBDA00D32E9A /* Info.plist */,
+			);
+			path = PlayTimeTests;
+			sourceTree = "<group>";
+		};
+		240CE8DF2215BF8600D32E9A /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				240CE8E02215BFA800D32E9A /* AddQuestStore.swift */,
+				2402DB68226F50FB00EA170F /* StoriesStore.swift */,
+				240CE8F122190D1900D32E9A /* SettingsStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		240CE8E22215BFC200D32E9A /* Dispatchers */ = {
+			isa = PBXGroup;
+			children = (
+				240CE8E32215BFDA00D32E9A /* Dispatcher.swift */,
+			);
+			path = Dispatchers;
+			sourceTree = "<group>";
+		};
+		240CE8E52215C00700D32E9A /* ActionCreators */ = {
+			isa = PBXGroup;
+			children = (
+				240CE8FD2219199300D32E9A /* AppDelegateService.swift */,
+				240CE90C2219880800D32E9A /* ActionCreator.swift */,
+			);
+			path = ActionCreators;
+			sourceTree = "<group>";
+		};
+		240CE8E62215C00F00D32E9A /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				240CE8E72215C05F00D32E9A /* Action.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		240CE8E92218794E00D32E9A /* Quest */ = {
+			isa = PBXGroup;
+			children = (
+				6EFEE989203F189F00C67DBC /* Quest.swift */,
+				24DD5D612221BCF300904F94 /* Quests.swift */,
+				240CE8EA2218795E00D32E9A /* MeanTime.swift */,
+				24D2DB1F2222894C00887FB4 /* Quests+Realm.swift */,
+			);
+			path = Quest;
+			sourceTree = "<group>";
+		};
+		240CE8EC2218FF4F00D32E9A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				240CE8ED2218FF6200D32E9A /* QuestRepository.swift */,
+				2402DB6A226F51EA00EA170F /* StoryRepository.swift */,
+				240CE8EF2218FF7100D32E9A /* SettingsRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		240CE90122195AE500D32E9A /* Flux */ = {
+			isa = PBXGroup;
+			children = (
+				240CE90E22198F9300D32E9A /* Flux.swift */,
+				240CE8E62215C00F00D32E9A /* Actions */,
+				240CE8E52215C00700D32E9A /* ActionCreators */,
+				240CE8E22215BFC200D32E9A /* Dispatchers */,
+				240CE8DF2215BF8600D32E9A /* Stores */,
+			);
+			path = Flux;
+			sourceTree = "<group>";
+		};
+		240CE9102219E21C00D32E9A /* Dragon */ = {
+			isa = PBXGroup;
+			children = (
+				24DD5D5D2221B5D800904F94 /* DragonViewController.swift */,
+				24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */,
+				24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */,
+				24DD5D632221BEFF00904F94 /* DragonViewController.storyboard */,
+				24C4AC5D22CF1A5D00F0ACA0 /* DragonLibraryView.swift */,
+				24C4AC6322CF5AD400F0ACA0 /* ImageViewCell.swift */,
+				24C4AC6522CF5C3000F0ACA0 /* ImageViewCell.xib */,
+				24C4AC6122CF1C5300F0ACA0 /* DragonLibraryViewModel.swift */,
+			);
+			name = Dragon;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		240CE9112219E24F00D32E9A /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				6E74A8A6203C3D4800AE248F /* questing.sks */,
+				24E067A622780EC4004EEF3C /* QuestItem.xib */,
+				6E1B60AC2033101700689218 /* QuestItem.swift */,
+				24E067A822789A9A004EEF3C /* AddQuestItem.swift */,
+				24E067A922789A9A004EEF3C /* AddQuestItem.xib */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		240CE9122219E28100D32E9A /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				248F5BDF22D7B06B0036F8B3 /* TutorialPresentation.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		243952BF227C767A001DCB6D /* PlayingQuest */ = {
+			isa = PBXGroup;
+			children = (
+				243952C0227C76AB001DCB6D /* PlayingQuestViewController.swift */,
+				243952C4227CADB0001DCB6D /* PlayingQuestViewController.xib */,
+			);
+			path = PlayingQuest;
+			sourceTree = "<group>";
+		};
+		245C9326222ABE9A00C1A41C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				24A6B90D22959E2D00AE411F /* CommentsView.swift */,
+				24A6B90B22959D1B00AE411F /* CommentsView.xib */,
+				2412422C22E4351D0028B98E /* CommentWriteViewController.swift */,
+				2412422D22E4351D0028B98E /* CommentWriteViewController.xib */,
+				245C9327222ABEB100C1A41C /* DetailQuestViewController.swift */,
+				245C9329222AC0CF00C1A41C /* DetailQuestViewController.storyboard */,
+				241347EF2291A87A007F4A7D /* CommentCell.swift */,
+				241347ED2291A879007F4A7D /* CommentCell.xib */,
+				241347EA2291A879007F4A7D /* DragonCell.swift */,
+				241347E82291A878007F4A7D /* DragonCell.xib */,
+				241347F12291A87A007F4A7D /* GraphCell.swift */,
+				241347EC2291A879007F4A7D /* GraphCell.xib */,
+				241347E92291A879007F4A7D /* SubTextCell.swift */,
+				241347F32291A87A007F4A7D /* SubTextCell.xib */,
+				241347EE2291A879007F4A7D /* SwitchCell.swift */,
+				241347F02291A87A007F4A7D /* SwitchCell.xib */,
+				241347F22291A87A007F4A7D /* TextFieldCell.swift */,
+				241347EB2291A879007F4A7D /* TextFieldCell.xib */,
+				240902F3229A591500598B92 /* SelectDragonViewController.swift */,
+				240902F4229A591500598B92 /* SelectDragonViewController.xib */,
+				240902F7229A636800598B92 /* SelectDragonItem.swift */,
+				240902F8229A636800598B92 /* SelectDragonItem.xib */,
+				24077F972299F6C100376395 /* SelectStoryViewController.swift */,
+				24077F992299F77500376395 /* SelectStoryViewController.xib */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		2498DBE32278BACD00CB8C24 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				2498DBE42278BB0000CB8C24 /* AddQuestViewController.swift */,
+				2498DBE52278BB0000CB8C24 /* AddQuestViewController.xib */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		24DD5D48221C2F2300904F94 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				6EFEE98D203F2AD200C67DBC /* RealmService.swift */,
+				6E1B60A22033101700689218 /* DateUtility.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		24FB5BF72285A7E000B0E915 /* StoryEdit */ = {
+			isa = PBXGroup;
+			children = (
+				24FB5BF82285A80000B0E915 /* EditStoriesViewController.swift */,
+				24FB5BFA2285A81400B0E915 /* EditStoriesViewController.xib */,
+				24FB5BFE2285AF4F00B0E915 /* EditStoryViewController.swift */,
+				24FB5BFF2285AF4F00B0E915 /* EditStoryViewController.xib */,
+			);
+			path = StoryEdit;
+			sourceTree = "<group>";
+		};
+		6E014EA21FFB520000EFF438 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24A71DC222E99D4900037AC9 /* RealmSwift.framework */,
+				6E310486205D52580038A80F /* RxCocoa.framework */,
+				6E7A84B32052E4B700170DE3 /* RxSwift.framework */,
+				6E014EA41FFB520100EFF438 /* APIKit.framework */,
+				6E014EA31FFB520000EFF438 /* Result.framework */,
+				594AB30306E28AB5FD86C22C /* Pods_PlayTime.framework */,
+				C9A8E987FF73EE96A3D6B336 /* Pods_PlayTimeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E1B60852033101700689218 /* PlayTime */ = {
+			isa = PBXGroup;
+			children = (
+				6E1B60862033101700689218 /* Application */,
+				240CE90122195AE500D32E9A /* Flux */,
+				6E1B608D2033101700689218 /* Router */,
+				24DD5D48221C2F2300904F94 /* DataStore */,
+				240CE8EC2218FF4F00D32E9A /* Repositories */,
+				6E6AEE1720399BF100615331 /* ViewModels */,
+				6E1B60A72033101700689218 /* Views */,
+				6E1B60962033101700689218 /* PlayTimeObject */,
+				6E1B609F2033101700689218 /* Utilities */,
+			);
+			path = PlayTime;
+			sourceTree = "<group>";
+		};
+		6E1B60862033101700689218 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				24C55C0022EEA69700E66AE2 /* Assets.xcassets */,
+				6E1B60872033101700689218 /* AppDelegate.swift */,
+				6E5D8C672062E90E002BB925 /* LaunchScreen.storyboard */,
+				6E1B608C2033101700689218 /* Info.plist */,
+				6E444C2E205443D50071C106 /* infoPlist.strings */,
+				6E444C28205433A10071C106 /* Localizable.strings */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		6E1B608D2033101700689218 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				24FB5C0422868C1F00B0E915 /* Router.swift */,
+				24FB5C0622868F4400B0E915 /* SettingsRouter.swift */,
+				24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */,
+				24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */,
+				24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */,
+				24C4AC5B22CB5FB300F0ACA0 /* AddQuestRouter.swift */,
+				240B6B82228B08CD0010B8D6 /* DetailQuestRouter.swift */,
+				24246512228B176600E852C2 /* StartingQuestRouter.swift */,
+				2410464B228F1D1100328A61 /* PlayingQuestRouter.swift */,
+				24317C7F22D1FA8200BA1C3E /* DragonRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		6E1B60962033101700689218 /* PlayTimeObject */ = {
+			isa = PBXGroup;
+			children = (
+				240CE8E92218794E00D32E9A /* Quest */,
+				6EFEE98B203F277600C67DBC /* Settings.swift */,
+				6E43625B2052BB8100926E78 /* Dragon.swift */,
+				24BF9446226E66AA006B5C99 /* Story.swift */,
+				2402DB6C226F5A4D00EA170F /* Stories.swift */,
+			);
+			path = PlayTimeObject;
+			sourceTree = "<group>";
+		};
+		6E1B609F2033101700689218 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6EB13887207582E90092942D /* NotificationService.swift */,
+				6EA0634E2056D14300C5CF61 /* LogConstant.swift */,
+				6E1B60A32033101700689218 /* Error.swift */,
+				6E1B60A42033101700689218 /* Extensions.swift */,
+				24FE31CE22AD3C1900020756 /* Diffable.swift */,
+				24C55C0222EF0C6B00E66AE2 /* Colors.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6E1B60A72033101700689218 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2402DB74227338A700EA170F /* Story */,
+				6E1B60AB2033101700689218 /* QuestList */,
+				243952BF227C767A001DCB6D /* PlayingQuest */,
+				245C9326222ABE9A00C1A41C /* Detail */,
+				240CE9122219E28100D32E9A /* Tutorial */,
+				240CE9102219E21C00D32E9A /* Dragon */,
+				6EFEE988203F0F7100C67DBC /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6E1B60AB2033101700689218 /* QuestList */ = {
+			isa = PBXGroup;
+			children = (
+				2498DBE32278BACD00CB8C24 /* Add */,
+				240CE9112219E24F00D32E9A /* Item */,
+				243952BD227C6F11001DCB6D /* quest.xcassets */,
+				2402DB72227336B900EA170F /* QuestListViewController.xib */,
+				6E1B60AE2033101700689218 /* QuestListViewController.swift */,
+				6E1B60AF2033101700689218 /* QuestListViewControllerDataSource.swift */,
+			);
+			path = QuestList;
+			sourceTree = "<group>";
+		};
+		6E4842971FFA723000DD3CE0 = {
+			isa = PBXGroup;
+			children = (
+				6E1B60852033101700689218 /* PlayTime */,
+				240CE8B52212EBDA00D32E9A /* PlayTimeTests */,
+				6E4842A11FFA723000DD3CE0 /* Products */,
+				6E014EA21FFB520000EFF438 /* Frameworks */,
+				74E294CD821172B7CA765A60 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		6E4842A11FFA723000DD3CE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E4842A01FFA723000DD3CE0 /* PlayTime.app */,
+				240CE8B42212EBDA00D32E9A /* PlayTimeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E6AEE1720399BF100615331 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				240CE90422195B4C00D32E9A /* SettingsViewModel.swift */,
+				240CE8BE2214421700D32E9A /* QuestListViewModel.swift */,
+				2498DBE82278BBA000CB8C24 /* AddQuestViewModel.swift */,
+				24E17DD4227D655100EF70DC /* PlayingQuestViewModel.swift */,
+				2402DB822273692D00EA170F /* StoryViewModel.swift */,
+				240CE90622195C0400D32E9A /* DetailQuestViewModel.swift */,
+				24317C7B22D1D84A00BA1C3E /* DetailDragonViewModel.swift */,
+				240CE90822195CAB00D32E9A /* DragonViewModel.swift */,
+				24FB5BFC2285A9C700B0E915 /* EditStoriesViewModel.swift */,
+				24FB5C022285DC8900B0E915 /* EditStoryViewModel.swift */,
+				24077F9B2299F8C100376395 /* SelectStoryViewModel.swift */,
+				240902FB229A828E00598B92 /* SelectDragonVIewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6EFEE988203F0F7100C67DBC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				24FB5BF72285A7E000B0E915 /* StoryEdit */,
+				6EDD7CE4203C8C5E00289708 /* SettingsViewController.storyboard */,
+				6EDD7CE6203C8D3700289708 /* SettingsViewController.swift */,
+				6EDD7CE8203C8DBF00289708 /* SettingsViewControllerDataSource.swift */,
+				6EDD7CEA203C8E0300289708 /* PlayTimeCell.swift */,
+				6E3FCC722069661E00ECAC06 /* PlayTimeCell.xib */,
+				244DEBD3226000D1001855E7 /* SortCell.swift */,
+				244DEBD5226000D2001855E7 /* SortCell.xib */,
+				244DEBD4226000D1001855E7 /* TextCell.swift */,
+				244DEBD6226000D2001855E7 /* TextCell.xib */,
+				6EDA9316206AFACA008384C7 /* TimerPickerView.xib */,
+				6EDA9318206AFC50008384C7 /* TimerPickerView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		74E294CD821172B7CA765A60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59C649A9CAB01F0A8EE15D36 /* Pods-PlayTime.debug.xcconfig */,
+				CBCD310A9DD1A05114C51240 /* Pods-PlayTime.release.xcconfig */,
+				A32F61A669E56E7F64CFF40B /* Pods-PlayTimeTests.debug.xcconfig */,
+				2A3824709A357F9FB8C078F3 /* Pods-PlayTimeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		240CE8B32212EBDA00D32E9A /* PlayTimeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 240CE8BB2212EBDA00D32E9A /* Build configuration list for PBXNativeTarget "PlayTimeTests" */;
+			buildPhases = (
+				C5E8AD69AF86B71FB4508D7F /* [CP] Check Pods Manifest.lock */,
+				240CE8B02212EBDA00D32E9A /* Sources */,
+				240CE8B12212EBDA00D32E9A /* Frameworks */,
+				FA25DF3075ACB4203D6B594C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				240CE8BA2212EBDA00D32E9A /* PBXTargetDependency */,
+			);
+			name = PlayTimeTests;
+			productName = playTimeTests;
+			productReference = 240CE8B42212EBDA00D32E9A /* PlayTimeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6E48429F1FFA723000DD3CE0 /* PlayTime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E4842C81FFA723000DD3CE0 /* Build configuration list for PBXNativeTarget "PlayTime" */;
+			buildPhases = (
+				7FA57012859F49204CB3D442 /* [CP] Check Pods Manifest.lock */,
+				6E48429C1FFA723000DD3CE0 /* Sources */,
+				6E48429D1FFA723000DD3CE0 /* Frameworks */,
+				6E48429E1FFA723000DD3CE0 /* Resources */,
+				6E014EA71FFB520B00EFF438 /* Run Script */,
+				244F8B732250C7DC00410C5D /* Run SwiftLint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlayTime;
+			productName = pennet;
+			productReference = 6E4842A01FFA723000DD3CE0 /* PlayTime.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E4842981FFA723000DD3CE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "po-miyasaka";
+				TargetAttributes = {
+					240CE8B32212EBDA00D32E9A = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6E48429F1FFA723000DD3CE0;
+					};
+					6E48429F1FFA723000DD3CE0 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 6E48429B1FFA723000DD3CE0 /* Build configuration list for PBXProject "PlayTime" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ja,
+			);
+			mainGroup = 6E4842971FFA723000DD3CE0;
+			productRefGroup = 6E4842A11FFA723000DD3CE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E48429F1FFA723000DD3CE0 /* PlayTime */,
+				240CE8B32212EBDA00D32E9A /* PlayTimeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6E48429E1FFA723000DD3CE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				241347FF2291A87B007F4A7D /* SubTextCell.xib in Resources */,
+				6EDD7CE5203C8C5E00289708 /* SettingsViewController.storyboard in Resources */,
+				6E7846252039C92E003470FA /* DeletingButtonView.xib in Resources */,
+				24C55C0122EEA69700E66AE2 /* Assets.xcassets in Resources */,
+				6E3FCC732069661E00ECAC06 /* PlayTimeCell.xib in Resources */,
+				2498DBE72278BB0100CB8C24 /* AddQuestViewController.xib in Resources */,
+				241347FC2291A87B007F4A7D /* SwitchCell.xib in Resources */,
+				24317C7A22D1B8A400BA1C3E /* DetailDragonViewController.xib in Resources */,
+				24E067AB22789A9A004EEF3C /* AddQuestItem.xib in Resources */,
+				2402DB7B22734CF600EA170F /* StoryTitleItem.xib in Resources */,
+				24A6B90C22959D1B00AE411F /* CommentsView.xib in Resources */,
+				241347F92291A87B007F4A7D /* CommentCell.xib in Resources */,
+				24077F9A2299F77500376395 /* SelectStoryViewController.xib in Resources */,
+				241347F82291A87B007F4A7D /* GraphCell.xib in Resources */,
+				240902FA229A636800598B92 /* SelectDragonItem.xib in Resources */,
+				24C4AC6622CF5C3000F0ACA0 /* ImageViewCell.xib in Resources */,
+				243952BE227C6F11001DCB6D /* quest.xcassets in Resources */,
+				240902F6229A591500598B92 /* SelectDragonViewController.xib in Resources */,
+				6E5D8C682062E90E002BB925 /* LaunchScreen.storyboard in Resources */,
+				244DEBDA226000D3001855E7 /* TextCell.xib in Resources */,
+				2412422F22E4351D0028B98E /* CommentWriteViewController.xib in Resources */,
+				24FB5BFB2285A81400B0E915 /* EditStoriesViewController.xib in Resources */,
+				243952C5227CADB0001DCB6D /* PlayingQuestViewController.xib in Resources */,
+				244DEBD9226000D3001855E7 /* SortCell.xib in Resources */,
+				6EDA9317206AFACA008384C7 /* TimerPickerView.xib in Resources */,
+				24E067A52277F0C0004EEF3C /* StoriesViewController.storyboard in Resources */,
+				24FB5C012285AF4F00B0E915 /* EditStoryViewController.xib in Resources */,
+				2402DB73227336B900EA170F /* QuestListViewController.xib in Resources */,
+				6E74A8A8203C3D4800AE248F /* questing.sks in Resources */,
+				6E444C26205433A10071C106 /* Localizable.strings in Resources */,
+				241347F42291A87B007F4A7D /* DragonCell.xib in Resources */,
+				24DD5D642221BEFF00904F94 /* DragonViewController.storyboard in Resources */,
+				241347F72291A87B007F4A7D /* TextFieldCell.xib in Resources */,
+				6E444C2C205443D50071C106 /* infoPlist.strings in Resources */,
+				24E067A722780EC4004EEF3C /* QuestItem.xib in Resources */,
+				245C932A222AC0CF00C1A41C /* DetailQuestViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		244F8B732250C7DC00410C5D /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect --format\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		6E014EA71FFB520B00EFF438 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		7FA57012859F49204CB3D442 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlayTime-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5E8AD69AF86B71FB4508D7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlayTimeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA25DF3075ACB4203D6B594C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlayTimeTests/Pods-PlayTimeTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayTimeTests/Pods-PlayTimeTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		240CE8B02212EBDA00D32E9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24186DF722F31B0200461EF7 /* Quest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E48429C1FFA723000DD3CE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24FB5BFD2285A9C700B0E915 /* EditStoriesViewModel.swift in Sources */,
+				24C55C0322EF0C6B00E66AE2 /* Colors.swift in Sources */,
+				240CE8EB2218795E00D32E9A /* MeanTime.swift in Sources */,
+				24317C7C22D1D84A00BA1C3E /* DetailDragonViewModel.swift in Sources */,
+				24C4AC6222CF1C5300F0ACA0 /* DragonLibraryViewModel.swift in Sources */,
+				241347FD2291A87B007F4A7D /* GraphCell.swift in Sources */,
+				240CE8E82215C05F00D32E9A /* Action.swift in Sources */,
+				240CE8BF2214421700D32E9A /* QuestListViewModel.swift in Sources */,
+				240CE90D2219880800D32E9A /* ActionCreator.swift in Sources */,
+				6EB13888207582E90092942D /* NotificationService.swift in Sources */,
+				24FB5C002285AF4F00B0E915 /* EditStoryViewController.swift in Sources */,
+				6EDD7CEB203C8E0300289708 /* PlayTimeCell.swift in Sources */,
+				24317C7922D1B8A400BA1C3E /* DetailDragonViewController.swift in Sources */,
+				2410464C228F1D1100328A61 /* PlayingQuestRouter.swift in Sources */,
+				6E43625C2052BB8100926E78 /* Dragon.swift in Sources */,
+				2402DB7922734CBF00EA170F /* StoryTitleItem.swift in Sources */,
+				241347FA2291A87B007F4A7D /* SwitchCell.swift in Sources */,
+				2402DB69226F50FB00EA170F /* StoriesStore.swift in Sources */,
+				240CE90522195B4C00D32E9A /* SettingsViewModel.swift in Sources */,
+				245C9328222ABEB100C1A41C /* DetailQuestViewController.swift in Sources */,
+				24DD5D622221BCF300904F94 /* Quests.swift in Sources */,
+				24077F982299F6C200376395 /* SelectStoryViewController.swift in Sources */,
+				24E067AA22789A9A004EEF3C /* AddQuestItem.swift in Sources */,
+				2498DBE62278BB0000CB8C24 /* AddQuestViewController.swift in Sources */,
+				241347FE2291A87B007F4A7D /* TextFieldCell.swift in Sources */,
+				240902F5229A591500598B92 /* SelectDragonViewController.swift in Sources */,
+				24FB5C0C22871C5300B0E915 /* EditStoriesRouter.swift in Sources */,
+				243952C1227C76AB001DCB6D /* PlayingQuestViewController.swift in Sources */,
+				6E1B60B92033159E00689218 /* AppDelegate.swift in Sources */,
+				2402DB85227407D200EA170F /* StoryTitleCollectionView.swift in Sources */,
+				24FB5C0E22871CF200B0E915 /* StoriesRouter.swift in Sources */,
+				24FB5C0A22871C4800B0E915 /* EditStoryRouter.swift in Sources */,
+				24FB5C032285DC8900B0E915 /* EditStoryViewModel.swift in Sources */,
+				241347FB2291A87B007F4A7D /* CommentCell.swift in Sources */,
+				6E1B60C02033159E00689218 /* DateUtility.swift in Sources */,
+				24077F9C2299F8C100376395 /* SelectStoryViewModel.swift in Sources */,
+				240CE90F22198F9300D32E9A /* Flux.swift in Sources */,
+				24317C8022D1FA8200BA1C3E /* DragonRouter.swift in Sources */,
+				2412422E22E4351D0028B98E /* CommentWriteViewController.swift in Sources */,
+				24FE31CF22AD3C1900020756 /* Diffable.swift in Sources */,
+				240CE8F222190D1900D32E9A /* SettingsStore.swift in Sources */,
+				24C4AC6422CF5AD400F0ACA0 /* ImageViewCell.swift in Sources */,
+				24D2DB202222894C00887FB4 /* Quests+Realm.swift in Sources */,
+				6EA0634F2056D14300C5CF61 /* LogConstant.swift in Sources */,
+				6E1B60C12033159E00689218 /* Error.swift in Sources */,
+				241347F52291A87B007F4A7D /* SubTextCell.swift in Sources */,
+				240CE90922195CAB00D32E9A /* DragonViewModel.swift in Sources */,
+				6EDD7CE7203C8D3700289708 /* SettingsViewController.swift in Sources */,
+				2402DB832273692D00EA170F /* StoryViewModel.swift in Sources */,
+				24BF9447226E66AA006B5C99 /* Story.swift in Sources */,
+				241347F62291A87B007F4A7D /* DragonCell.swift in Sources */,
+				240CE8F02218FF7100D32E9A /* SettingsRepository.swift in Sources */,
+				24A6B90E22959E2D00AE411F /* CommentsView.swift in Sources */,
+				24FB5C0722868F4500B0E915 /* SettingsRouter.swift in Sources */,
+				240CE8EE2218FF6200D32E9A /* QuestRepository.swift in Sources */,
+				240902F9229A636800598B92 /* SelectDragonItem.swift in Sources */,
+				240CE90722195C0400D32E9A /* DetailQuestViewModel.swift in Sources */,
+				240902FC229A828E00598B92 /* SelectDragonVIewModel.swift in Sources */,
+				240CE8FE2219199300D32E9A /* AppDelegateService.swift in Sources */,
+				6E1B60C22033159E00689218 /* Extensions.swift in Sources */,
+				6E1B60C52033159E00689218 /* QuestItem.swift in Sources */,
+				24FB5BF92285A80000B0E915 /* EditStoriesViewController.swift in Sources */,
+				24C4AC5E22CF1A5D00F0ACA0 /* DragonLibraryView.swift in Sources */,
+				6EDD7CE9203C8DBF00289708 /* SettingsViewControllerDataSource.swift in Sources */,
+				24FB5C0522868C1F00B0E915 /* Router.swift in Sources */,
+				244DEBD8226000D3001855E7 /* TextCell.swift in Sources */,
+				248F5BE022D7B06B0036F8B3 /* TutorialPresentation.swift in Sources */,
+				6E1B60C62033159E00689218 /* QuestListViewController.swift in Sources */,
+				240CE8E12215BFA800D32E9A /* AddQuestStore.swift in Sources */,
+				24DD5D5E2221B5D900904F94 /* DragonViewController.swift in Sources */,
+				244DEBD7226000D3001855E7 /* SortCell.swift in Sources */,
+				2402DB6D226F5A4D00EA170F /* Stories.swift in Sources */,
+				24C4AC5C22CB5FB300F0ACA0 /* AddQuestRouter.swift in Sources */,
+				24E17DD5227D655100EF70DC /* PlayingQuestViewModel.swift in Sources */,
+				24246513228B176600E852C2 /* StartingQuestRouter.swift in Sources */,
+				6E1B60C72033159E00689218 /* QuestListViewControllerDataSource.swift in Sources */,
+				6E1B60C92033159E00689218 /* DeletingButtonView.swift in Sources */,
+				240B6B83228B08CD0010B8D6 /* DetailQuestRouter.swift in Sources */,
+				2402DB7D22734F1400EA170F /* StoriesViewController.swift in Sources */,
+				6EFEE98A203F189F00C67DBC /* Quest.swift in Sources */,
+				6EDA9319206AFC50008384C7 /* TimerPickerView.swift in Sources */,
+				6EFEE98C203F277600C67DBC /* Settings.swift in Sources */,
+				240CE8E42215BFDA00D32E9A /* Dispatcher.swift in Sources */,
+				2498DBE92278BBA000CB8C24 /* AddQuestViewModel.swift in Sources */,
+				2402DB6B226F51EA00EA170F /* StoryRepository.swift in Sources */,
+				6EFEE98E203F2AD200C67DBC /* RealmService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		240CE8BA2212EBDA00D32E9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6E48429F1FFA723000DD3CE0 /* PlayTime */;
+			targetProxy = 240CE8B92212EBDA00D32E9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6E444C28205433A10071C106 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E444C29205433AE0071C106 /* ja */,
+				6ECF3ACD2066479300CE0193 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		6E444C2E205443D50071C106 /* infoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E444C2D205443D50071C106 /* ja */,
+			);
+			name = infoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		240CE8BC2212EBDA00D32E9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A32F61A669E56E7F64CFF40B /* Pods-PlayTimeTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H6UU7923NK;
+				INFOPLIST_FILE = PlayTimeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.po-miyasaka.PlayTimeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlayTime.app/PlayTime";
+			};
+			name = Debug;
+		};
+		240CE8BD2212EBDA00D32E9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A3824709A357F9FB8C078F3 /* Pods-PlayTimeTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H6UU7923NK;
+				INFOPLIST_FILE = PlayTimeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.po-miyasaka.PlayTimeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlayTime.temp_caseinsensitive_rename.app/PlayTime.temp_caseinsensitive_rename";
+			};
+			name = Release;
+		};
+		6E4842C61FFA723000DD3CE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6E4842C71FFA723000DD3CE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E4842C91FFA723000DD3CE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59C649A9CAB01F0A8EE15D36 /* Pods-PlayTime.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = H6UU7923NK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/PlayTime/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.po-miyasaka.PlayTime";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "21e2df30-379b-4845-b999-a06c3d6dee06";
+				PROVISIONING_PROFILE_SPECIFIER = "jp.po-miyasaka.PlayTime.develop.20190723";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		6E4842CA1FFA723000DD3CE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBCD310A9DD1A05114C51240 /* Pods-PlayTime.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = H6UU7923NK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/PlayTime/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.po-miyasaka.PlayTime";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8adc08c8-93cd-4643-892a-23e4eebbbba5";
+				PROVISIONING_PROFILE_SPECIFIER = "jp.po-miyasaka.PlayTime.destribution.20190723";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		240CE8BB2212EBDA00D32E9A /* Build configuration list for PBXNativeTarget "PlayTimeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				240CE8BC2212EBDA00D32E9A /* Debug */,
+				240CE8BD2212EBDA00D32E9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E48429B1FFA723000DD3CE0 /* Build configuration list for PBXProject "PlayTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E4842C61FFA723000DD3CE0 /* Debug */,
+				6E4842C71FFA723000DD3CE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E4842C81FFA723000DD3CE0 /* Build configuration list for PBXNativeTarget "PlayTime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E4842C91FFA723000DD3CE0 /* Debug */,
+				6E4842CA1FFA723000DD3CE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E4842981FFA723000DD3CE0 /* Project object */;
+}

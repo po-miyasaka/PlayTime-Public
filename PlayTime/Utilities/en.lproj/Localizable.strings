@@ -1,0 +1,71 @@
+"underQuest" = "Now Playing";
+"newQuest" = "New quest";
+
+
+
+"orderOf" = "Order of";
+"updatedOrder" = "updated";
+"registedOrder" = "registed";
+
+"delete" = "Delete";
+"cancel" = "Cancel";
+
+"etc" = "etc.";
+"aboutThisApp" = "About this app";
+"getTshirt" = "Get a T-shirt";
+
+"timePlayed" = "Time played:";
+"launched" = "Launched:";
+"updated" = "Updated";
+
+"daysAgo" = "days ago";
+
+"hour" = "  (h)";
+"count" = "count:";
+
+"toastStart" = "start";
+"toastFinish" = "pause";
+
+"sun" = "S";
+"mon" = "M";
+"tue" = "Tu";
+"wed" = "W";
+"thu" = "Th";
+"fri" = "F";
+"sat" = "Sa";
+
+
+"dateFull" = "dd-MM-yyyy HH:mm:ss";
+"dateDisplay" = "dd-MM-yyyy";
+"dateDisplayDetail" = "dd-MM-yyyy HHH:mm:ss";
+"dateGragh" = "dd-MM-yyyy";
+"dateGraghddMM" = "dd-MM";
+"dateOrigin" = "dd-MM-yyyy 00:00:00";
+
+"deleteExplain" =  "\※ Notes \
+・ You can't delete the quest been playing. \
+・ The total time played does not decrease. \
+";
+
+"totalPlayTimeSection" = "The total time played";
+"totalPlayTimeBackup" = "The total time:";
+"questsSection" = "Quests";
+"questsBackup" = "Quests:";
+"saveDate" = "Saved date:";
+"backup" = "Backup";
+"restore" = "Restore";
+"logout" = "Logout";
+"return" = "Return";
+"close" = "Close";
+"dataNothing" = "Your data for save is nothing";
+"cantSaveLergerData" = "It is not possible to overwrite data beyond the current playing time.";
+"cantRestoreLessData" = "You can not restore to data below the current playing time.";
+"pleaseRetryAfterMinites" = "Please wait for a while and try again.";
+"noBackupData" = "No backup data";
+"pleaseRetryToLogin" = "Please retry to login.";
+"noAccurateTime" = "Please adjust the time accurately";
+"overNameCount" = "Please no more than 35 words";
+"aboutURL" = "https://miyasakakazutoshi.github.io/timePlayed/about.html";
+"scrollTutrial" =  "Scroll down to see your dragon.";
+"tapAndAddQuest" = "please tap & add your quest. ↓";
+"timerSection" = "Timer";

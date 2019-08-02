@@ -1,0 +1,342 @@
+//
+//  SettingsViewModel.swift
+//  playTime
+//
+//  Created by kazutoshi miyasaka on 2019/02/17.
+//  Copyright © 2019 forceUnwrap. All rights reserved.
+//
+
+import Foundation
+import RxCocoa
+import RxSwift
+import UserNotifications
+import UIKit
+
+protocol SettingsViewModelInput {
+    func cellTap(indexPath: IndexPath)
+    func sort(_ sortType: SortType)
+}
+
+protocol SettingsViewModelOutput {
+    var settings: SettingTableViewData { get }
+    var settingsDriver: Driver<SettingTableViewData> { get }
+    var isActive: Bool { get }
+    var isActiveDriver: Driver<Bool> { get }
+    var isNotification: Bool { get }
+    var isNotificationDriver: Driver<Bool> { get }
+    var sortType: SortType { get }
+    var allTimeDriver: Driver<TimeInterval> { get }
+    var sortTypeDriver: Driver<SortType> { get }
+    var showAlertSignal: Signal<(title: String, message: String)> { get }
+    var showSortActionSignal: Signal<Void> { get }
+
+}
+
+protocol SettingsViewModelProtocol {
+    var outputs: SettingsViewModelOutput { get }
+    var inputs: SettingsViewModelInput { get }
+}
+
+class SettingsViewModel: SettingsViewModelProtocol {
+    var inputs: SettingsViewModelInput { return self }
+    var outputs: SettingsViewModelOutput { return self }
+
+    let flux: FluxProtocol
+    let disposeBag = DisposeBag()
+
+    private lazy var _settings = BehaviorRelay<SettingTableViewData>(value: cellData)
+    private lazy var _isActive = BehaviorRelay<Bool>(value: flux.storiesStore.allQuest.isActive)
+    private lazy var _allTime = BehaviorRelay<TimeInterval>(value: 0)
+    private lazy var _sortType = BehaviorRelay<SortType>(value: .created)
+    private lazy var _isNotification = BehaviorRelay<Bool>(value: flux.settingsStore.isOsNotification)
+    private var _showAlert = PublishRelay<(title: String, message: String)>()
+    private var _showSortAction = PublishRelay<Void>()
+    let router: SettingsRouterProtocol
+
+    init(flux: FluxProtocol = Flux.default,
+         router: SettingsRouterProtocol) {
+        self.router = router
+        self.flux = flux
+
+        flux
+            .settingsStore
+            .sortObservable
+            .bind(to: _sortType)
+            .disposed(by: disposeBag)
+
+        let startDate = flux.dateStore.outputs.nowDate
+        if isActive {
+            let allTimeCache = flux.storiesStore.allQuest.allTime(withActive: true)
+            var displayWhile: TimeInterval = 0
+
+            PublishRelay<Int>
+                .interval(1, scheduler: ConcurrentDispatchQueueScheduler(queue: DispatchQueue(label: "time")))
+                .bind(to: Binder(self) {_, _ in
+                    displayWhile = flux.dateStore.outputs.nowDate.timeIntervalSince(startDate)
+                    self._allTime.accept(allTimeCache + displayWhile)
+                })
+                .disposed(by: disposeBag)
+        }
+
+        flux.storiesStore.allQuestObservable.bind(to: Binder(self) {_, questsAll in
+            self._allTime.accept(questsAll.allTime(withActive: true))
+        }).disposed(by: disposeBag)
+
+        flux.settingsStore
+            .settingsErrorObservable
+            .bind(to:
+                Binder(self) {_, error in
+                    self._showAlert.accept((title: error.display.title, message: error.display.message))
+            })
+            .disposed(by: disposeBag)
+    }
+
+    lazy var cellData: SettingTableViewData = {[weak self] in
+        var data = SettingTableViewData()
+        guard let self = self else {
+            return data
+        }
+
+        let playTime: [SettingCellType] = [
+            .playTime(.init(time: self.allTimeDriver))
+        ]
+
+        let story: [SettingCellType] = [
+
+            .text(.init(title: "storyEdit".localized,
+                        isShownAccessary: true,
+                        userAction: {
+                            self.router.toEditStories()
+            }))
+        ]
+
+        let quests: [SettingCellType] = [
+            .sort(.init(title: "orderOf".localized,
+                        sort: self.sortTypeDriver,
+                        userAction: {
+                            self._showSortAction.accept(())
+            })),
+
+            .text(.init(title: "delete".localized,
+                        isShownAccessary: true,
+                        userAction: {
+                            self.flux.actionCreator.startDeleting()
+                            self.router.close()
+            })),
+
+            .text(.init(title: "backup".localized,
+                        isShownAccessary: true,
+                        userAction: {
+                            self.router.toBackup()
+            }))
+
+        ]
+
+        let about: [SettingCellType] = [
+            .text(.init(title: "about".localized,
+                        isShownAccessary: true,
+                        userAction: {
+
+            })),
+
+            .text(.init(title: "ossLicence".localized,
+                        isShownAccessary: true,
+                        userAction: {
+
+            })),
+            .text(.init(title: "privacyPolicy".localized,
+                        isShownAccessary: true,
+                        userAction: {
+
+            })),
+            .text(.init(title: "developer".localized,
+                        isShownAccessary: true,
+                        userAction: {
+
+            }))
+        ]
+
+        data.data = [
+            SettingSectionType.playTime(playTime),
+            SettingSectionType.quests(quests),
+            SettingSectionType.story(story),
+            SettingSectionType.about(about)
+        ]
+        return data
+        }()
+
+}
+
+extension SettingsViewModel: SettingsViewModelInput {
+    func cellTap(indexPath: IndexPath) {
+        self._settings.value.cellType(from: indexPath)?.action()
+    }
+
+    func sort(_ sortType: SortType) {
+        self.flux.actionCreator.sort(type: sortType)
+    }
+
+}
+extension SettingsViewModel: SettingsViewModelOutput {
+
+    var showSortActionSignal: Signal<Void> {
+        return self._showSortAction.asSignal()
+    }
+
+    var sortType: SortType {
+        return self._sortType.value
+    }
+
+    var sortTypeDriver: Driver<SortType> {
+        return self._sortType.asDriver()
+    }
+
+    var isNotification: Bool {
+        return _isNotification.value
+    }
+
+    var isNotificationDriver: Driver<Bool> {
+        return _isNotification.asDriver()
+    }
+
+    var allTimeDriver: Driver<TimeInterval> {
+        return _allTime.asDriver()
+    }
+
+    var showAlertSignal: Signal<(title: String, message: String)> {
+        return _showAlert.asSignal()
+    }
+
+    var isActiveDriver: Driver<Bool> {
+        return flux.storiesStore
+            .allQuestObservable.map { $0.isActive }
+            .asDriver(onErrorJustReturn:
+                flux
+                    .storiesStore
+                    .allQuest
+                    .isActive)
+    }
+
+    var isActive: Bool {
+        return flux.storiesStore.allQuest.isActive
+    }
+
+    var settings: SettingTableViewData {
+        return _settings.value
+    }
+
+    var settingsDriver: Driver<SettingTableViewData> {
+        return _settings.asDriver()
+    }
+
+}
+
+struct SettingTableViewData {
+
+    typealias SettingsTableViewData = [SettingSectionType]
+    var data: SettingsTableViewData = []
+
+    func cellType(from indexPath: IndexPath) -> SettingCellType? {
+        guard let sectionType = getSectionType(section: indexPath.section) else {
+            return nil
+        }
+        guard let cellType = sectionType.getCellWith(row: indexPath.row) else {
+            return nil
+        }
+        return cellType
+    }
+
+    func getSectionType(section: Int) -> SettingSectionType? {
+        guard section < data.count else {
+            return nil
+        }
+        return data[section]
+    }
+}
+
+enum SettingSectionType {
+    case playTime([SettingCellType])
+    case story([SettingCellType])
+    case quests([SettingCellType])
+    case about([SettingCellType])
+
+    func getCellWith(row: Int) -> SettingCellType? {
+        let cells: [SettingCellType] = getCells()
+        guard row < cells.count else {
+            return nil
+        }
+        return cells[row]
+    }
+
+    func getCells() -> [SettingCellType] {
+        let cells: [SettingCellType]
+        switch self {
+        case .playTime(let c):
+            cells = c
+        case .quests(let c):
+            cells = c
+        case .about(let c):
+            cells = c
+        case .story(let c):
+            cells = c
+        }
+        return cells
+    }
+
+    var sectionName: String {
+        switch self {
+        case .playTime:
+            return "playTime".localized
+        case .quests:
+            return "questsSection".localized
+        case .about:
+            return "about".localized
+        case .story:
+            return "story".localized
+        }
+    }
+
+}
+
+enum SettingCellType {
+    case playTime(PlayTimeCellData)
+    case sort(SortCellData)
+    case text(TextCellData)
+
+    func dequeue(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        switch self {
+        case .playTime( let d):
+            let cell = tableView.dequeue(t: PlayTimeCell.self, indexPath: indexPath)
+            cell.configure(data: d, indexPath: indexPath)
+            return cell
+        case .sort(let d):
+            let cell = tableView.dequeue(t: SortCell.self, indexPath: indexPath)
+            cell.configure(data: d, indexPath: indexPath)
+            return cell
+        case .text(let d):
+            let cell = tableView.dequeue(t: TextCell.self, indexPath: indexPath)
+            cell.configure(data: d, indexPath: indexPath)
+            return cell
+        }
+    }
+
+    func action() {
+        switch self {
+        case .playTime:
+            break
+        case .sort(let d):
+            d.userAction()
+        case .text(let d):
+            d.userAction()
+        }
+    }
+
+    var shouldHighlight: Bool {
+        switch  self {
+        case .playTime:
+            return false
+        case .sort, .text:
+            return true
+        }
+    }
+}

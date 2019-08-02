@@ -1,0 +1,4 @@
+github "ishkawa/APIKit" 
+github "realm/realm-cocoa" 
+github "ReactiveX/RxSwift" "master"
+
