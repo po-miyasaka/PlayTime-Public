@@ -62,16 +62,16 @@ extension Sequence where Element == Quest {
         return reduce(TimeInterval(0)) { $0 + $1.playTime(withActive) }
     }
 
-    func latestValidQuest() -> Quest? {
-        return self.max {
-            let preLhs = $0.meanTimes.getLatestStartTime(.valid)
-            let preRhs = $1.meanTimes.getLatestStartTime(.valid)
-
-            guard let lhs = preLhs else { return true }
-            guard let rhs = preRhs else { return true }
-            return lhs > rhs
-        }
-    }
+    //    func latestValidQuest() -> Quest? {
+    //        return self.max {
+    //            let preLhs = $0.meanTimes.getLatestStartTime(.valid)
+    //            let preRhs = $1.meanTimes.getLatestStartTime(.valid)
+    //
+    //            guard let lhs = preLhs else { return true }
+    //            guard let rhs = preRhs else { return true }
+    //            return lhs > rhs
+    //        }
+    //    }
 
     var livingQuests: [Quest] {
         return self.filter { !$0.deleted }

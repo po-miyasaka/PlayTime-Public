@@ -26,50 +26,7 @@ class QuestTests: QuickSpec { // itの中でitは使えない
         var continueCountMax: Int
     }
     
-    func match(_ nowDate: Date,_ quest: Quest, _ expectation: QuestExpectation) {
-        it("バリデート") {
-            expect(expectation.shouldVaridate).to(equal(quest.shouldVaridateMeantimes))
-        }
-        
-        it("activeMeanTime") {
-            DateUtil.dateGetter = { nowDate }
-            expect(expectation.activeMeanTime).to(equal(quest.activeMeanTime))
-        }
-        
-        it("playTimeWithActiveMeanTime") {
-            DateUtil.dateGetter = { nowDate }
-            expect(expectation.playTimeWithActive).to(equal(quest.playTime(true)))
-        }
-        
-        it("playtime except activeMeanTime") {
-            expect(expectation.playTime).to(equal(quest.playTime(false)))
-        }
-        
-        it("isActive") {
-            expect(expectation.isActive).to(equal(quest.isActive))
-        }
-        
-        it("latestDate is activeDate") {
-            
-            expect(expectation.latestDate).to(expectation.latestDate == nil ? beNil(): equal(quest.latestDate))
-        }
-        
-        it ("firstDate is activeDate") {
-            expect(expectation.firstDate).to( expectation.firstDate == nil ? beNil(): equal(quest.firstDate))
-        }
-        
-        it("title") {
-            expect("test").to(equal(quest.title))
-        }
-        
-        it("isNotify") {
-            expect(true).to(equal(quest.isNotify))
-        }
-        
-        it("dragonName") {
-            expect(Dragon.Name.momo).to(equal(quest.dragonName))
-        }
-    }
+    
     
     override func spec() {
         let baseQuest = Quest.new(title: "test", isNotify: true, dragonName: .momo, story: mockStory)
@@ -108,7 +65,7 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                     
                     context ("record by timeOver") {
                         
-                        DateUtil.dateGetter = { date(until: 300) }
+                        DateUtil.dateGetter = { date(300) }
                         let recordedQuest = questWithActiveDateAndMeanTime.record(with: 5)
                         var expectationRecordWithTime = expectation
                         expectationRecordWithTime.isActive = false
@@ -119,10 +76,10 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                         match(date(300), recordedQuest, expectationRecordWithTime)
                         
                         context ("after saved") {
-                            var expectationAfterSaved = expectation
+                            var expectationAfterSaved = expectationRecordWithTime
                             expectationAfterSaved.playTime = 25
                             expectationAfterSaved.playTimeWithActive = 25
-                            match(date(300), questWithActiveDateAndMeanTime.generateQuestData().generateQuest()!, expectationAfterSaved)
+                            match(date(300), recordedQuest.generateQuestData().generateQuest()!, expectationAfterSaved)
                         }
                     }
                     
@@ -138,10 +95,10 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                         match(date(300), recordedQuest, expectationRecordWithTime)
                         
                         context ("after saved") {
-                            var expectationAfterSaved = expectation
+                            var expectationAfterSaved = expectationRecordWithTime
                             expectationAfterSaved.playTime = 220
                             expectationAfterSaved.playTimeWithActive = 220
-                            match(date(300), questWithActiveDateAndMeanTime.generateQuestData().generateQuest()!, expectationAfterSaved)
+                            match(date(300), recordedQuest.generateQuestData().generateQuest()!, expectationAfterSaved)
                         }
                         
                     }
@@ -164,7 +121,8 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                     context ("after saved") {
                         var expectationAfterSaved = expectation
                         expectationAfterSaved.playTime = 0
-                        expectationAfterSaved.playTimeWithActive = 0
+                        expectationAfterSaved.playTimeWithActive = 200
+                        expectationAfterSaved.activeMeanTime = 200
                         match(date(300), activeQuest.generateQuestData().generateQuest()!, expectationAfterSaved)
                     }
                     
@@ -181,7 +139,7 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                         match(date(300), recordedQuest, expectationRecordWithTime)
                         
                         context ("after saved") {
-                            match(date(300), activeQuest.generateQuestData().generateQuest()!, expectation)
+                            match(date(300), recordedQuest.generateQuestData().generateQuest()!, expectationRecordWithTime)
                         }
                     }
                     
@@ -196,8 +154,9 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                         expectationRecordWithTime.activeMeanTime = 0
                         expectationRecordWithTime.latestDate = recordedQuest.meanTimes.map{ $0.end }.max()
                         match(date(300), recordedQuest, expectationRecordWithTime)
-                        
-                        
+                        context ("after saved") {
+                            match(date(300), recordedQuest.generateQuestData().generateQuest()!, expectationRecordWithTime)
+                        }
                     }
                 }
                 
@@ -287,6 +246,50 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                     }
                 }
             }
+        }
+    }
+    
+    func match(_ nowDate: Date,_ quest: Quest, _ expectation: QuestExpectation) {
+        it("バリデート") {
+            expect(quest.shouldVaridateMeantimes).to(equal(expectation.shouldVaridate))
+        }
+        
+        it("activeMeanTime") {
+            DateUtil.dateGetter = { nowDate }
+            expect(quest.activeMeanTime).to(equal(expectation.activeMeanTime))
+        }
+        
+        it("playTimeWithActiveMeanTime") {
+            DateUtil.dateGetter = { nowDate }
+            expect(quest.playTime(true)).to(equal(expectation.playTimeWithActive))
+        }
+        
+        it("playtime except activeMeanTime") {
+            expect(quest.playTime(false)).to(equal(expectation.playTime))
+        }
+        
+        it("isActive") {
+            expect(quest.isActive).to(equal(expectation.isActive))
+        }
+        
+        it("latestDate") {
+            expect(quest.latestDate).to(expectation.latestDate == nil ? beNil(): equal(expectation.latestDate))
+        }
+        
+        it ("firstDate") {
+            expect(quest.firstDate).to( expectation.firstDate == nil ? beNil(): equal(expectation.firstDate))
+        }
+        
+        it("title") {
+            expect(quest.title).to(equal("test"))
+        }
+        
+        it("isNotify") {
+            expect(quest.isNotify).to(equal(true))
+        }
+        
+        it("dragonName") {
+            expect(quest.dragonName).to(equal(Dragon.Name.momo))
         }
     }
 }

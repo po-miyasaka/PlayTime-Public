@@ -45,51 +45,29 @@ enum MeanTimeStatus: Int, Codable {
 
 extension Sequence where Element == MeanTime {
 
-    var sumPlayTimeInterval: TimeInterval {
+    var sum: TimeInterval {
         return reduce(TimeInterval(0)) { result, meanTime in
-            result + meanTime.end.timeIntervalSince(meanTime.start)
+            result + meanTime.playTime
         }
     }
 
-    func sum(onlyIn: Date) -> Double {
-        return extract(by: onlyIn).sumPlayTimeInterval
+    //    func sum(onlyIn: Date) -> Double {
+    //        return extract(by: onlyIn).sumPlayTimeInterval
+    //    }
+
+    //    func extract(by: Date) -> [MeanTime] {
+    //        let matches = filter {
+    //            DateUtil.display.formatter.string(from: $0.start) == DateUtil.display.formatter.string(from: by)
+    //        }
+    //        return matches
+    //    }
+
+    func getLatest() -> MeanTime? {
+        return self.max { $0.start < $1.start }
     }
 
-    func extract(by: Date) -> [MeanTime] {
-        let matches = filter {
-            DateUtil.display.formatter.string(from: $0.start) == DateUtil.display.formatter.string(from: by)
-        }
-        return matches
-    }
-
-    func getLatest(_ option: FilterOption = .all) -> MeanTime? {
-        switch option {
-        case .all:
-            return self.max { $0.start < $1.start }
-        case .valid:
-            return self.filter { $0.isValid == .varidated }.max { $0.start < $1.start }
-        }
-    }
-
-    func getLatestStartTime(_ option: FilterOption = .all) -> Date? {
-        return getLatest(option)?.start
-    }
-
-    func getLatestEndTime(_ option: FilterOption = .all) -> Date? {
-        return getLatest(option)?.end
-    }
-
-    func generateData() -> List<MeanTimeData> {
-        let datas: [MeanTimeData] = compactMap { time in
-            let meanTimeData = MeanTimeData()
-            meanTimeData.start = time.start
-            meanTimeData.end = time.end
-            meanTimeData.isValid = time.isValid.rawValue
-            return meanTimeData
-        }
-        let result = List<MeanTimeData>()
-        datas.forEach { result.append($0) }
-        return result
+    func getFirst() -> MeanTime? {
+        return self.min { $0.start < $1.start }
     }
 
     var validMeanTimes: [MeanTime] {
@@ -101,7 +79,7 @@ extension Sequence where Element == MeanTime {
     }
 
     func continueCount(from today: Date = DateUtil.now()) -> Int {
-        var startDates: [Date] = compactMap { $0.start.originDate }.sorted(by: { $0 > $1 })
+        let startDates: [Date] = compactMap { $0.start.originDate }.sorted(by: { $0 > $1 })
         // 上から回す
         var tmpDates: [Date] = []
         var tmpDate: Date?
@@ -181,10 +159,4 @@ extension Sequence where Element == MeanTime {
 enum FilterOption {
     case valid
     case all
-}
-
-class MeanTimeData: Object {
-    @objc dynamic var start: Date?
-    @objc dynamic var end: Date?
-    @objc dynamic var isValid: Int = 0
 }

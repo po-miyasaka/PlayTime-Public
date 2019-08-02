@@ -44,7 +44,7 @@ class Dragon {
         }
 
         var dragons: [Dragon] = grouped.compactMap { name, meanTimes in
-            let allTime: TimeInterval = meanTimes.sumPlayTimeInterval
+            let allTime: TimeInterval = meanTimes.sum
             let process = Dragon.Process(name: name, hour: allTime.hour)
             return Dragon(name: name, process: process, playTimeHour: allTime.hour)
         }

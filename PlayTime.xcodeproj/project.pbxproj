@@ -54,7 +54,9 @@
 		241347FD2291A87B007F4A7D /* GraphCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347F12291A87A007F4A7D /* GraphCell.swift */; };
 		241347FE2291A87B007F4A7D /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241347F22291A87A007F4A7D /* TextFieldCell.swift */; };
 		241347FF2291A87B007F4A7D /* SubTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241347F32291A87A007F4A7D /* SubTextCell.xib */; };
-		24186DF722F31B0200461EF7 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186DF622F31B0200461EF7 /* Quest.swift */; };
+		24186DF722F31B0200461EF7 /* Quest+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186DF622F31B0200461EF7 /* Quest+Tests.swift */; };
+		24186DF922F44E1A00461EF7 /* MeanTime+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186DF822F44E1A00461EF7 /* MeanTime+Tests.swift */; };
+		24186DFB22F44E8A00461EF7 /* PlayTimeTestsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186DFA22F44E8A00461EF7 /* PlayTimeTestsUtility.swift */; };
 		24246513228B176600E852C2 /* StartingQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24246512228B176600E852C2 /* StartingQuestRouter.swift */; };
 		24317C7922D1B8A400BA1C3E /* DetailDragonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */; };
 		24317C7A22D1B8A400BA1C3E /* DetailDragonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */; };
@@ -199,7 +201,9 @@
 		241347F12291A87A007F4A7D /* GraphCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphCell.swift; sourceTree = "<group>"; };
 		241347F22291A87A007F4A7D /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		241347F32291A87A007F4A7D /* SubTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubTextCell.xib; sourceTree = "<group>"; };
-		24186DF622F31B0200461EF7 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
+		24186DF622F31B0200461EF7 /* Quest+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quest+Tests.swift"; sourceTree = "<group>"; };
+		24186DF822F44E1A00461EF7 /* MeanTime+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeanTime+Tests.swift"; sourceTree = "<group>"; };
+		24186DFA22F44E8A00461EF7 /* PlayTimeTestsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTimeTestsUtility.swift; sourceTree = "<group>"; };
 		24246512228B176600E852C2 /* StartingQuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingQuestRouter.swift; sourceTree = "<group>"; };
 		24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDragonViewController.swift; sourceTree = "<group>"; };
 		24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDragonViewController.xib; sourceTree = "<group>"; };
@@ -333,8 +337,10 @@
 		240CE8B52212EBDA00D32E9A /* PlayTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				24186DF622F31B0200461EF7 /* Quest.swift */,
+				24186DF622F31B0200461EF7 /* Quest+Tests.swift */,
+				24186DF822F44E1A00461EF7 /* MeanTime+Tests.swift */,
 				240CE8B82212EBDA00D32E9A /* Info.plist */,
+				24186DFA22F44E8A00461EF7 /* PlayTimeTestsUtility.swift */,
 			);
 			path = PlayTimeTests;
 			sourceTree = "<group>";
@@ -937,7 +943,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24186DF722F31B0200461EF7 /* Quest.swift in Sources */,
+				24186DF722F31B0200461EF7 /* Quest+Tests.swift in Sources */,
+				24186DF922F44E1A00461EF7 /* MeanTime+Tests.swift in Sources */,
+				24186DFB22F44E8A00461EF7 /* PlayTimeTestsUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
