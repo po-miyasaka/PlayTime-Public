@@ -7,24 +7,26 @@
 //
 
 import Foundation
+import DataStore
+import PlayTimeObject
 
-protocol StoriesRepositoryProtocol {
+public protocol StoriesRepositoryProtocol {
     var  stories: [Story] { get }
     func set(stories: [Story])
 }
 
-class StoriesRepository: StoriesRepositoryProtocol {
-    let dataStore: DataStore
-    init(dataStore: DataStore = RealmManager.default) {
+public class StoriesRepository: StoriesRepositoryProtocol {
+    public let dataStore: DataStore
+    public init(dataStore: DataStore = RealmManager.default) {
         self.dataStore = dataStore
     }
 
-    var stories: [Story] {
+    public var stories: [Story] {
         let storysData = dataStore.objects(StoryData.self)
         return storysData.compactMap { $0.generate() }
     }
 
-    func set(stories: [Story]) {
+    public func set(stories: [Story]) {
         dataStore.update(stories.generateData())
     }
 

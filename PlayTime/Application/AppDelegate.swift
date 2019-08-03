@@ -7,13 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
-import RxSwift
-
-import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let appDelegateService = AppDelegateService()
@@ -21,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool { // swiftlint:disable:this discouraged_optional_collection
 
         appDelegateService.inputs.applicationDidFinishLaunching(application: application, launchOptions: launchOptions)
-        UNUserNotificationCenter.current().delegate = self
         return true
     }
 

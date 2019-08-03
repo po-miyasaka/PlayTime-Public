@@ -8,42 +8,41 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 
-extension NSObjectProtocol {
-    static var className: String {
+public extension NSObjectProtocol {
+    public static var className: String {
         return String(describing: self)
     }
 
-    var className: String {
+    public var className: String {
         return type(of: self).className
     }
 }
 
-protocol StoryBoardInstantiatable {}
+public protocol StoryBoardInstantiatable {}
 extension UIViewController: StoryBoardInstantiatable {}
-extension StoryBoardInstantiatable where Self: UIViewController {
-    static func instantiate() -> Self {
+public extension StoryBoardInstantiatable where Self: UIViewController {
+    public static func instantiate() -> Self {
         let storyboard = UIStoryboard(name: className, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: className) as! Self // swiftlint:disable:this force_cast
     }
 
-    static func instantiate(withStoryboard storyboard: String) -> Self {
+    public static func instantiate(withStoryboard storyboard: String) -> Self {
         let storyboard = UIStoryboard(name: storyboard, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: className) as! Self // swiftlint:disable:this force_cast
     }
 }
-protocol UIViewInstantiatable {}
+public protocol UIViewInstantiatable {}
 extension UIView: UIViewInstantiatable {}
-extension UIViewInstantiatable where Self: UIView {
-    static func instant() -> Self {
+public extension UIViewInstantiatable where Self: UIView {
+    public static func instant() -> Self {
         return UINib(nibName: self.className, bundle: nil).instantiate(withOwner: self, options: nil)[0] as! Self  // swiftlint:disable:this force_cast
     }
 }
 
-extension Array {
+public extension Array {
 
-    func groupBy<T: Hashable>(_ callback: (Iterator.Element) -> T) -> [T: [Iterator.Element]] {
+    public func groupBy<T: Hashable>(_ callback: (Iterator.Element) -> T) -> [T: [Iterator.Element]] {
         var grouped = [T: Array<Iterator.Element>]()
 
         forEach {
@@ -59,31 +58,31 @@ extension Array {
         return grouped
     }
 
-    func safeFetch(_ index: Int) -> Element? {
+    public func safeFetch(_ index: Int) -> Element? {
         guard count > index, index >= 0 else { return nil }
         return self[index]
     }
 
-    var isNotEmpty: Bool {
+    public var isNotEmpty: Bool {
         return !isEmpty
     }
 }
 
-extension String {
-    func timeFormat() -> String {
+public extension String {
+    public func timeFormat() -> String {
         return self.count == 1 ? "0" + self : self
     }
 
-    var localized: String {
+    public var localized: String {
         return NSLocalizedString(self, comment: "")
     }
     
-    func toURL() -> URL? {
+    public func toURL() -> URL? {
         guard let url = URL(string: self) else { return nil }
         return url
     }
     
-    func truncate(limit: Int) -> String {
+    public func truncate(limit: Int) -> String {
         let length = min(self.count, limit)
         let strArr = Array(self)
         return (0..<length).reduce("") { (result: String, index: Int) -> String in
@@ -92,65 +91,65 @@ extension String {
     }
 }
 
-extension CGFloat {
-    func randomPoint() -> CGFloat {
+public extension CGFloat {
+    public func randomPoint() -> CGFloat {
         return CGFloat(arc4random() % UInt32(self))
     }
 }
 
-extension Int {
-    func otoshi(_ max: Int) -> Int {
+public extension Int {
+    public func otoshi(_ max: Int) -> Int {
         return self > max ? max : self
     }
 
-    var random: Int {
+    public var random: Int {
         return Int(arc4random() % UInt32(self))
     }
-    var toCGFloat: CGFloat {
+    public var toCGFloat: CGFloat {
         return CGFloat(self)
     }
 
-    var toDouble: Double {
+    public var toDouble: Double {
         return Double(self)
     }
 
-    var toString: String {
+    public var toString: String {
         return "\(self)"
     }
 }
 
-extension Double {
-    var toInt: Int {
+public extension Double {
+    public var toInt: Int {
         return Int(self)
     }
 
-    var toCGFloat: CGFloat {
+    public var toCGFloat: CGFloat {
         return CGFloat(self)
     }
 }
 
 extension String {
-    func toDouble() -> Double {
+    public func toDouble() -> Double {
         return Double(self)!
     }
 
-    static func =?(lhs: String?, rhs: String) -> String {
+    public static func =?(lhs: String?, rhs: String) -> String {
         guard let lhs = lhs, !lhs.isEmpty else { return rhs }
         return lhs
     }
 }
 infix operator =?
 
-extension UIView {
-    var height: CGFloat {
+public extension UIView {
+    public var height: CGFloat {
         return frame.height
     }
 
-    var width: CGFloat {
+    public var width: CGFloat {
         return frame.width
     }
 
-    func animateShow(target: UIView?) {
+    public func animateShow(target: UIView?) {
         guard let target = target else { return }
         let viewHeight = self.height
         let viewWidth = self.width
@@ -161,7 +160,7 @@ extension UIView {
         }
     }
 
-    func remove(target: UIView?, handler: (() -> Void)? = nil) {
+    public func remove(target: UIView?, handler: (() -> Void)? = nil) {
         guard let target = target else { return }
         let viewHeight = self.height
         let viewWidth = self.width
@@ -176,7 +175,7 @@ extension UIView {
         })
     }
 
-    var screenShot: UIImage? {
+    public var screenShot: UIImage? {
         let rect = self.bounds
         UIGraphicsBeginImageContextWithOptions(rect.size, true, 0.0)
         guard let _ = UIGraphicsGetCurrentContext()  else { return nil }
@@ -188,27 +187,27 @@ extension UIView {
 
 }
 
-extension Optional where Wrapped == UIView {
-    func animateShow(target: UIView?) {
+public extension Optional where Wrapped == UIView {
+    public func animateShow(target: UIView?) {
         guard let self = self else { return }
         self.animateShow(target: target)
     }
 
-    func remove(target: UIView?, handler: (() -> Void)? = nil) {
+    public func remove(target: UIView?, handler: (() -> Void)? = nil) {
         guard let self = self else { return }
         self.remove(target: target, handler: handler)
     }
 }
 
-extension UIViewController {
-    func showAlert(title: String, message: String = "") {
+public extension UIViewController {
+    public func showAlert(title: String, message: String = "") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
 
-    func viewController<T: UIViewController>(type: T.Type) -> UIViewController? {
+    public func viewController<T: UIViewController>(type: T.Type) -> UIViewController? {
         var result: UIViewController?
 
         while result != nil {
@@ -221,86 +220,86 @@ extension UIViewController {
         return result
     }
 
-    var topViewControllerOnNavigationController: UIViewController? {
+    public var topViewControllerOnNavigationController: UIViewController? {
         return (self as? UINavigationController)?.topViewController ?? self
     }
 }
 
-protocol Nibable: NSObjectProtocol {
+public protocol Nibable: NSObjectProtocol {
     static var nibName: String { get }
     static var nib: UINib { get }
 }
 
-extension Nibable {
-    static var nibName: String {
+public extension Nibable {
+    public static var nibName: String {
         return className
     }
-    static var nib: UINib {
+    public static var nib: UINib {
         return UINib(nibName: nibName, bundle: nil)
     }
 }
 
-extension UICollectionView {
-    func register<T: UICollectionViewCell>(_ cellType: T.Type) where T: Nibable {
+public extension UICollectionView {
+    public func register<T: UICollectionViewCell>(_ cellType: T.Type) where T: Nibable {
         self.register(cellType.nib, forCellWithReuseIdentifier: cellType.className)
     }
 
-    func dequeue<T: UICollectionViewCell>(type: T.Type, indexPath: IndexPath) -> T {
+    public func dequeue<T: UICollectionViewCell>(type: T.Type, indexPath: IndexPath) -> T {
         let item = self.dequeueReusableCell(withReuseIdentifier: T.className, for: indexPath) as? T
         return item!
     }
 }
 
-extension UITableView {
-    func register<T: UITableViewCell>(_ cellType: T.Type) where T: Nibable {
+public extension UITableView {
+    public func register<T: UITableViewCell>(_ cellType: T.Type) where T: Nibable {
         register(T.nib, forCellReuseIdentifier: T.className)
     }
 
-    func dequeue<T: Configurable>(t: T.Type, indexPath: IndexPath) -> T {
+    public func dequeue<T: Configurable>(t: T.Type, indexPath: IndexPath) -> T {
         return self.dequeueReusableCell(withIdentifier: T.className, for: indexPath) as! T // swiftlint:disable:this force_cast
     }
 }
 
-extension CGRect {
-    func change(x: CGFloat) -> CGRect {
+public extension CGRect {
+    public func change(x: CGFloat) -> CGRect {
         return CGRect(x: x, y: self.origin.y, width: self.size.width, height: self.size.height)
     }
 
-    func change(y: CGFloat) -> CGRect {
+    public func change(y: CGFloat) -> CGRect {
         return CGRect(x: self.origin.x, y: y, width: self.size.width, height: self.size.height)
     }
 
-    func change(width: CGFloat) -> CGRect {
+    public func change(width: CGFloat) -> CGRect {
         return CGRect(x: self.origin.x, y: self.origin.y, width: width, height: self.size.height)
     }
 
-    func change(height: CGFloat) -> CGRect {
+    public func change(height: CGFloat) -> CGRect {
         return CGRect(x: self.origin.x, y: self.origin.y, width: self.size.width, height: height)
     }
 
-    func changeXBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
+    public func changeXBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
         return CGRect(x: transform(self), y: self.origin.y, width: self.size.width, height: self.size.height)
     }
 
-    func changeYBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
+    public func changeYBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
         return CGRect(x: self.origin.x, y: transform(self), width: self.size.width, height: self.size.height)
     }
 
-    func changeWBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
+    public func changeWBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
         return CGRect(x: self.origin.x, y: self.origin.y, width: transform(self), height: self.size.height)
     }
 
-    func changeHBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
+    public func changeHBy(transform: ((CGRect) -> CGFloat)) -> CGRect {
         return CGRect(x: self.origin.x, y: self.origin.y, width: self.size.width, height: transform(self))
     }
 
-    func randomPoint() -> CGPoint {
+    public func randomPoint() -> CGPoint {
         return CGPoint(x: (Int(size.width)).random.toCGFloat, y: (Int(size.height)).random.toCGFloat)
     }
 }
 
-extension UIColor {
-    convenience init(hexString: String, alpha: CGFloat = 1.0) {
+public extension UIColor {
+    public convenience init(hexString: String, alpha: CGFloat = 1.0) {
         let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let scanner = Scanner(string: hexString)
         if (hexString.hasPrefix("#")) {
@@ -318,7 +317,7 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    func toHexString() -> String {
+    public func toHexString() -> String {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -329,14 +328,20 @@ extension UIColor {
     }
 }
 
-extension Array where Element: Hashable {
-    var toSet: Set<Element> {
+public extension Array where Element: Hashable {
+    public var toSet: Set<Element> {
         return Set(self)
     }
 }
 
-extension Set {
-    var toArray: [Element] {
+public extension Set {
+    public var toArray: [Element] {
         return Array(self)
     }
+}
+
+public protocol Configurable: NSObjectProtocol {
+    associatedtype CellData
+    func configure(data: CellData, indexPath: IndexPath)
+    var indexPath: IndexPath? { get }
 }

@@ -10,6 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import PlayTimeObject
+import Utilities
+
 import UserNotifications
 class SettingsViewController: UIViewController {
 

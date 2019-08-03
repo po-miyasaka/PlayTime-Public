@@ -12,6 +12,8 @@ import RxCocoa
 import Foundation
 import NotificationCenter
 import SpriteKit
+import PlayTimeObject
+import Utilities
 
 class DetailQuestViewController: UIViewController, UIGestureRecognizerDelegate {
 

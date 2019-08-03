@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SpriteKit
+import PlayTimeObject
 
 protocol DragonRouterProtocol: Router {
     func close()

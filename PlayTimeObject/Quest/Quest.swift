@@ -7,23 +7,23 @@
 //
 
 import Foundation
-import RealmSwift
+import Utilities
 
-struct Quest: Codable, Equatable {
-    static let maxTitleLength = 25
-    var id: QuestUniqueID
-    var title: String
-    var meanTimes: [MeanTime]
-    var deleted: Bool
-    var beingSelectedForDelete: Bool
-    var activeDate: Date?
-    var limitTime: TimeInterval
-    var isNotify: Bool
-    var dragonName: Dragon.Name
-    var story: Story
-    var comments: [Comment]
+public struct Quest: Codable, Equatable {
+    public static let maxTitleLength = 25
+    public var id: QuestUniqueID
+    public var title: String
+    public var meanTimes: [MeanTime]
+    public var deleted: Bool
+    public var beingSelectedForDelete: Bool
+    public var activeDate: Date?
+    public var limitTime: TimeInterval
+    public var isNotify: Bool
+    public var dragonName: Dragon.Name
+    public var story: Story
+    public var comments: [Comment]
 
-    init (title: String,
+    public init (title: String,
           id: QuestUniqueID,
           meanTimes: [MeanTime] = [],
           activeDate: Date? = nil,
@@ -49,7 +49,7 @@ struct Quest: Codable, Equatable {
         self.comments = comments
     }
 
-    static func new(title: String,
+    public static func new(title: String,
                     isNotify: Bool,
                     dragonName: Dragon.Name,
                     story: Story) -> Quest {
@@ -61,24 +61,24 @@ struct Quest: Codable, Equatable {
                      story: story)
     }
 
-    var isActive: Bool {
+    public var isActive: Bool {
         return activeDate != nil
     }
 
-    func playTime(_ withActive: Bool = true) -> TimeInterval {
+    public func playTime(_ withActive: Bool = true) -> TimeInterval {
         return meanTimes.sum + (withActive ? activeMeanTime : 0.0)
     }
 
-    var activeMeanTime: TimeInterval {
+    public var activeMeanTime: TimeInterval {
         return activeDate.flatMap { DateUtil.now().timeIntervalSince($0) } ?? 0.0
     }
 
-    var latestDate: Date? {
+    public var latestDate: Date? {
         let displayDate = activeDate ?? meanTimes.getLatest()?.end
         return displayDate
     }
 
-    var firstDate: Date? {
+    public var firstDate: Date? {
         return  meanTimes.getFirst()?.start ?? activeDate
     }
 
@@ -86,11 +86,11 @@ struct Quest: Codable, Equatable {
     //        return  meanTimes.sum(onlyIn: onlyAt)
     //    }
 
-    static func ==(lhs: Quest, rhs: Quest) -> Bool {
+    public static func ==(lhs: Quest, rhs: Quest) -> Bool {
         return lhs.id == rhs.id
     }
 
-    func copy(title: String? = nil,
+    public func copy(title: String? = nil,
               id: QuestUniqueID? = nil,
               meanTimes: [MeanTime]? = nil,
               activeDate: Date? = nil,
@@ -117,7 +117,7 @@ struct Quest: Codable, Equatable {
                      comments: comments ?? self.comments )
     }
 
-    func record(with limitTime: TimeInterval?) -> Quest {
+    public func record(with limitTime: TimeInterval?) -> Quest {
 
         guard let startDate = activeDate else { return self }
 
@@ -143,63 +143,54 @@ struct Quest: Codable, Equatable {
         return quest
     }
 
-    func start() -> Quest {
+    public func start() -> Quest {
         guard self.activeDate == nil else { return self }
         return self.copy(activeDate: DateUtil.now())
     }
 
-    var shouldVaridateMeantimes: Bool {
+    public var shouldVaridateMeantimes: Bool {
         return self.meanTimes.shouldVaridateMeanTime
     }
 
-    func continueCount(from: Date = DateUtil.now()) -> Int {
+    public func continueCount(from: Date = DateUtil.now()) -> Int {
         return meanTimes.continueCount()
     }
 
-    func maxContinueCount() -> Int {
+    public func maxContinueCount() -> Int {
         return meanTimes.maxContinueCount()
     }
-
-    func generateQuestData() -> QuestData {
-        let data = QuestData()
-        data.title = title
-        data.createdID = id.getIDString()
-        data.deleted = deleted
-        data.activeTime = activeDate
-        data.meanTimesData = meanTimes.generateMeanTimesData()
-        data.storyData = story.generateData()
-        data.dragonName = dragonName.rawValue
-        data.isNotify = isNotify
-        data.limitTime = limitTime
-        data.commentsData = comments.generateCommentsData()
-        return data
-    }
-
 }
 
-struct QuestUniqueID: UniqueID {
-    var id: Date
+public struct QuestUniqueID: UniqueID {
+    public var id: Date
 
-    init(from: Date) {
+    public init(from: Date) {
         self.id = from
     }
 
-    init() {
+    public init() {
         self.id = DateUtil.now()
     }
 }
 
-struct Comment: Codable, Diffable {
-    let id: CommentID
-    var expression: String
-    var type: CommentType
-    var isDeleted: Bool
+public struct Comment: Codable, Diffable {
+    public let id: CommentID
+    public var expression: String
+    public var type: CommentType
+    public var isDeleted: Bool
 
-    var isEditing: Bool {
+    public var isEditing: Bool {
         return type.isEditing
     }
 
-    static func new(text: String, type: CommentType) -> Comment {
+    public init(id: CommentID, expression: String, type: CommentType, isDeleted: Bool) {
+        self.id = id
+        self.expression = expression
+        self.type = type
+        self.isDeleted = isDeleted
+    }
+    
+    public static func new(text: String, type: CommentType) -> Comment {
         let comment = Comment(id: CommentID(),
                               expression: text,
                               type: type,
@@ -207,32 +198,32 @@ struct Comment: Codable, Diffable {
         return comment
     }
 
-    static func ==(lhs: Comment, rhs: Comment) -> Bool {
+    public static func ==(lhs: Comment, rhs: Comment) -> Bool {
         return lhs.id == rhs.id
     }
 
 }
 
-struct CommentID: UniqueID {
-    var id: Date
+public struct CommentID: UniqueID {
+    public var id: Date
 
-    init() {
+    public init() {
         self.id = DateUtil.now()
     }
 
-    init(from: Date) {
+    public init(from: Date) {
         self.id = from
     }
 }
 
-enum CommentType: Int, Codable {
+public enum CommentType: Int, Codable {
     case archive
     case changed
     case user
     case creating
     case finishQuest
 
-    var isEditing: Bool {
+    public var isEditing: Bool {
         return  .user == self
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import RxCocoa
 import RxSwift
+import PlayTimeObject
 
 protocol DragonLibraryViewModelInput {
     func setUp()

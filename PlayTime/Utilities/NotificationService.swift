@@ -8,6 +8,7 @@
 
 import Foundation
 import UserNotifications
+import PlayTimeObject
 
 protocol NotificationServiceProtocol {
     func set(quest: Quest, limitTime: TimeInterval)

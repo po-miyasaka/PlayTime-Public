@@ -11,6 +11,8 @@ import RxCocoa
 import RxSwift
 import UserNotifications
 import UIKit
+import PlayTimeObject
+import Utilities
 
 protocol SettingsViewModelInput {
     func cellTap(indexPath: IndexPath)

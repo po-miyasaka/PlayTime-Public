@@ -9,6 +9,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PlayTimeObject
+import Utilities
+
 class SwitchCell: UITableViewCell, Nibable, Configurable {
 
     @IBOutlet private weak var ibSubjectLabel: UILabel!

@@ -11,6 +11,9 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+import PlayTimeObject
+import Utilities
+
 protocol SelectStoryViewModelInput {
     func setUp()
     func selected(story: Story)

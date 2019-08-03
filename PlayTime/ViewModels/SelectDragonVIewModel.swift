@@ -11,6 +11,9 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+import PlayTimeObject
+import Utilities
+
 protocol SelectDragonViewModelInput {
     func selected(dragon: Dragon.Name)
 }

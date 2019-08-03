@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PlayTimeObject
 
 protocol EditStoriesRouterProtocol: Router {
     func pop()

@@ -8,21 +8,21 @@
 
 import Foundation
 import SpriteKit
-import RxSwift
-import RxCocoa
+import Utilities
 
-class Dragon {
 
-    var name: Name
-    var process: Process
-    var images: DragonImages
-    var necessaryExperience: Int? //　次の進化までに必要な時間
-    var playTimeHour: Int // 今までためた経験値
+public class Dragon {
 
-    class var profileHeight: CGFloat { return 200 }
-    class var profileWidth: CGFloat { return 180 }
+    public var name: Name
+    public var process: Process
+    public var images: DragonImages
+    public var necessaryExperience: Int? //　次の進化までに必要な時間
+    public var playTimeHour: Int // 今までためた経験値
 
-    init?(name: Name, process: Process, playTimeHour: Int) {
+    public class var profileHeight: CGFloat { return 200 }
+    public class var profileWidth: CGFloat { return 180 }
+
+    public init?(name: Name, process: Process, playTimeHour: Int) {
         self.playTimeHour = playTimeHour
 
         if let needed = process.necessaryExperienceForEvolve {
@@ -35,7 +35,7 @@ class Dragon {
         self.images = images
     }
 
-    static func create(meanTimes: [MeanTime]) -> [Dragon] {
+    public static func create(meanTimes: [MeanTime]) -> [Dragon] {
         let validTimes = meanTimes.validMeanTimes
 
         var grouped = validTimes.groupBy { $0.dragonName }
@@ -52,7 +52,7 @@ class Dragon {
         return dragons
     }
 
-    func move(duration: TimeInterval = 1, distance: CGFloat = 20, fieldFrame: CGRect) {
+    public func move(duration: TimeInterval = 1, distance: CGFloat = 20, fieldFrame: CGRect) {
 
         switch process {
         case .egg:
@@ -96,24 +96,24 @@ class Dragon {
         nodeCache?.run(SKAction.group(actionGroup))
     }
 
-    enum MoveType: Int {
+    public enum MoveType: Int {
         case right = 0
         case down
         case left
         case up
         case none
 
-        init(_ value: Int) {
+        public init(_ value: Int) {
             self = MoveType(rawValue: value) ?? MoveType.none
         }
     }
 
-    var walk: SKAction {
+    public var walk: SKAction {
         return SKAction.repeatForever(SKAction.animate(with: images.images, timePerFrame: 0.5))
     }
 
-    var nodeCache: SKSpriteNode?
-    func createNode() -> SKSpriteNode {
+    public var nodeCache: SKSpriteNode?
+    public func createNode() -> SKSpriteNode {
         let node = SKSpriteNode(texture: images.images[0])
         node.name = self.nameString
         node.run(walk)
@@ -124,7 +124,7 @@ class Dragon {
         return node
     }
 
-    func presentOn(parent: SKView) {
+    public func presentOn(parent: SKView) {
         if parent.width < Dragon.profileWidth || parent.height < Dragon.profileHeight {
             assertionFailure("The view's frame is too small")
         }
@@ -146,7 +146,7 @@ class Dragon {
         parent.presentScene(scene)
     }
 
-    var nameString: String {
+    public var nameString: String {
         switch (name, process) {
         case (.nii, .egg):
             return "nii0".localized
@@ -160,7 +160,7 @@ class Dragon {
         }
     }
 
-    var expression: String {
+    public var expression: String {
         switch (name, process) {
         case (.nii, .egg):
             return "nii0e".localized
@@ -175,10 +175,10 @@ class Dragon {
 
 }
 
-class DragonImages {
-    var name: Dragon.Name
-    var process: Dragon.Process
-    var images: [SKTexture] {
+public class DragonImages {
+    public var name: Dragon.Name
+    public var process: Dragon.Process
+    public var images: [SKTexture] {
         return (0...1).compactMap { i in
             let name = "d_\(self.name.rawValue)_\(self.process.rawValue)_\(i)"
             if let _ = UIImage(named: name) {
@@ -188,11 +188,11 @@ class DragonImages {
         }
     }
 
-    var illust: UIImage? {
+    public var illust: UIImage? {
         return UIImage(named: "di_\(self.name.rawValue)_\(self.process.rawValue)")
     }
 
-    init?(name: Dragon.Name, process: Dragon.Process) {
+    public init?(name: Dragon.Name, process: Dragon.Process) {
         self.name = name
         self.process = process
 
@@ -204,8 +204,8 @@ class DragonImages {
     }
 }
 
-extension Dragon {
-    enum Name: Int, Codable, CaseIterable {
+public extension Dragon {
+    public enum Name: Int, Codable, CaseIterable {
         case nii = 0
         case travan
         case leo
@@ -216,24 +216,24 @@ extension Dragon {
 
 extension Dragon {
 
-    enum Process: Int, CaseIterable {
+    public enum Process: Int, CaseIterable {
         case egg = 0
 
-        var necessaryExperienceForEvolve: Int? {
+        public var necessaryExperienceForEvolve: Int? {
             switch self {
             case .egg:
                 return 20
             }
         }
 
-        var necessaryExperienceForShowingLibrary: Int {
+        public var necessaryExperienceForShowingLibrary: Int {
             switch self {
             case .egg:
                 return 0
             }
         }
 
-        init(name: Dragon.Name, hour: Int) {
+        public init(name: Dragon.Name, hour: Int) {
 
             var result: Process
             switch hour {
@@ -246,11 +246,11 @@ extension Dragon {
             self = result
         }
 
-        init(lv: Int) {
+        public init(lv: Int) {
             self = Dragon.Process(rawValue: min(lv, 5))!
         }
 
-        var scale: SKAction {
+        public var scale: SKAction {
             switch self {
             case .egg:
                 return SKAction.scale(by: 2, duration: 0)

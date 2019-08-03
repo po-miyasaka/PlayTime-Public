@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Utilities
 
 class GraphCell: UITableViewCell, Nibable, Configurable {
     var indexPath: IndexPath?

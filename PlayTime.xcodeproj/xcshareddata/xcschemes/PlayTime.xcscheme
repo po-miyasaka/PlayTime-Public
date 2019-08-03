@@ -28,6 +28,46 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24186E7E22F55E2B00461EF7"
+               BuildableName = "PlayTimeObjectTests.xctest"
+               BlueprintName = "PlayTimeObjectTests"
+               ReferencedContainer = "container:PlayTime.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24186EA922F566F400461EF7"
+               BuildableName = "UtilityTests.xctest"
+               BlueprintName = "UtilityTests"
+               ReferencedContainer = "container:PlayTime.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24186ECB22F5672100461EF7"
+               BuildableName = "UtilitiesTests.xctest"
+               BlueprintName = "UtilitiesTests"
+               ReferencedContainer = "container:PlayTime.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "24AFECC322F5D5470095C20E"
+               BuildableName = "PlayTimeObjectRepositoryTests.xctest"
+               BlueprintName = "PlayTimeObjectRepositoryTests"
+               ReferencedContainer = "container:PlayTime.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -42,7 +82,7 @@
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"

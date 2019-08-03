@@ -9,7 +9,7 @@
 import Quick
 import Nimble
 
-@testable import PlayTime
+@testable import DomainObject
 
 class QuestTests: QuickSpec { // itの中でitは使えない
     

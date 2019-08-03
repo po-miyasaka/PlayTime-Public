@@ -9,6 +9,8 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import PlayTimeObject
+import Utilities
 
 protocol AddQuestStoreOutputProtocol {
     var questName: String { get }

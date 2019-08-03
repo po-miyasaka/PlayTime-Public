@@ -10,6 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+import PlayTimeObject
+import Utilities
+
 class CommentsView: UIView {
     var disposeBag = DisposeBag()
     weak var viewModel: DetailQuestViewModel?

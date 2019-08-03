@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import PlayTimeObject
+import Utilities
 
 class ImageViewCell: UICollectionViewCell, Configurable, Nibable {
 

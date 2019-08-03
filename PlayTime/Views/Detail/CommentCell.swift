@@ -8,6 +8,9 @@
 
 import UIKit
 
+import PlayTimeObject
+import Utilities
+
 class CommentCell: UITableViewCell, Nibable, Configurable {
 
     @IBOutlet private weak var ibExpressionLabel: UILabel!

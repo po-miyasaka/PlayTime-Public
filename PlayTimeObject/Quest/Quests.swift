@@ -7,19 +7,18 @@
 //
 
 import Foundation
-import RealmSwift
 
 extension Sequence where Element == Quest {
 
-    var isActive: Bool {
+    public var isActive: Bool {
         return self.contains { $0.isActive }
     }
 
-    var activeDate: Date? {
+    public var activeDate: Date? {
         return self.compactMap { $0.activeDate }.first
     }
 
-    func sort(with type: SortType) -> [Quest] {
+    public func sort(with type: SortType) -> [Quest] {
         switch type {
         case .latest:
             return latestSortQuests()
@@ -31,7 +30,7 @@ extension Sequence where Element == Quest {
     }
 
     @discardableResult
-    func latestSortQuests() -> [Quest] {
+    public func latestSortQuests() -> [Quest] {
         return sorted {
             let preLhs = $0.activeDate ?? $0.meanTimes.getLatest()?.start
             let preRhs = $1.activeDate ?? $1.meanTimes.getLatest()?.start
@@ -42,23 +41,23 @@ extension Sequence where Element == Quest {
         }
     }
 
-    var oldestFirstDate: Date? {
+    public var oldestFirstDate: Date? {
         return compactMap { $0.firstDate }.min(by: { $0 < $1 })
     }
 
-    func createdSortQuests() -> [Quest] {
+    public func createdSortQuests() -> [Quest] {
         return sorted {
             $0.id > $1.id
         }
     }
 
-    func friquencySortQuests() -> [Quest] {
+    public func friquencySortQuests() -> [Quest] {
         return sorted {
             $0.meanTimes.count > $1.meanTimes.count
         }
     }
 
-    func allTime(withActive: Bool = true) -> TimeInterval {
+    public func allTime(withActive: Bool = true) -> TimeInterval {
         return reduce(TimeInterval(0)) { $0 + $1.playTime(withActive) }
     }
 
@@ -73,11 +72,11 @@ extension Sequence where Element == Quest {
     //        }
     //    }
 
-    var livingQuests: [Quest] {
+    public var livingQuests: [Quest] {
         return self.filter { !$0.deleted }
     }
 
-    var tuple: (active: [Quest], living: [Quest], deleted: [Quest]) {
+    public var tuple: (active: [Quest], living: [Quest], deleted: [Quest]) {
         var living: [Quest] = []
         var deleted: [Quest] = []
         var active: [Quest] = []
@@ -94,11 +93,11 @@ extension Sequence where Element == Quest {
         return (active: active, living: living, deleted: deleted)
     }
 
-    func shouldVaridateQuests() -> Bool {
+    public func shouldVaridateQuests() -> Bool {
         return self.contains(where: { $0.shouldVaridateMeantimes })
     }
 
-    func attachDeleteFlag() -> [Quest] {
+    public func attachDeleteFlag() -> [Quest] {
         let refreshed = self.map { quest -> Quest in
             guard quest.beingSelectedForDelete else { return quest }
             return quest.copy(activeDate: nil, deleted: true)
@@ -106,7 +105,7 @@ extension Sequence where Element == Quest {
         return refreshed
     }
 
-    func finishAllIfNeed(_ limitTime: TimeInterval? = nil, isCancelled: Bool = false) -> [Quest] {
+    public func finishAllIfNeed(_ limitTime: TimeInterval? = nil, isCancelled: Bool = false) -> [Quest] {
         return self.map { quest in
             guard let _ = quest.activeDate else { return quest }
             guard !isCancelled else { return quest.copy(shouldActiveDateToNil: true) }
@@ -114,7 +113,7 @@ extension Sequence where Element == Quest {
         }
     }
 
-    func start(_ target: Quest) -> (refreshed: [Quest], target: Quest) {
+    public func start(_ target: Quest) -> (refreshed: [Quest], target: Quest) {
         var targetQuest: Quest = target
         let refreshed = self.map { (quest: Quest) -> Quest in
             guard quest == target else { return quest }
@@ -124,7 +123,7 @@ extension Sequence where Element == Quest {
         return (refreshed: refreshed, target: targetQuest)
     }
 
-    func validateAll(accurateDate: Date) -> [Quest] {
+    public func validateAll(accurateDate: Date) -> [Quest] {
 
         return self.map { quest in
 
@@ -151,14 +150,14 @@ extension Sequence where Element == Quest {
         }
     }
 
-    func replace(targets: [Quest]) -> [Quest] {
+    public func replace(targets: [Quest]) -> [Quest] {
         return map { quest in
             guard let replacing = targets.first (where: { target in target.id == quest.id }) else { return quest }
             return replacing
         }
     }
 
-    var allMeanTimes: [MeanTime] {
+    public var allMeanTimes: [MeanTime] {
         return reduce([MeanTime]()) { $0 + $1.meanTimes }
     }
 

@@ -7,19 +7,21 @@
 //
 
 import Foundation
+import DataStore
+import PlayTimeObject
 
-protocol  QuestRepositoryProtocol {
+public protocol QuestRepositoryProtocol {
     var quests: [Quest] { get }
     func set(quests: [Quest])
 }
 
-class QuestRepository: QuestRepositoryProtocol {
+public class QuestRepository: QuestRepositoryProtocol {
     let dataStore: DataStore
-    init(dataStore: DataStore = RealmManager.default) {
+    public init(dataStore: DataStore = RealmManager.default) {
         self.dataStore = dataStore
     }
 
-    var quests: [Quest] {
+    public var quests: [Quest] {
         let questsData = dataStore.objects(QuestData.self)
         return questsData.compactMap { data in
             guard let quest = data.generateQuest() else {
@@ -30,7 +32,7 @@ class QuestRepository: QuestRepositoryProtocol {
         }
     }
 
-    func set(quests: [Quest]) {
+    public func set(quests: [Quest]) {
         dataStore.update(quests.generateQuestsData())
     }
 

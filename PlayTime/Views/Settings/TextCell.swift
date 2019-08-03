@@ -10,6 +10,8 @@ import UIKit
 import UserNotifications
 import RxSwift
 import RxCocoa
+import PlayTimeObject
+import Utilities
 
 class TextCell: UITableViewCell, Nibable, Configurable {
 

@@ -7,24 +7,17 @@
 //
 
 import Foundation
-import RealmSwift
 
 extension Sequence where Element == Story {
-
-    func generateData() -> List<StoryData> {
-        let result = List<StoryData>()
-        self.forEach { result.append($0.generateData()) }
-        return result
-    }
-
-    func replaceTo(stories: [Story]) -> [Story] {
+    
+    public func replaceTo(stories: [Story]) -> [Story] {
         return map { story in
             guard let repracing = stories.first(where: { target in target.id == story.id }) else { return story }
             return repracing
         }
     }
 
-    var tuple: (living: [Story], deleted: [Story]) {
+    public var tuple: (living: [Story], deleted: [Story]) {
         var living: [Story] = []
         var deleted: [Story] = []
 

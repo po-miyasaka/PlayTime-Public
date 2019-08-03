@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 
-enum DateUtil {
+public enum DateUtil {
     case full
     case origin
     case display
@@ -23,7 +21,7 @@ enum DateUtil {
     case month
     case year
 
-    var formatter: DateFormatter {
+    public var formatter: DateFormatter {
         var formatter = DateFormatter()
         switch self {
         case .full:
@@ -52,7 +50,7 @@ enum DateUtil {
         return formatter
     }
 
-    static func now() -> Date {
+    public static func now() -> Date {
         #if DEBUG
         return dateGetter?() ?? Date()
         #endif
@@ -62,12 +60,12 @@ enum DateUtil {
 
 #if DEBUG
 extension DateUtil {
-    static var dateGetter: (() -> Date)?
+    public static var dateGetter: (() -> Date)?
 }
 #endif
 
-extension Date {
-    internal var daysAgoString: String {
+public extension Date {
+    public var daysAgoString: String {
         let hourGap = DateUtil.now().timeIntervalSince(self) / (60 * 60)
         switch hourGap {
         case (let gap) where 24 <= gap:
@@ -78,7 +76,7 @@ extension Date {
         }
     }
 
-    func daysGap() -> Int {
+    public func daysGap() -> Int {
         // FIXME: イケてない
         let string = DateUtil.origin.formatter.string(from: self)
         guard let date = DateUtil.origin.formatter.date(from: string) else { return 0 }
@@ -92,7 +90,7 @@ extension Date {
         }
     }
 
-    var originDate: Date {
+    public var originDate: Date {
         let string = DateUtil.origin.formatter.string(from: self)
 
         if let originDate = DateUtil.origin.formatter.date(from: string) {
@@ -104,15 +102,15 @@ extension Date {
 
     }
 
-    func oneDayBefore() -> Date {
+    public func oneDayBefore() -> Date {
         return self.addingTimeInterval(-TimeInterval.oneDay)
     }
 }
 
-extension TimeInterval {
+public extension TimeInterval {
 
-    static let oneDay: TimeInterval = (60 * 60 * 24)
-    func displayText() -> String {
+    public static let oneDay: TimeInterval = (60 * 60 * 24)
+    public func displayText() -> String {
         let second = Int(self)
         let minutes = second / 60
         let hours = minutes / 60
@@ -126,7 +124,7 @@ extension TimeInterval {
         }
     }
 
-    func displayMunitesAndSecondText() -> String {
+    public func displayMunitesAndSecondText() -> String {
         let second = Int(self)
         let minutes = second / 60
         let secondGap = second % 60
@@ -134,11 +132,11 @@ extension TimeInterval {
         return minutes.toString.timeFormat() + "minutes".localized + " " + secondGap.toString.timeFormat() + "second".localized
     }
 
-    func displayOnlyMinutesText() -> String {
+    public func displayOnlyMinutesText() -> String {
         return (self / 60 ).toInt.toString + "minutes".localized
     }
 
-    var hour: Int {
+    public var hour: Int {
         let second = Int(self)
         let minutes = second / 60
         let hours = minutes / 60
@@ -146,24 +144,24 @@ extension TimeInterval {
     }
 }
 
-extension Date {
-    var startOfDay: Date {
+public extension Date {
+    public var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
 
-    var endOfDay: Date {
+    public var endOfDay: Date {
         var components = DateComponents()
         components.day = 1
         components.second = -1
         return Calendar.current.date(byAdding: components, to: startOfDay)!
     }
 
-    var startOfMonth: Date {
+    public var startOfMonth: Date {
         let components = Calendar.current.dateComponents([.year, .month], from: startOfDay)
         return Calendar.current.date(from: components)!
     }
 
-    var endOfMonth: Date {
+    public var endOfMonth: Date {
         var components = DateComponents()
         components.month = 1
         components.second = -1

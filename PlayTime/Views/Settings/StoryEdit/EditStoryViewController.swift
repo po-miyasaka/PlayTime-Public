@@ -23,7 +23,7 @@ class EditStoryViewController: UIViewController {
     func bind() {
         ibRenameTextField.rx
             .text
-            .debounce(0.3, scheduler: MainScheduler.asyncInstance)
+            .debounce(RxTimeInterval.milliseconds(3), scheduler: MainScheduler.asyncInstance)
             .distinctUntilChanged()
             .map { $0 ?? "" }
             .map(viewModel.inputs.input)

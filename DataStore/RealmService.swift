@@ -9,14 +9,14 @@
 import Foundation
 import RealmSwift
 
-protocol DataStore {
+public protocol DataStore {
     func update<T: Object>(_ objects: List<T>)
     func objects<T: Object>(_ type: T.Type) -> [T]
 }
 
-class RealmManager: DataStore {
+public class RealmManager: DataStore {
     private var realm: Realm?
-    static let `default` = RealmManager()
+    public static let `default` = RealmManager()
     private init() {
         do {
             self.realm = try Realm()
@@ -27,13 +27,13 @@ class RealmManager: DataStore {
         }
     }
 
-    func update<T: Object>(_ objects: List<T>) {
+    public func update<T: Object>(_ objects: List<T>) {
         try? realm?.write {
             realm?.add(objects, update: true)
         }
     }
 
-    func objects<T: Object>(_ type: T.Type) -> [T] {
+    public func objects<T: Object>(_ type: T.Type) -> [T] {
         guard let objectList = realm?.objects(type) else { return [] }
         return Array(objectList)
     }

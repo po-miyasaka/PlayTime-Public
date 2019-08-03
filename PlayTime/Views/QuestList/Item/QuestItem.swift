@@ -9,6 +9,8 @@
 import UIKit
 import SpriteKit
 import RxSwift
+import PlayTimeObject
+import Utilities
 
 class QuestItem: UICollectionViewCell, Nibable {
 

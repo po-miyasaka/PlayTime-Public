@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-enum Colors {
+public enum Colors {
     case backgroundLightClearBlack
     case backgroundDarkClearBlack
     case backgroundWhite
     case mainGold
 
-    var uiColor: UIColor {
+    public var uiColor: UIColor {
         switch self {
         case .backgroundLightClearBlack:
             return .init(red: 0, green: 0, blue: 0, alpha: 0.5)

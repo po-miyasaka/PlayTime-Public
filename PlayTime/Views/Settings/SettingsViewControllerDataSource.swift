@@ -35,9 +35,3 @@ class SettingViewControllerDataSource: NSObject, UITableViewDataSource {
             .dequeue(tableView: tableView, indexPath: indexPath) ?? UITableViewCell()
     }
 }
-
-protocol Configurable: NSObjectProtocol {
-    associatedtype CellData
-    func configure(data: CellData, indexPath: IndexPath)
-    var indexPath: IndexPath? { get }
-}

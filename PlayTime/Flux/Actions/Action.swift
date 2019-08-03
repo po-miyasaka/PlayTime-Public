@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PlayTimeObject
 
 enum Action {
     case addQuest(Quest)

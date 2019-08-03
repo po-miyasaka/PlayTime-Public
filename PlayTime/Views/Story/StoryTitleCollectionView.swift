@@ -8,6 +8,9 @@
 
 import UIKit
 import RxSwift
+import PlayTimeObject
+import Utilities
+
 class StoryTitleCollectionView: UICollectionView {
 
     var disposeBag = DisposeBag()

@@ -9,10 +9,12 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import PlayTimeObject
+import Utilities
 
 protocol SettingsStoreProtocol {
     var uuid: String { get }
-    var uuidObservable: Observable<UUID> { get }
+    var uuidObservable: Observable<PlayTimeObject.UUID> { get }
 
     var rStatus: RStatus? { get }
     var rStatusObservable: Observable<RStatus?> { get }
@@ -35,16 +37,16 @@ final class SettingsStore {
 
     let dispatcher: DispatcherProtocol
     static let `default` = SettingsStore()
-    private(set) lazy var _uuid = BehaviorRelay<UUID>(value: repository.get(type: UUID.self))
+    private(set) lazy var _uuid = BehaviorRelay<PlayTimeObject.UUID>(value: repository.uuid)
     private(set) lazy var _rStatus = BehaviorRelay<RStatus?>(value: nil)
     private let repository: SettingsRepositoryProtocol
     private let disposeBag = DisposeBag()
     private(set) lazy var _settingsError = PublishRelay<SettingsError>()
     private(set) lazy var _didBecomeActive = PublishRelay<Void>()
 
-    private(set) lazy var _sort = BehaviorRelay<SortType>(value: repository.get(type: SortType.self))
+    private(set) lazy var _sort = BehaviorRelay<SortType>(value: repository.sortType)
     private(set) lazy var _isOsNotification = BehaviorRelay<Bool>(value: false)
-    private(set) lazy var _userStatus = BehaviorRelay<ExplorerStatus>(value: repository.get(type: ExplorerStatus.self))
+    private(set) lazy var _userStatus = BehaviorRelay<ExplorerStatus>(value: repository.status)
 
     init(dispatcher: DispatcherProtocol = Dispatcher.default,
          repository: SettingsRepositoryProtocol = SettingsRepository.default) {
@@ -57,12 +59,12 @@ final class SettingsStore {
             switch action {
             case .sort(let type):
                 self._sort.accept(type)
-                self.repository.set(settings: type)
+                self.repository.set(sortType: type)
             case .osSetNotification(let isOn):
                 self._isOsNotification.accept(isOn)
             case .addStatus(let status):
                 let refreshed = self._userStatus.value.union(status)
-                self.repository.set(settings: refreshed)
+                self.repository.set(status: refreshed)
                 self._userStatus.accept(refreshed)
             case .settingsError(let e):
                 self._settingsError.accept(e)
@@ -82,7 +84,7 @@ extension SettingsStore: SettingsStoreProtocol {
         return _didBecomeActive.asObservable()
     }
 
-    var uuidObservable: Observable<UUID> {
+    var uuidObservable: Observable<PlayTimeObject.UUID> {
         return _uuid.asObservable()
     }
 

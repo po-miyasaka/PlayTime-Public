@@ -8,11 +8,16 @@
 
 import Foundation
 
-struct Diff<T: Diffable> {
-    let old: [T]
-    let new: [T]
+public struct Diff<T: Diffable> {
+    public let old: [T]
+    public let new: [T]
 
-    func classifyIndice(section: Int = 0) -> (reloaded: [IndexPath], deleted: [IndexPath], inserted: [IndexPath]) {
+    public init(old: [T], new: [T]) {
+        self.old = old
+        self.new = new
+    }
+    
+    public func classifyIndice(section: Int = 0) -> (reloaded: [IndexPath], deleted: [IndexPath], inserted: [IndexPath]) {
 
         let reloaded = old.enumerated().compactMap { beforeElement -> Int? in
             if new.contains(where: { afterElement in afterElement == beforeElement.element && afterElement.expression != beforeElement.element.expression }) {
@@ -43,7 +48,7 @@ struct Diff<T: Diffable> {
 
 }
 
-protocol Diffable: Equatable {
+public protocol Diffable: Equatable {
     associatedtype Expression: Equatable
     var expression: Expression { get }
 }

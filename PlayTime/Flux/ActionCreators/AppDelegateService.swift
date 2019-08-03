@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 import UIKit
+import UserNotifications
 
 protocol AppDelegateServiceInputs {
     func applicationDidFinishLaunching(application: UIApplication, launchOptions: [AnyHashable: Any]?)
@@ -17,7 +18,7 @@ protocol AppDelegateServiceInputs {
                             sourceApplication: [UIApplication.OpenURLOptionsKey: Any]) -> Bool
     func applicationDidBecomeActive(_ application: UIApplication)
     func applicationWillTerminate()
-    
+
 }
 
 protocol AppDelegateServiceType {
@@ -31,7 +32,7 @@ final class AppDelegateService: NSObject, AppDelegateServiceType {
         self.flux = flux
         self.notificationService = notificationService
     }
-    
+
     var notificationService: NotificationServiceProtocol
     var inputs: AppDelegateServiceInputs { return self }
 }
@@ -40,31 +41,31 @@ extension AppDelegateService: AppDelegateServiceInputs {
     func applicationWillTerminate() {
         flux.actionCreator.add(status: .launched)
     }
-    
+
     func applicationDidFinishLaunching(application: UIApplication, launchOptions: [AnyHashable: Any]?) {
         if !flux.settingsStore.userStatus.contains(.shouldSaveDefaultStories) {
             flux.actionCreator.add(status: .shouldSaveDefaultStories)
             setDefaultStories()
         }
     }
-    
+
     func applicationOpenUrl(application: UIApplication,
                             url: URL,
                             sourceApplication: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         return true
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
         flux.actionCreator.didBecomeActive()
         refreshUserNotification()
     }
-    
+
     private func refreshUserNotification() {
         notificationService.isUserAcceptNotification(shouldAuthorizeIfneed: false) {[weak self] in
             self?.flux.actionCreator.osNotificationSet(isOn: $0)
         }
     }
-    
+
     private func setDefaultStories() {
         let sema = DispatchSemaphore(value: 0)
         let defaultStoryNames = ["study".localized,

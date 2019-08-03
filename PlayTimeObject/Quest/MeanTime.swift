@@ -7,19 +7,26 @@
 //
 
 import Foundation
-import RealmSwift
+import Utilities
 
-struct MeanTime: Codable {
-    let start: Date
-    var end: Date
-    var isValid: MeanTimeStatus = .shouldVaridate
-    var dragonName: Dragon.Name
-
-    var playTime: TimeInterval {
+public struct MeanTime: Codable {
+    public let start: Date
+    public var end: Date
+    public var isValid: MeanTimeStatus
+    public var dragonName: Dragon.Name
+    
+    public init(start: Date, end: Date, isValid: MeanTimeStatus = .shouldVaridate, dragonName: Dragon.Name) {
+        self.start = start
+        self.end = end
+        self.isValid = .shouldVaridate
+        self.dragonName = dragonName
+    }
+    
+    public var playTime: TimeInterval {
         return end.timeIntervalSince(start)
     }
 
-    func copy(
+    public func copy(
         start: Date? = nil,
         end: Date? = nil,
         isValid: MeanTimeStatus? = nil,
@@ -33,19 +40,19 @@ struct MeanTime: Codable {
     }
 }
 
-enum MeanTimeStatus: Int, Codable {
+public enum MeanTimeStatus: Int, Codable {
     case shouldVaridate
     case varidated
     case injustice
 
-    init(statusInt: Int) {
+    public init(statusInt: Int) {
         self = MeanTimeStatus(rawValue: statusInt) ?? MeanTimeStatus.shouldVaridate
     }
 }
 
-extension Sequence where Element == MeanTime {
+public extension Sequence where Element == MeanTime {
 
-    var sum: TimeInterval {
+    public var sum: TimeInterval {
         return reduce(TimeInterval(0)) { result, meanTime in
             result + meanTime.playTime
         }
@@ -62,23 +69,23 @@ extension Sequence where Element == MeanTime {
     //        return matches
     //    }
 
-    func getLatest() -> MeanTime? {
+    public func getLatest() -> MeanTime? {
         return self.max { $0.start < $1.start }
     }
 
-    func getFirst() -> MeanTime? {
+    public func getFirst() -> MeanTime? {
         return self.min { $0.start < $1.start }
     }
 
-    var validMeanTimes: [MeanTime] {
+    public var validMeanTimes: [MeanTime] {
         return self.filter { $0.isValid == .varidated }
     }
 
-    var shouldVaridateMeanTime: Bool {
+    public var shouldVaridateMeanTime: Bool {
         return self.contains(where: { $0.isValid ==  .shouldVaridate })
     }
 
-    func continueCount(from today: Date = DateUtil.now()) -> Int {
+    public func continueCount(from today: Date = DateUtil.now()) -> Int {
         let startDates: [Date] = compactMap { $0.start.originDate }.sorted(by: { $0 > $1 })
         // 上から回す
         var tmpDates: [Date] = []
@@ -113,7 +120,7 @@ extension Sequence where Element == MeanTime {
         }
     }
 
-    func maxContinueCount() -> Int {
+    public func maxContinueCount() -> Int {
         let startDates: [Date] = compactMap { $0.start.originDate }.sorted(by: { $0 > $1 })
         var maxConsectiveCount = 0
         var consectiveCount = 0
@@ -156,7 +163,7 @@ extension Sequence where Element == MeanTime {
 
 }
 
-enum FilterOption {
+public enum FilterOption {
     case valid
     case all
 }
