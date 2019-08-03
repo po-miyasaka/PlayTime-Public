@@ -20,9 +20,11 @@ class DragonLibraryView: UICollectionView {
 
     func set(viewModel: DragonLibraryViewModelProtocol) {
         self.viewModel = viewModel
+        viewModel.inputs.setUp()
         viewModel.outputs.viewsDriver.map {[weak self] _ in
             self?.reloadData()
         }.drive().disposed(by: disposeBag)
+
         delegate = self
         dataSource = self
     }

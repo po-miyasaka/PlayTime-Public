@@ -77,6 +77,8 @@ class DragonViewController: UIViewController, Transitioner {
 
     func bind() {
 
+        viewModel.inputs.setUp()
+
         ibBackButton.rx
             .tap
             .do(onNext: {[weak self] in
