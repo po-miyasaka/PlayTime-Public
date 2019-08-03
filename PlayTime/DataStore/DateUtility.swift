@@ -24,7 +24,7 @@ enum DateUtil {
     case year
 
     var formatter: DateFormatter {
-        let formatter = DateFormatter()
+        var formatter = DateFormatter()
         switch self {
         case .full:
             formatter.setLocalizedDateFormatFromTemplate("dateFull".localized)
@@ -105,7 +105,7 @@ extension Date {
     }
 
     func oneDayBefore() -> Date {
-        return self.addingTimeInterval(TimeInterval.oneDay)
+        return self.addingTimeInterval(-TimeInterval.oneDay)
     }
 }
 
@@ -143,5 +143,30 @@ extension TimeInterval {
         let minutes = second / 60
         let hours = minutes / 60
         return hours
+    }
+}
+
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
+    }
+
+    var startOfMonth: Date {
+        let components = Calendar.current.dateComponents([.year, .month], from: startOfDay)
+        return Calendar.current.date(from: components)!
+    }
+
+    var endOfMonth: Date {
+        var components = DateComponents()
+        components.month = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfMonth)!
     }
 }

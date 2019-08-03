@@ -21,6 +21,20 @@ var meanTimesConsectiveDays: [MeanTime] {
             makeMeanTime(start: date(50).addingTimeInterval(.oneDay * 2), status: MeanTimeStatus.shouldVaridate)]
 }
 
+var meanTimesConsectiveDaysPast: [MeanTime] {
+    return [makeMeanTime(start: date(10)),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay), status: MeanTimeStatus.injustice),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 2), status: MeanTimeStatus.shouldVaridate),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 3)),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 4)),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 5)),
+            
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 7)),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 8)),
+            makeMeanTime(start: date(10).addingTimeInterval(.oneDay * 9))
+    ]
+}
+
 var meanTimesOtherDays: [MeanTime] {
     return [makeMeanTime(start: date(0)),
             makeMeanTime(start: date(.oneDay * 2), status: MeanTimeStatus.shouldVaridate)]
