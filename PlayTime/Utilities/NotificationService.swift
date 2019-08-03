@@ -30,7 +30,7 @@ class NotificationService: NotificationServiceProtocol {
             tmp = 300
         }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: tmp, repeats: false)
-        let request = UNNotificationRequest(identifier: "jp.po-miyasaka.playTime.finishQuest",
+        let request = UNNotificationRequest(identifier: "jp.po-miyasaka.PunlicPlayTime.finishQuest",
                                             content: content,
                                             trigger: trigger)
         // ローカル通知予約

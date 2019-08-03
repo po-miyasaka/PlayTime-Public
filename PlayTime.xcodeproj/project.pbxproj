@@ -126,7 +126,6 @@
 		6E7846252039C92E003470FA /* DeletingButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E7846242039C92E003470FA /* DeletingButtonView.xib */; };
 		6E7A84B42052E4B700170DE3 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7A84B32052E4B700170DE3 /* RxSwift.framework */; };
 		6E83C0BB1FFEC25100CC7E5E /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E014EA41FFB520100EFF438 /* APIKit.framework */; };
-		6EA0634F2056D14300C5CF61 /* LogConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA0634E2056D14300C5CF61 /* LogConstant.swift */; };
 		6EB13888207582E90092942D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB13887207582E90092942D /* NotificationService.swift */; };
 		6EDA9317206AFACA008384C7 /* TimerPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EDA9316206AFACA008384C7 /* TimerPickerView.xib */; };
 		6EDA9319206AFC50008384C7 /* TimerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA9318206AFC50008384C7 /* TimerPickerView.swift */; };
@@ -278,7 +277,6 @@
 		6E74A8A6203C3D4800AE248F /* questing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = questing.sks; sourceTree = "<group>"; };
 		6E7846242039C92E003470FA /* DeletingButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeletingButtonView.xib; sourceTree = "<group>"; };
 		6E7A84B32052E4B700170DE3 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		6EA0634E2056D14300C5CF61 /* LogConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogConstant.swift; sourceTree = "<group>"; };
 		6EB13887207582E90092942D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		6ECF3ACD2066479300CE0193 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6EDA9316206AFACA008384C7 /* TimerPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerPickerView.xib; sourceTree = "<group>"; };
@@ -594,7 +592,6 @@
 			isa = PBXGroup;
 			children = (
 				6EB13887207582E90092942D /* NotificationService.swift */,
-				6EA0634E2056D14300C5CF61 /* LogConstant.swift */,
 				6E1B60A32033101700689218 /* Error.swift */,
 				6E1B60A42033101700689218 /* Extensions.swift */,
 				24FE31CE22AD3C1900020756 /* Diffable.swift */,
@@ -996,7 +993,6 @@
 				240CE8F222190D1900D32E9A /* SettingsStore.swift in Sources */,
 				24C4AC6422CF5AD400F0ACA0 /* ImageViewCell.swift in Sources */,
 				24D2DB202222894C00887FB4 /* Quests+Realm.swift in Sources */,
-				6EA0634F2056D14300C5CF61 /* LogConstant.swift in Sources */,
 				6E1B60C12033159E00689218 /* Error.swift in Sources */,
 				241347F52291A87B007F4A7D /* SubTextCell.swift in Sources */,
 				240CE90922195CAB00D32E9A /* DragonViewModel.swift in Sources */,

@@ -43,7 +43,7 @@ class Dragon {
             grouped[$0] = grouped[$0] ?? []
         }
 
-        var dragons: [Dragon] = grouped.compactMap { name, meanTimes in
+        let dragons: [Dragon] = grouped.compactMap { name, meanTimes in
             let allTime: TimeInterval = meanTimes.sum
             let process = Dragon.Process(name: name, hour: allTime.hour)
             return Dragon(name: name, process: process, playTimeHour: allTime.hour)
@@ -57,8 +57,6 @@ class Dragon {
         switch process {
         case .egg:
             return
-        default:
-            break
         }
         guard let cache = nodeCache else { return }
         let x = cache.position.x
@@ -223,7 +221,6 @@ extension Dragon {
 
         var necessaryExperienceForEvolve: Int? {
             switch self {
-
             case .egg:
                 return 20
             }
@@ -231,7 +228,6 @@ extension Dragon {
 
         var necessaryExperienceForShowingLibrary: Int {
             switch self {
-
             case .egg:
                 return 0
             }

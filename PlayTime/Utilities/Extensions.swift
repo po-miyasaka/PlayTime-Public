@@ -33,22 +33,6 @@ extension StoryBoardInstantiatable where Self: UIViewController {
         return storyboard.instantiateViewController(withIdentifier: className) as! Self // swiftlint:disable:this force_cast
     }
 }
-
-extension String {
-    func toURL() -> URL? {
-        guard let url = URL(string: self) else { return nil }
-        return url
-    }
-
-    func truncate(limit: Int) -> String {
-        let length = min(self.count, limit)
-        let strArr = Array(self)
-        return (0..<length).reduce("") { (result: String, index: Int) -> String in
-            result + String(strArr[index])
-        }
-    }
-}
-
 protocol UIViewInstantiatable {}
 extension UIView: UIViewInstantiatable {}
 extension UIViewInstantiatable where Self: UIView {
@@ -93,6 +77,19 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }
+    
+    func toURL() -> URL? {
+        guard let url = URL(string: self) else { return nil }
+        return url
+    }
+    
+    func truncate(limit: Int) -> String {
+        let length = min(self.count, limit)
+        let strArr = Array(self)
+        return (0..<length).reduce("") { (result: String, index: Int) -> String in
+            result + String(strArr[index])
+        }
+    }
 }
 
 extension CGFloat {
@@ -131,17 +128,6 @@ extension Double {
         return CGFloat(self)
     }
 }
-
-let isIPhoneX: Bool = {
-    guard #available(iOS 11.0, *),
-        UIDevice().userInterfaceIdiom == .phone else {
-            return false
-    }
-    let nativeSize = UIScreen.main.nativeBounds.size
-    let (w, h) = (nativeSize.width, nativeSize.height)
-    let (d1, d2): (CGFloat, CGFloat) = (1125.0, 2436.0)
-    return (w == d1 && h == d2) || (w == d2 && h == d1)
-}()
 
 extension String {
     func toDouble() -> Double {
@@ -193,7 +179,7 @@ extension UIView {
     var screenShot: UIImage? {
         let rect = self.bounds
         UIGraphicsBeginImageContextWithOptions(rect.size, true, 0.0)
-        guard let context: CGContext = UIGraphicsGetCurrentContext()  else { return nil }
+        guard let _ = UIGraphicsGetCurrentContext()  else { return nil }
         self.drawHierarchy(in: rect, afterScreenUpdates: true)
         guard let capturedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
         UIGraphicsEndImageContext()
@@ -331,6 +317,7 @@ extension UIColor {
         let blue = CGFloat(b) / 255.0
         self.init(red: red, green: green, blue: blue, alpha: alpha)
     }
+    
     func toHexString() -> String {
         var r: CGFloat = 0
         var g: CGFloat = 0
