@@ -113,6 +113,7 @@
 		24AFECE422F5D7120095C20E /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240CE8EF2218FF7100D32E9A /* SettingsRepository.swift */; };
 		24AFECE522F5D7120095C20E /* StoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2402DB6A226F51EA00EA170F /* StoryRepository.swift */; };
 		24AFECE822F5D9BE0095C20E /* RxRelay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24AFECB522F5D44E0095C20E /* RxRelay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		24AFECE922F5DC8F0095C20E /* Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24186EC422F5672100461EF7 /* Utilities.framework */; };
 		24C4AC5C22CB5FB300F0ACA0 /* AddQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC5B22CB5FB300F0ACA0 /* AddQuestRouter.swift */; };
 		24C4AC5E22CF1A5D00F0ACA0 /* DragonLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC5D22CF1A5D00F0ACA0 /* DragonLibraryView.swift */; };
 		24C4AC6222CF1C5300F0ACA0 /* DragonLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C4AC6122CF1C5300F0ACA0 /* DragonLibraryViewModel.swift */; };
@@ -456,6 +457,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24AFECE922F5DC8F0095C20E /* Utilities.framework in Frameworks */,
 				24186EE722F56EF400461EF7 /* Nimble.framework in Frameworks */,
 				24186EE922F56EF400461EF7 /* Quick.framework in Frameworks */,
 				24186E8022F55E2B00461EF7 /* PlayTimeObject.framework in Frameworks */,

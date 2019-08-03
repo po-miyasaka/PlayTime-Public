@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PlayTimeObject
 
 @testable import PlayTime
 var meanTimesInSameDay: [MeanTime] {

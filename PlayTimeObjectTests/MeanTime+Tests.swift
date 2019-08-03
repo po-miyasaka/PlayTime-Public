@@ -8,8 +8,9 @@
 
 import Quick
 import Nimble
-
+import Utilities
 @testable import PlayTime
+@testable import PlayTimeObject
 
 class MeanTimesTests: QuickSpec {
 
