@@ -17,7 +17,7 @@ protocol StoriesRouterProtocol: Router {
     func toDragon()
     func toAddQuest(story: Story)
     func close()
-    func toPlayingQuest(fromType: FromType)
+    func toPlayingQuest(fromType: ActiveRoot)
 }
 
 class StoriesRouter: NSObject, StoriesRouterProtocol {
@@ -67,7 +67,7 @@ class StoriesRouter: NSObject, StoriesRouterProtocol {
         transitioner?.present(navigationController, true)
     }
 
-    func toPlayingQuest(fromType: FromType) {
+    func toPlayingQuest(fromType: ActiveRoot) {
 
         let viewModel = PlayingQuestViewModel(fromType: fromType)
         let viewController = PlayingQuestViewController(viewModel: viewModel)

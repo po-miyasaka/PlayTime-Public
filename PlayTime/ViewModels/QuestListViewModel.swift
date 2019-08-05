@@ -16,7 +16,6 @@ import Utilities
 protocol QuestListViewModelInput {
     func setUp()
     func viewWillAppear()
-    func selectDeleting(indexPath: IndexPath)
     func itemTapped(indexPath: IndexPath, itemFrame: CGRect)
     func startNow(indexPath: IndexPath)
 }
@@ -105,7 +104,7 @@ extension QuestListViewModel: QuestListViewModelInput {
         }
 
         if case .quest(let quest) = type {
-            flux.actionCreator.start(quest: quest.quest, activeReason: .list)
+            flux.actionCreator.start(quest: quest.quest.id, activeReason: .list)
         }
 
     }
@@ -131,15 +130,9 @@ extension QuestListViewModel: QuestListViewModelInput {
     func questTapped(quest: Quest, itemFrame: CGRect) {
         if !self.flux.storiesStore.isEditingQuests {
             storiesRouter.toDetail(originFrame: itemFrame, for: false)
-            flux.actionCreator.selectForDetail(quest: quest)
+            flux.actionCreator.selectForDetail(quest: quest.id)
         } else {
-            flux.actionCreator.selectDeleting(quest)
-        }
-    }
-
-    func selectDeleting(indexPath: IndexPath) {
-        if let target = _items.value.new.safeFetch(indexPath.row)?.quest {
-            flux.actionCreator.selectDeleting(target)
+            flux.actionCreator.selectForDeleting(quest.id)
         }
     }
 

@@ -25,7 +25,7 @@ protocol SelectDragonViewModelOutput {
 
 class SelectDragonViewModel {
     private var _dragons = BehaviorRelay<[Dragon]>(value: [])
-    var _selected = BehaviorRelay<Quest?>(value: nil)
+    var _selected = BehaviorRelay<QuestUniqueID?>(value: nil)
     let flux: FluxProtocol
     let disposeBag = DisposeBag()
 
@@ -53,11 +53,11 @@ extension SelectDragonViewModel: SelectDragonViewModelInput {
     func selected(dragon: Dragon.Name) {
         switch type {
         case .detail:
-            if let quest = _selected.value {
-                flux.actionCreator.changeDragon(quest: quest, to: dragon)
+            if let id = _selected.value {
+                flux.actionCreator.change(dragon: dragon, for: id)
             }
         case .add:
-            flux.actionCreator.newQuest(dragon: dragon)
+            flux.actionCreator.setNewQuest(dragon: dragon)
         }
     }
 

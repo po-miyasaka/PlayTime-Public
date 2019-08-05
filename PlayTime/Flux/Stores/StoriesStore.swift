@@ -13,7 +13,7 @@ import PlayTimeObject
 import Utilities
 
 protocol StoryStoreProtocol {
-    var selectedObservable: Observable<Quest?> { get }
+    var selectedObservable: Observable<QuestUniqueID?> { get }
     var storiesObservable: Observable<[Story]> { get }
     var stories: [Story] { get }
     var dragons: [Dragon] { get }
@@ -22,23 +22,23 @@ protocol StoryStoreProtocol {
     var isEditingQuests: Bool { get }
     var allQuest: [Quest] { get }
     var allQuestObservable: Observable<[Quest]> { get }
-    var activeQuest: Quest? { get }
-    var activeQuestObservable: Observable<Quest?> { get }
+    var activeQuest: QuestUniqueID? { get }
+    var activeQuestObservable: Observable<QuestUniqueID?> { get }
     func questsFor(_ story: Story) -> Observable<[Quest]>
     func questsFor(_ story: Story) -> [Quest]
-    var activeReason: FromType? { get }
+    var activeReason: ActiveRoot? { get }
 }
 
 final class StoryStore: StoryStoreProtocol {
 
-    private(set) lazy var _selected = BehaviorRelay<Quest?>(value: nil)
+    private(set) lazy var _selected = BehaviorRelay<QuestUniqueID?>(value: nil)
     private(set) lazy var _stories = BehaviorRelay<[Story]>(value: self.storiesRepository.stories)
     private(set) lazy var _dragons = BehaviorRelay<[Dragon]>(value: Dragon.create(meanTimes: self.questRepository.quests.allMeanTimes))
     private(set) lazy var _allQuest = BehaviorRelay<[Quest]>(value: self.questRepository.quests)
     private(set) lazy var _isEditingQuests = BehaviorRelay<Bool>(value: false)
     private(set) lazy var _selectedForEditing = BehaviorRelay<Story?>(value: nil)
-    private(set) lazy var _activeQuest = BehaviorRelay<Quest?>(value: self._allQuest.value.tuple.active.first)
-    private(set) lazy var _activeReason = BehaviorRelay<FromType?>(value: self._allQuest.value.tuple.active.first.flatMap { _ in .launch })
+    private(set) lazy var _activeQuest = BehaviorRelay<QuestUniqueID?>(value: self._allQuest.value.tuple.active.first?.id)
+    private(set) lazy var _activeReason = BehaviorRelay<ActiveRoot?>(value: self._allQuest.value.tuple.active.first.flatMap { _ in .launch })
     private let dispatcher: DispatcherProtocol
     private let questRepository: QuestRepositoryProtocol
     private let storiesRepository: StoriesRepositoryProtocol
@@ -56,118 +56,50 @@ final class StoryStore: StoryStoreProtocol {
         dispatcher.register {[weak self] (action: Action) in
             guard let self = self else { return }
             switch action {
-            case .selected(let quest):
-                if let quest = self.allQuest.first(where: { $0 == quest }) {
-                    self._selected.accept(quest)
-                }
 
-            case .cancel:
-                let refreshed = self._allQuest.value.finishAllIfNeed(isCancelled: true)
-                questRepository.set(quests: refreshed)
-                self._allQuest.accept(refreshed)
-                self._activeQuest.accept(nil)
-
-            case .editQuest(let edited):
-                let refreshed = self._allQuest.value.replace(targets: [edited])
-                questRepository.set(quests: refreshed)
-
-                if let _ = self._selected.value {
-                    self._selected.accept(edited)
-                }
-
-                self._allQuest.accept(refreshed)
-
-            case .addStory(let story):
-                let refreshed = self._stories.value + [story]
-                storiesRepository.set(stories: refreshed)
-                self._stories.accept(refreshed)
-
+                
             case .addQuest(let target):
+                questRepository.set(quests: [target])
                 let refreshed = self._allQuest.value + [target]
+                self._allQuest.accept(refreshed)
+                
+            case .editQuest(let edited):
+                let refreshed = self._allQuest.value.replace(targets: edited)
                 questRepository.set(quests: refreshed)
                 self._allQuest.accept(refreshed)
 
-            case .start(let target, let reason):
-                let finishRefreshed = self._allQuest.value.finishAllIfNeed()
-                let refreshed = finishRefreshed.start(target).refreshed //  配列にターゲットを渡している
+            case .selected(let quest):
+                self._selected.accept(quest)
 
-                questRepository.set(quests: refreshed)
+            case .explore(let quest, let reason):
                 self._activeReason.accept(reason)
-                self._activeQuest.accept(refreshed.tuple.active.first)
-                self._allQuest.accept(refreshed)
+                self._activeQuest.accept(quest)
 
-            case .stop:
-                let refreshed = self._allQuest.value.finishAllIfNeed()
-                questRepository.set(quests: refreshed)
-                self._allQuest.accept(refreshed)
-                self._activeQuest.accept(nil)
-
-            case .stopWith(let limitTime):
-                let refreshed = self._allQuest.value.finishAllIfNeed(limitTime)
-                questRepository.set(quests: refreshed)
-                self._allQuest.accept(refreshed)
+            case .returnBase:
+                self._activeReason.accept(nil)
                 self._activeQuest.accept(nil)
 
             case .startDeletingQuests:
                 self._isEditingQuests.accept(true)
 
-            case .selectDeleting(let target):
-                let refreshedTarget = target.copy(beingSelectedForDelete: !target.beingSelectedForDelete)
-                let refreshed: [Quest] = self._allQuest.value.replace(targets: [refreshedTarget])
-
-                self._allQuest.accept(refreshed)
-
-            case .excuteDeletingQuests:
-                let refreshed = self._allQuest.value.attachDeleteFlag()
-                questRepository.set(quests: refreshed)
-                self._allQuest.accept(refreshed)
-                self._isEditingQuests.accept(false)
-
-                self._stories.accept(self.storiesRepository.stories)
-
             case .endDeletingQuests:
-                let refreshed: [Quest] = self._allQuest.value.map { $0.copy(beingSelectedForDelete: false) }
-                self._allQuest.accept(refreshed)
                 self._isEditingQuests.accept(false)
-                self._stories.accept(self.storiesRepository.stories)
 
-            case .varidated(by: _, quests: let quests):
-                questRepository.set(quests: quests)
-                self._allQuest.accept(quests)
-
-            case .deleteStory(let target):
-                let deletedTarget = target.copy(isDeleted: true)
-
-                let refreshedStory = self._stories.value.replaceTo(stories: [deletedTarget])
-
-                let deleteTargetQuests = self._allQuest.value.filter { $0.story == deletedTarget }.map {
-                    $0.copy(beingSelectedForDelete: true)
-                }
-                let flagedTargets = deleteTargetQuests.attachDeleteFlag().map { $0.copy(story: deletedTarget) }
-                let refreshedQuests: [Quest] = self._allQuest.value.replace(targets: flagedTargets)
-                self._allQuest.accept(refreshedQuests)
-                questRepository.set(quests: refreshedQuests)
-                storiesRepository.set(stories: [deletedTarget]) // 親をあとに
-
-                self._stories.accept(refreshedStory)
-
-                // あるエンティティAを編集後に保存したあとにエンティティAをもつなにかを保存すると上書きされる。
-
-            case .renameStory(let target, let name):
-                let renamedTarget = target.copy(title: name)
-                storiesRepository.set(stories: [renamedTarget])
-                let refreshed = self._stories.value.replaceTo(stories: [renamedTarget])
-
-                let targetQuests = self._allQuest.value.filter { $0.story == target }.map { $0.copy(story: renamedTarget) }
-
-                let refreshedQuests = self._allQuest.value.replace(targets: targetQuests)
-
+                
+            case .addStory(let story):
+                let refreshed = self._stories.value + [story]
+                storiesRepository.set(stories: refreshed)
                 self._stories.accept(refreshed)
-                self._allQuest.accept(refreshedQuests)
+                // エンティティAを編集後に保存したあとにエンティティAをもつ何かを保存すると上書きされる。
+            case .editStory(let target):
+                let refreshed = self._stories.value.replaceTo(stories: [target])
+                storiesRepository.set(stories: [target])
+                self._stories.accept(refreshed)
 
             default:
                 break
             }
+
         }.disposed(by: disposeBag)
     }
 
@@ -187,15 +119,15 @@ final class StoryStore: StoryStoreProtocol {
         return _stories.value
     }
 
-    var activeQuest: Quest? {
+    var activeQuest: QuestUniqueID? {
         return _activeQuest.value
     }
 
-    var activeReason: FromType? {
+    var activeReason: ActiveRoot? {
         return _activeReason.value
     }
 
-    var activeQuestObservable: Observable<Quest?> {
+    var activeQuestObservable: Observable<QuestUniqueID?> {
         return _activeQuest.asObservable()
     }
 
@@ -236,7 +168,7 @@ final class StoryStore: StoryStoreProtocol {
         return _selectedForEditing.asObservable()
     }
 
-    var selectedObservable: Observable<Quest?> {
+    var selectedObservable: Observable<QuestUniqueID?> {
         return _selected.asObservable()
     }
 }

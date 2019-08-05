@@ -41,13 +41,16 @@ class SelectStoryViewModel {
     func setUp() {
         flux.storiesStore
             .storiesObservable
-            .bind(to: Binder(self) {[weak self] _, stories in
+            .map {[weak self] stories in
                 self?._stories.accept(stories.tuple.living)
-            }).disposed(by: disposeBag)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
         flux.storiesStore.selectedObservable
             .map {[weak self] in
-                self?._selected.accept($0)
+                let quest = self?.flux.storiesStore.allQuest.fetch(from: $0)
+                self?._selected.accept(quest)
             }
             .subscribe()
             .disposed(by: disposeBag)
@@ -61,10 +64,10 @@ extension SelectStoryViewModel: SelectStoryViewModelInput {
         switch type {
         case .detail:
             if let quest = _selected.value {
-                flux.actionCreator.changeStory(quest: quest, to: story)
+                flux.actionCreator.change(story: story.id, for: quest.id)
             }
         case .add:
-            flux.actionCreator.newQuest(story: story)
+            flux.actionCreator.setNewQuest(story: story)
         }
     }
 }

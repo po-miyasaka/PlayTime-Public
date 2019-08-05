@@ -41,7 +41,7 @@ protocol StoriesViewModelOutput {
 
     var activeQuestDriver: Driver<Quest?> { get }
     var activeQuest: Quest? { get }
-    var activeReason: FromType? { get }
+    var activeReason: ActiveRoot? { get }
     var isEditingQuestDriver: Driver<Bool> { get }
     var isEditingQuests: Bool { get }
     var isUpdatingTableview: Bool { get }
@@ -68,7 +68,7 @@ class StoriesViewModel {
     private var _showFinished = BehaviorRelay<(Quest, Dragon)?>(value: nil)
     private var _showTutorial = PublishRelay<Void>()
 
-    private var _activeReason = BehaviorRelay<FromType?>(value: nil)
+    private var _activeReason = BehaviorRelay<ActiveRoot?>(value: nil)
     private lazy var _status = BehaviorRelay<ExplorerStatus>(value: flux.settingsStore.userStatus)
 
     var router: StoriesRouterProtocol
@@ -89,20 +89,22 @@ extension StoriesViewModel {
 
         flux.storiesStore
             .storiesObservable
-            .bind(to: Binder(self) {_, stories in
+            .map {[weak self] stories in
 
                 let living = stories.tuple.living
-                self._stories.accept(living)
+                self?._stories.accept(living)
                 var vcTypes = living.map { VCType.story($0) }
                 if vcTypes.isEmpty { vcTypes += [.add] }
-                self._views.accept(vcTypes)
+                self?._views.accept(vcTypes)
 
-                self._selectedStory.accept((
+                self?._selectedStory.accept((
                     before: nil,
                     after: vcTypes.first,
                     reason: .select))
 
-            }).disposed(by: disposeBag)
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
 
         flux.settingsStore
             .userStatusObservable
@@ -127,10 +129,13 @@ extension StoriesViewModel {
                 quest == nil,
                 let dragon = self.flux.storiesStore.dragons.first(where: { dragon in finishedQuest.dragonName == dragon.name }) {
                 self._showFinished.accept((finishedQuest, dragon))
-            } else if let _ = quest, let activeReason = self.flux.storiesStore.activeReason, activeReason != .detail {
+            } else if let _ = quest,
+                let activeReason = self.flux.storiesStore.activeReason,
+                activeReason != .detail {
                 self.router.toPlayingQuest(fromType: activeReason)
             }
-            return quest
+
+            return self.flux.storiesStore.allQuest.fetch(from: quest)
         }.bind(to: _activeQuest)
             .disposed(by: disposeBag)
     }
@@ -140,7 +145,7 @@ extension StoriesViewModel: StoriesViewModelInput {
     func finishViewTapOn() {
         if let quest = _showFinished.value?.0 {
             router.toDetail(originFrame: .zero, for: true)
-            flux.actionCreator.selectForDetail(quest: quest)
+            flux.actionCreator.selectForDetail(quest: quest.id)
         }
     }
 
@@ -198,7 +203,7 @@ extension StoriesViewModel: StoriesViewModelOutput {
         return _showTutorial.asSignal()
     }
 
-    var activeReason: FromType? {
+    var activeReason: ActiveRoot? {
         return _activeReason.value
     }
 

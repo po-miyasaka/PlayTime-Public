@@ -10,6 +10,10 @@ import Foundation
 
 extension Sequence where Element == Story {
     
+    public func fetch(from id: StoryUniqueID) -> Story? {
+        return first(where: { $0.id == id })
+    }
+    
     public func replaceTo(stories: [Story]) -> [Story] {
         return map { story in
             guard let repracing = stories.first(where: { target in target.id == story.id }) else { return story }

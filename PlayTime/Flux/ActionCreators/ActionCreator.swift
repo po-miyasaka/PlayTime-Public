@@ -14,49 +14,63 @@ import PlayTimeObject
 import Utilities
 
 protocol ActionCreatorProtocol {
-    func add(storyName: String)
+
+    // クエスト作成
     func add(quest: Quest)
-    func start(quest: Quest, activeReason: FromType)
-    func changeStory(quest: Quest, to story: Story)
-    func changeDragon(quest: Quest, to name: Dragon.Name)
-    func cancel()
 
-    func userSetNotification(userWill: Bool, quest: Quest)
-    func osNotificationSet(isOn: Bool)
-    func add(status: ExplorerStatus)
-    func selectForDetail(quest: Quest)
-    func stop(with limitTime: TimeInterval?)
-    func setLimitTime(_ limitTime: TimeInterval)
+    func setNewQuest(name: String)
+    func setNewQuest(dragon: Dragon.Name)
+    func setNewQuest(story: Story)
 
+    // クエスト編集
+    func change(story: StoryUniqueID, for quest: QuestUniqueID)
+    func change(dragon: Dragon.Name, for quest: QuestUniqueID)
+    func edit(limitTime: TimeInterval, for quest: QuestUniqueID)
+    func edit(title: String, for quest: QuestUniqueID)
+    func userSetNotification(userWill: Bool, for quest: QuestUniqueID)
+
+    // クエスト削除
     func startDeleting()
-    func selectDeleting(_ target: Quest)
+    func selectForDeleting(_ target: QuestUniqueID)
     func excuteDeleting()
-    func endDeleting()
     func cancelDeleting()
 
-    func varidate(by date: Date, quests: [Quest])
-    func resetAccurateDate()
+    // クエストバリデーション
+    func varidateQuests(by date: Date)
+
+    // クエスト操作
+    func start(quest: QuestUniqueID, activeReason: ActiveRoot)
+    func stop(with limitTime: TimeInterval?)
+    func cancel()
+
+    // クエストソート
     func sort(type: SortType)
 
-    func newQuest(name: String)
-    func newQuest(dragon: Dragon.Name)
-    func newQuest(story: Story)
+    // ストーリー作成
+    func add(storyName: String)
 
-    func renameStory(_ story: Story, newName: String)
-    func deleteStory(_ story: Story)
+    // ストーリー編集・削除
+    func renameStory(_ story: StoryUniqueID, newName: String)
+    func deleteStory(_ story: StoryUniqueID)
 
-    func editLimitTime(quest: Quest, _ timeInterval: TimeInterval)
-    func editQuestTitle(quest: Quest, _ title: String)
+    // 通知全体設定ON
+    func osNotificationSet(isOn: Bool)
 
-    func editComment(quest: Quest, comment: Comment, expression: String)
-    func deleteComment(quest: Quest, comment: Comment)
-    func addComment(quest: Quest, text: String, type: CommentType)
+    // ユーザー状況の変更
+    func add(status: ExplorerStatus)
 
+    // クエスト詳細表示対象
+    func selectForDetail(quest: QuestUniqueID)
+
+    // コメント追加
+    func addComment(quest: QuestUniqueID, text: String, type: CommentType)
+    // コメント編集
+    func editComment(quest: QuestUniqueID, comment: CommentID, expression: String)
+    // コメント削除
+    func deleteComment(quest: QuestUniqueID, comment: CommentID)
+
+    // didBecomeActive
     func didBecomeActive()
-
-    #if DEBUG
-    func testDataInput()
-    #endif
 }
 
 class ActionCreator {
@@ -71,118 +85,164 @@ class ActionCreator {
 
 extension ActionCreator: ActionCreatorProtocol {
 
-    func testDataInput() {
+    func selectForDetail(quest: QuestUniqueID) {
+        dispatcher.dispatch(action: .selected(quest))
+    }
 
-        let story = Story.new(title: "english".localized)
-        dispatcher.dispatch(action: .addStory(story))
+    func start(quest: QuestUniqueID, activeReason: ActiveRoot) {
+        if let targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest)?.start() {
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+            dispatcher.dispatch(action: .explore(targetQuest.id, activeReason))
 
-        // quest作成
-        let reading = Quest.new(title: "reading".localized, isNotify: false, dragonName: .nii, story: story)
-        sleep(2)
-        let writing = Quest.new(title: "writing".localized, isNotify: false, dragonName: .travan, story: story)
-        sleep(2)
-        let listening = Quest.new(title: "listening".localized, isNotify: false, dragonName: .leo, story: story)
-        sleep(2)
-        let speaking = Quest.new(title: "speaking".localized, isNotify: false, dragonName: .momo, story: story)
-
-        [reading, writing, listening, speaking].forEach { quest in
-
-            var meanTimes = [MeanTime]()
-            var comments = [Comment]()
-            (0...20).forEach {index in
-                sleep(2)
-                let dayAgoOrigin = DateUtil.now().addingTimeInterval(TimeInterval(-60 * 60 * 24 * (20 - index)))
-                let random = 4.random
-
-                let endDate = dayAgoOrigin.addingTimeInterval(TimeInterval(60 * (60 - random) * random))
-                var meanTime = MeanTime(start: dayAgoOrigin,
-                                        end: endDate, isValid: .varidated, dragonName: quest.dragonName)
-                let commentID = CommentID(from: endDate)
-                let comment = Comment(id: commentID, expression: "comment\(index)".localized, type: .user, isDeleted: false)
-
-                comments.append(comment)
-                meanTimes.append(meanTime)
+            if targetQuest.isNotify {
+                notificationService().cancel()
+                notificationService().set(quest: targetQuest, limitTime: targetQuest.limitTime)
             }
+        }
+    }
 
-            let quest = quest.copy(meanTimes: meanTimes, comments: comments)
+    func addComment(quest: QuestUniqueID, text: String, type: CommentType) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            let comment = Comment.new(text: text, type: type)
+            targetQuest.comments += [comment]
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
 
-            self.dispatcher.dispatch(action: .addQuest(quest))
+    func editComment(quest: QuestUniqueID, comment: CommentID, expression: String) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            targetQuest.comments = targetQuest.comments.map {
+                guard $0.id == comment else { return $0 }
+                var refreshed = $0
+                refreshed.expression = expression
+                return refreshed
+            }
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
 
+    func deleteComment(quest: QuestUniqueID, comment: CommentID) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            targetQuest.comments = targetQuest.comments.filter { $0.id != comment }
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
+
+    func change(story: StoryUniqueID, for quest: QuestUniqueID) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest),
+            let targetStory = Flux.default.storiesStore.stories.fetch(from: story) {
+            targetQuest.story = targetStory
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
+
+    func change(dragon: Dragon.Name, for quest: QuestUniqueID) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            targetQuest.dragonName = dragon
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
+
+    func edit(limitTime: TimeInterval, for quest: QuestUniqueID) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            targetQuest.limitTime = limitTime
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
+
+    func edit(title: String, for quest: QuestUniqueID) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            targetQuest.title = title
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
+
+    func userSetNotification(userWill: Bool, for quest: QuestUniqueID) {
+
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+            targetQuest.isNotify = userWill
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
 
+        if userWill == false {
+            notificationService().cancel()
+            return
+        }
+
+        notificationService().isUserAcceptNotification(shouldAuthorizeIfneed: true) {[weak self] result in
+            self?.dispatcher.dispatch(action: .osSetNotification(result))
+
+            if !result {
+                self?.dispatcher.dispatch(action: .settingsError(SettingsError.osDeniedNotification))
+            }
+        }
+    }
+
+    func selectForDeleting(_ target: QuestUniqueID) {
+        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: target) {
+            targetQuest.beingSelectedForDelete = !targetQuest.beingSelectedForDelete
+            dispatcher.dispatch(action: .editQuest([targetQuest]))
+        }
+    }
+
+    func varidateQuests(by date: Date) {
+        let varidated = Flux.default.storiesStore.allQuest.validateAll(accurateDate: date)
+        dispatcher.dispatch(action: .editQuest(varidated))
     }
 
     func didBecomeActive() {
         dispatcher.dispatch(action: .didBecomeActive)
     }
+
     func osNotificationSet(isOn: Bool) {
         dispatcher.dispatch(action: .osSetNotification(isOn))
     }
 
-    func deleteComment(quest: Quest, comment: Comment) {
-        let refreshedComments = quest.comments.filter { $0 != comment }
-        let refreshedQuest = quest.copy(comments: refreshedComments)
-        dispatcher.dispatch(action: .editQuest(refreshedQuest))
-    }
-
-    func addComment(quest: Quest, text: String, type: CommentType) {
-        let comment = Comment.new(text: text, type: type)
-        let refreshed = quest.copy(comments: quest.comments + [comment])
-        dispatcher.dispatch(action: .editQuest(refreshed))
-    }
-
-    func changeDragon(quest: Quest, to name: Dragon.Name) {
-        dispatcher.dispatch(action: .editQuest(quest.copy(dragonName: name)))
-    }
-
     func cancel() {
-        dispatcher.dispatch(action: .cancel)
+        let quests = Flux.default.storiesStore.allQuest.finishAllIfNeed(nil, isCancelled: true)
+        dispatcher.dispatch(action: .editQuest(quests))
+        dispatcher.dispatch(action: .returnBase)
         notificationService().cancel()
 
     }
 
-    func changeStory(quest: Quest, to story: Story) {
-        dispatcher.dispatch(action: .editQuest(quest.copy(story: story)))
+    func stop(with limitTime: TimeInterval?) {
+        let quests = Flux.default.storiesStore.allQuest.finishAllIfNeed(limitTime, isCancelled: false)
+        dispatcher.dispatch(action: .editQuest(quests))
+        dispatcher.dispatch(action: .returnBase)
+        notificationService().cancel()
     }
 
-    func editLimitTime(quest: Quest, _ timeInterval: TimeInterval) {
-        dispatcher.dispatch(action: .editQuest(quest.copy(limitTime: timeInterval)))
-    }
+    func renameStory(_ story: StoryUniqueID, newName: String) {
+        guard var targetStory = Flux.default.storiesStore.stories.fetch(from: story) else { return }
+        targetStory.title = newName
+        dispatcher.dispatch(action: .editStory(targetStory))
 
-    func editQuestTitle(quest: Quest, _ title: String) {
-        dispatcher.dispatch(action: .editQuest(quest.copy(title: title)))
-    }
-
-    func editComment(quest: Quest, comment target: Comment, expression: String) {
-
-        var commentEditing = target
-        commentEditing.expression = expression
-        let refreshed: [Comment] = quest.comments.map { comment in
-            guard comment.id == target.id else { return comment }
-            return commentEditing
-        }
-
-        dispatcher.dispatch(action: .editQuest(quest.copy(comments: refreshed)))
+        let refreshed = Flux.default.storiesStore.questsFor(targetStory).map { $0.copy(story: targetStory) }
+        dispatcher.dispatch(action: .editQuest(refreshed))
 
     }
 
-    func renameStory(_ story: Story, newName: String) {
-        dispatcher.dispatch(action: .renameStory(story, newName))
+    func deleteStory(_ story: StoryUniqueID) {
+
+        guard var targetStory = Flux.default.storiesStore.stories.fetch(from: story) else { return }
+        targetStory.isDeleted = true
+        dispatcher.dispatch(action: .editStory(targetStory))
+
+        let deleted = Flux.default.storiesStore.questsFor(targetStory).map { $0.copy(beingSelectedForDelete: true, story: targetStory) }.attachDeleteFlag()
+        dispatcher.dispatch(action: .editQuest(deleted))
+
     }
 
-    func deleteStory(_ story: Story) {
-        dispatcher.dispatch(action: .deleteStory(story))
-    }
-
-    func newQuest(name: String) {
+    func setNewQuest(name: String) {
         dispatcher.dispatch(action: .newQuestName(name))
     }
 
-    func newQuest(dragon: Dragon.Name) {
+    func setNewQuest(dragon: Dragon.Name) {
         dispatcher.dispatch(action: .newQuestDragon(dragon))
     }
 
-    func newQuest(story: Story) {
+    func setNewQuest(story: Story) {
         dispatcher.dispatch(action: .newQuestStory(story))
     }
 
@@ -190,35 +250,8 @@ extension ActionCreator: ActionCreatorProtocol {
         dispatcher.dispatch(action: .addStory(Story.new(title: storyName)))
     }
 
-    func resetAccurateDate() {
-        dispatcher.dispatch(action: .resetAccurateDate)
-    }
-
     func add(quest: Quest) {
         dispatcher.dispatch(action: .addQuest(quest))
-    }
-
-    func start(quest: Quest, activeReason: FromType) {
-        dispatcher.dispatch(action: .start(quest, activeReason))
-        if quest.isNotify {
-            notificationService().cancel()
-            notificationService().set(quest: quest, limitTime: quest.limitTime)
-        }
-    }
-
-    func stop(with limitTime: TimeInterval?) {
-
-        if let limitTime = limitTime {
-            dispatcher.dispatch(action: .stopWith(limitTime))
-        } else {
-            dispatcher.dispatch(action: .stop)
-        }
-
-        notificationService().cancel()
-    }
-
-    func setLimitTime(_ limitTime: TimeInterval) {
-        dispatcher.dispatch(action: .setLimitTime(limitTime))
     }
 
     func sort(type: SortType) {
@@ -229,20 +262,9 @@ extension ActionCreator: ActionCreatorProtocol {
         dispatcher.dispatch(action: .startDeletingQuests)
     }
 
-    func selectDeleting(_ target: Quest) {
-        dispatcher.dispatch(action: .selectDeleting(target))
-    }
-
     func excuteDeleting() {
-        dispatcher.dispatch(action: .excuteDeletingQuests)
-    }
-
-    func endDeleting() {
-        dispatcher.dispatch(action: .endDeletingQuests)
-    }
-
-    func finishDeleting(_ targets: [Quest]) {
-        dispatcher.dispatch(action: .excuteDeletingQuests)
+        let deleted = Flux.default.storiesStore.allQuest.attachDeleteFlag()
+        dispatcher.dispatch(action: .editQuest(deleted))
         dispatcher.dispatch(action: .endDeletingQuests)
     }
 
@@ -252,33 +274,6 @@ extension ActionCreator: ActionCreatorProtocol {
 
     func add(status: ExplorerStatus) {
         dispatcher.dispatch(action: .addStatus(status))
-    }
-
-    func varidate(by date: Date, quests: [Quest]) {
-
-        let refreshed = quests.validateAll(accurateDate: date)
-        dispatcher.dispatch(action: .varidated(by: date, quests: refreshed))
-    }
-
-    func userSetNotification(userWill: Bool, quest: Quest) {
-        if userWill == false {
-            dispatcher.dispatch(action: .editQuest(quest.copy(isNotify: false)))
-            notificationService().cancel()
-            return
-        }
-
-        notificationService().isUserAcceptNotification(shouldAuthorizeIfneed: true) {[weak self] result in
-            self?.dispatcher.dispatch(action: .osSetNotification(result))
-            self?.dispatcher.dispatch(action: .editQuest(quest.copy(isNotify: true)))
-
-            if !result {
-                self?.dispatcher.dispatch(action: .settingsError(SettingsError.osDeniedNotification))
-            }
-        }
-    }
-
-    func selectForDetail(quest: Quest) {
-        dispatcher.dispatch(action: .selected(quest))
     }
 }
 

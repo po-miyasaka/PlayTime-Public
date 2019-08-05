@@ -17,6 +17,7 @@ protocol AddQuestViewModelInput {
     func dragon(_ name: Dragon.Name)
     func story(_ story: Story)
     func make()
+    func setUp()
 }
 
 protocol AddQuestViewModelOutput {
@@ -77,11 +78,11 @@ extension AddQuestViewModel {
 extension AddQuestViewModel: AddQuestViewModelInput {
 
     func story(_ story: Story) {
-        self.flux.actionCreator.newQuest(story: story)
+        self.flux.actionCreator.setNewQuest(story: story)
     }
 
     func dragon(_ name: Dragon.Name) {
-        self.flux.actionCreator.newQuest(dragon: name)
+        self.flux.actionCreator.setNewQuest(dragon: name)
     }
 
     func make() {
@@ -103,7 +104,7 @@ extension AddQuestViewModel: AddQuestViewModelInput {
     }
 
     func quest(_ name: String) {
-        self.flux.actionCreator.newQuest(name: name)
+        self.flux.actionCreator.setNewQuest(name: name)
     }
 
 }

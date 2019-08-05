@@ -13,9 +13,9 @@ public struct Story: Codable, Diffable {
 
     public typealias Expression = String
 
-    public let title: String
-    public let id: StoryUniqueID
-    public let isDeleted: Bool
+    public var title: String
+    public var id: StoryUniqueID
+    public var isDeleted: Bool
 
     public var expression: String { return title }
 

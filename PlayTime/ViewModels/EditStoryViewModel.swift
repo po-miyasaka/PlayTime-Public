@@ -48,7 +48,7 @@ extension EditStoryViewModel: EditStoryViewModelInput {
     func done() {
         guard case .ok(let name) = _input.value else { return }
         if let target = selected {
-            flux.actionCreator.renameStory(target, newName: name)
+            flux.actionCreator.renameStory(target.id, newName: name)
         } else {
             flux.actionCreator.add(storyName: name)
         }
@@ -57,7 +57,7 @@ extension EditStoryViewModel: EditStoryViewModelInput {
 
     func delete() {
         if let target = selected {
-            flux.actionCreator.deleteStory(target)
+            flux.actionCreator.deleteStory(target.id)
             router?.pop()
         }
     }

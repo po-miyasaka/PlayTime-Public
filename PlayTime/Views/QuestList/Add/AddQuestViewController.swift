@@ -32,6 +32,7 @@ class AddQuestViewController: UIViewController, Transitioner {
     }
 
     func bind() {
+        viewModel.inputs.setUp()
         makeButton.rx
             .tap
             .map {[weak self] _ in

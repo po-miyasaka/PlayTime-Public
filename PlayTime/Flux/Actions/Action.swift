@@ -12,27 +12,20 @@ import PlayTimeObject
 enum Action {
     case addQuest(Quest)
     case addStory(Story)
-    case start(Quest, FromType)
+    case explore(QuestUniqueID, ActiveRoot)
+    case returnBase
     case startDeletingQuests
-    case selectDeleting(Quest)
-    case excuteDeletingQuests
     case endDeletingQuests
-    case varidated(by: Date, quests: [Quest])
-    case setLimitTime(TimeInterval)
     case sort(SortType)
-    case stop
-    case stopWith(TimeInterval)
     case addStatus(ExplorerStatus)
     case userSetNotification(Bool)
     case osSetNotification(Bool)
-    case resetAccurateDate
     case settingsError(SettingsError)
-    case selected(Quest)
+    case selected(QuestUniqueID)
 
-    case renameStory(Story, String)
+    case editStory(Story)
     case deleteStory(Story)
-    case editQuest(Quest)
-    case cancel
+    case editQuest([Quest])
 
     case didBecomeActive
 

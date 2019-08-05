@@ -28,13 +28,15 @@ protocol AppDelegateServiceType {
 final class AppDelegateService: NSObject, AppDelegateServiceType {
     let flux: FluxProtocol
     let disposeBag = DisposeBag()
-    init(flux: FluxProtocol = Flux.default, notificationService: NotificationServiceProtocol = NotificationService.default) {
+    var notificationService: NotificationServiceProtocol
+    var inputs: AppDelegateServiceInputs { return self }
+
+    init(flux: FluxProtocol = Flux.default,
+         notificationService: NotificationServiceProtocol = NotificationService.default) {
         self.flux = flux
         self.notificationService = notificationService
     }
 
-    var notificationService: NotificationServiceProtocol
-    var inputs: AppDelegateServiceInputs { return self }
 }
 
 extension AppDelegateService: AppDelegateServiceInputs {

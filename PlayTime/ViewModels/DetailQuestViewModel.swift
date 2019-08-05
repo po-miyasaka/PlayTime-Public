@@ -78,6 +78,9 @@ class DetailQuestViewModel {
 
         let questObservable = flux.storiesStore
             .selectedObservable
+            .map {[weak self] in
+                self?.flux.storiesStore.allQuest.fetch(from: $0)
+            }
             .filter { $0 != nil }
             .map { $0! }
 
@@ -136,7 +139,7 @@ class DetailQuestViewModel {
                 SwitchCellData(subject: "notify".localized,
                                value: quest.isNotify && flux.settingsStore.isOsNotification,
                                userAction: {[weak self] value in
-                                self?.flux.actionCreator.userSetNotification(userWill: value, quest: quest)
+                                self?.flux.actionCreator.userSetNotification(userWill: value, for: quest.id)
                     }
                 )
             )
@@ -157,7 +160,7 @@ extension DetailQuestViewModel: DetailQuestViewModelInput {
     func delete(_ comment: Comment) {
         guard let quest = _selected.value else { return }
         _comments.accept(.init(old: _comments.value.new, new: _comments.value.new.filter { $0 != comment }))
-        flux.actionCreator.deleteComment(quest: quest, comment: comment)
+        flux.actionCreator.deleteComment(quest: quest.id, comment: comment.id)
     }
 
     func editing(_ comment: Comment?) {
@@ -173,9 +176,9 @@ extension DetailQuestViewModel: DetailQuestViewModelInput {
 
         switch _editing.value {
         case .some(let comment) where comment.type == .user:
-            flux.actionCreator.editComment(quest: quest, comment: comment, expression: text)
+            flux.actionCreator.editComment(quest: quest.id, comment: comment.id, expression: text)
         default:
-            flux.actionCreator.addComment(quest: quest, text: text, type: .user)
+            flux.actionCreator.addComment(quest: quest.id, text: text, type: .user)
         }
     }
 
@@ -185,37 +188,37 @@ extension DetailQuestViewModel: DetailQuestViewModelInput {
 
     func editLimitTime(_ timeInterval: TimeInterval) {
         if let quest = _selected.value {
-            flux.actionCreator.editLimitTime(quest: quest, timeInterval)
+            flux.actionCreator.edit(limitTime: timeInterval, for: quest.id)
         }
     }
 
-    func editQuestName(_ name: String) {
+    func editQuestName(_ title: String) {
 
-        guard name.count <= Quest.maxTitleLength else {
+        guard title.count <= Quest.maxTitleLength else {
             _showAlert.accept((title:"overNameCount".localized, message: ""))
             return
         }
 
         if let quest = _selected.value {
-            flux.actionCreator.editQuestTitle(quest: quest, name)
+            flux.actionCreator.edit(title: title, for: quest.id)
         }
     }
 
     func editStory(to story: Story) {
         if let quest = _selected.value {
-            flux.actionCreator.changeStory(quest: quest, to: story)
+            flux.actionCreator.change(story: story.id, for: quest.id)
         }
     }
 
     func changeDragon(to dragonName: Dragon.Name) {
         if let quest = _selected.value {
-            flux.actionCreator.changeDragon(quest: quest, to: dragonName)
+            flux.actionCreator.change(dragon: dragonName, for: quest.id)
         }
     }
 
     func start() {
         if let quest = _selected.value {
-            flux.actionCreator.start(quest: quest, activeReason: .detail)
+            flux.actionCreator.start(quest: quest.id, activeReason: .detail)
             router.toStart()
         }
     }

@@ -46,7 +46,7 @@ class EditStoriesViewModel {
                 guard let self = self else { return () }
                 let cellDatas: [TextFieldCellData] = stories.tuple.living.map { story in
                     let data = TextFieldCellData(uniqueID: story.id.getIDString(), subject: story.title, textFieldValue: story.title, placeHolderValue: story.title, tapAction: {  }, userAction: {
-                        self.flux.actionCreator.renameStory(story, newName: $0)
+                        self.flux.actionCreator.renameStory(story.id, newName: $0)
                     })
                     return data
                 }
@@ -82,7 +82,7 @@ extension EditStoriesViewModel: EditStoriesViewModelInput {
 
     func delete(_ cellData: TextFieldCellData) {
         guard let target = flux.storiesStore.stories.first(where: { cellData.uniqueID == $0.id.getIDString() }) else { return }
-        flux.actionCreator.deleteStory(target)
+        flux.actionCreator.deleteStory(target.id)
     }
 }
 

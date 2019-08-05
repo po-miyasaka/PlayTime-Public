@@ -60,6 +60,13 @@ extension Sequence where Element == Quest {
     public func allTime(withActive: Bool = true) -> TimeInterval {
         return reduce(TimeInterval(0)) { $0 + $1.playTime(withActive) }
     }
+    
+    public func fetch(from id: QuestUniqueID?) -> Quest? {
+        guard let id = id else {
+            return nil
+        }
+        return first(where: {$0.id == id})
+    }
 
     //    func latestValidQuest() -> Quest? {
     //        return self.max {
@@ -113,20 +120,9 @@ extension Sequence where Element == Quest {
         }
     }
 
-    public func start(_ target: Quest) -> (refreshed: [Quest], target: Quest) {
-        var targetQuest: Quest = target
-        let refreshed = self.map { (quest: Quest) -> Quest in
-            guard quest == target else { return quest }
-            targetQuest = quest.start()
-            return targetQuest
-        }
-        return (refreshed: refreshed, target: targetQuest)
-    }
-
     public func validateAll(accurateDate: Date) -> [Quest] {
 
         return self.map { quest in
-
             let savingTimes = quest.meanTimes
                 .filter { meanTime in
                     meanTime.end < accurateDate &&

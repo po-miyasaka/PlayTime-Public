@@ -90,7 +90,7 @@ class DragonPresentingAnimator: NSObject, UIViewControllerAnimatedTransitioning 
 
         containerView.addSubview(deVC.view)
 
-        deVC.view.frame = draVC.ibDragonLibraryView.frame.changeHBy { $0.height + 40 }
+        deVC.view.frame = draVC.ibDragonLibraryView.frame.changeHBy { $0.height }
         deVC.view.layoutIfNeeded()
 
         let imageView = UIImageView(image: deVC.viewModel.outputs.dragon.images.illust)

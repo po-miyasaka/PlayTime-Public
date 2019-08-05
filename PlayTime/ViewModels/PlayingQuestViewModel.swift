@@ -22,7 +22,7 @@ protocol PlayingQuestViewModelInput {
 protocol PlayingQuestViewModelOutput {
     var dragonDriver: Driver<Dragon?> { get }
     var countDownDoneSignal: Signal<Void> { get }
-    var fromType: FromType { get }
+    var fromType: ActiveRoot { get }
     var activeQuestDriver: Driver<Quest?> { get }
     var activeQuest: Quest? { get }
 }
@@ -40,10 +40,10 @@ class PlayingQuestViewModel {
     let flux: FluxProtocol
     let disposeBag = DisposeBag()
     var router: PlayingQuestRouterProtocol?
-    let fromType: FromType
+    let fromType: ActiveRoot
 
     init(flux: FluxProtocol = Flux.default,
-         fromType: FromType) {
+         fromType: ActiveRoot) {
 
         self.flux = flux
         self.fromType = fromType
@@ -55,10 +55,10 @@ class PlayingQuestViewModel {
             .subscribe()
             .disposed(by: disposeBag)
 
-        activeQuest.filter { $0 != nil }
+        activeQuest.map { flux.storiesStore.allQuest.fetch(from: $0) }
+            .filter { $0 != nil }
             .map {[weak self] quest in
                 guard let self = self else { return }
-
                 let dragon = self.flux.storiesStore.dragons.first(where: { dragon in quest!.dragonName == dragon.name })
                 self._activeQuest.accept(quest)
                 self._dragon.accept(dragon)
@@ -81,7 +81,7 @@ extension PlayingQuestViewModel: PlayingQuestViewModelInput {
             let expression: String
             let expressionTime = limitTime?.displayMunitesAndSecondText() ?? quest.activeMeanTime.displayMunitesAndSecondText()
             expression = String(format: "finishQuestComment".localized, expressionTime)
-            flux.actionCreator.addComment(quest: quest, text: expression, type: .finishQuest)
+            flux.actionCreator.addComment(quest: quest.id, text: expression, type: .finishQuest)
         }
 
         flux.actionCreator.stop(with: limitTime)
@@ -126,7 +126,7 @@ extension PlayingQuestViewModel: PlayingQuestViewModelOutput {
 
 }
 
-enum FromType {
+enum ActiveRoot {
     case launch
     case list
     case detail
