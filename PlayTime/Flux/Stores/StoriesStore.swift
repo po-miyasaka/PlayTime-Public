@@ -57,12 +57,11 @@ final class StoryStore: StoryStoreProtocol {
             guard let self = self else { return }
             switch action {
 
-                
             case .addQuest(let target):
                 questRepository.set(quests: [target])
                 let refreshed = self._allQuest.value + [target]
                 self._allQuest.accept(refreshed)
-                
+
             case .editQuest(let edited):
                 let refreshed = self._allQuest.value.replace(targets: edited)
                 questRepository.set(quests: refreshed)
@@ -85,12 +84,11 @@ final class StoryStore: StoryStoreProtocol {
             case .endDeletingQuests:
                 self._isEditingQuests.accept(false)
 
-                
             case .addStory(let story):
                 let refreshed = self._stories.value + [story]
                 storiesRepository.set(stories: refreshed)
                 self._stories.accept(refreshed)
-                // エンティティAを編集後に保存したあとにエンティティAをもつ何かを保存すると上書きされる。
+            // エンティティAを編集後に保存したあとにエンティティAをもつ何かを保存すると上書きされる。
             case .editStory(let target):
                 let refreshed = self._stories.value.replaceTo(stories: [target])
                 storiesRepository.set(stories: [target])

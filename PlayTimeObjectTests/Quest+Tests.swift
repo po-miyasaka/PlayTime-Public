@@ -30,7 +30,7 @@ class QuestTests: QuickSpec { // itの中でitは使えない
     
     
     override func spec() {
-        let baseQuest = Quest.new(title: "test", isNotify: true, dragonName: .momo, story: mockStory)
+        let baseQuest = testQuest
         
         describe("クエスト") {
             

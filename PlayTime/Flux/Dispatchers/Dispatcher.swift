@@ -18,7 +18,7 @@ protocol  DispatcherProtocol {
 
 class Dispatcher: DispatcherProtocol {
     static let `default` = Dispatcher()
-    private init() {}
+    init() {}
     let _actionHandler = PublishRelay<Action>()
 
     func register(actionHandler: @escaping ActionHandler) -> Disposable {

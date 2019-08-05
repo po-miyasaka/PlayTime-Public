@@ -57,7 +57,6 @@
 		24186E4122F5521900461EF7 /* DataStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24186E0122F547FC00461EF7 /* DataStore.framework */; };
 		24186E6D22F554C000461EF7 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A71DC222E99D4900037AC9 /* RealmSwift.framework */; };
 		24186E8022F55E2B00461EF7 /* PlayTimeObject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24186E7722F55E2B00461EF7 /* PlayTimeObject.framework */; };
-		24186E8722F55E2B00461EF7 /* PlayTimeObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186E8622F55E2B00461EF7 /* PlayTimeObjectTests.swift */; };
 		24186E8922F55E2B00461EF7 /* PlayTimeObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 24186E7922F55E2B00461EF7 /* PlayTimeObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		24186E8C22F55E2B00461EF7 /* PlayTimeObject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24186E7722F55E2B00461EF7 /* PlayTimeObject.framework */; };
 		24186E8D22F55E2B00461EF7 /* PlayTimeObject.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 24186E7722F55E2B00461EF7 /* PlayTimeObject.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,6 +87,11 @@
 		24186EF322F5A87F00461EF7 /* Utilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24186EC422F5672100461EF7 /* Utilities.framework */; };
 		24186EF522F5B08900461EF7 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24186EED22F5802500461EF7 /* Realm.framework */; };
 		24246513228B176600E852C2 /* StartingQuestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24246512228B176600E852C2 /* StartingQuestRouter.swift */; };
+		243012F122F83EDD003656C4 /* ActionCreatore+tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243012F022F83EDD003656C4 /* ActionCreatore+tests.swift */; };
+		243012F222F84108003656C4 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E7A84B32052E4B700170DE3 /* RxSwift.framework */; };
+		243012F322F84108003656C4 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E310486205D52580038A80F /* RxCocoa.framework */; };
+		243012F422F84108003656C4 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24AFECB522F5D44E0095C20E /* RxRelay.framework */; };
+		243012F622F867CB003656C4 /* PlayTimeTestsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24186DFA22F44E8A00461EF7 /* PlayTimeTestsUtility.swift */; };
 		24317C7922D1B8A400BA1C3E /* DetailDragonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */; };
 		24317C7A22D1B8A400BA1C3E /* DetailDragonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */; };
 		24317C7C22D1D84A00BA1C3E /* DetailDragonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24317C7B22D1D84A00BA1C3E /* DetailDragonViewModel.swift */; };
@@ -313,7 +317,6 @@
 		24186E7922F55E2B00461EF7 /* PlayTimeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayTimeObject.h; sourceTree = "<group>"; };
 		24186E7A22F55E2B00461EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24186E7F22F55E2B00461EF7 /* PlayTimeObjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlayTimeObjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		24186E8622F55E2B00461EF7 /* PlayTimeObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayTimeObjectTests.swift; sourceTree = "<group>"; };
 		24186E8822F55E2B00461EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24186EC422F5672100461EF7 /* Utilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Utilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24186EC622F5672100461EF7 /* Utilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 		24186EED22F5802500461EF7 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		24186EF122F5A3EF00461EF7 /* RealmObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjects.swift; sourceTree = "<group>"; };
 		24246512228B176600E852C2 /* StartingQuestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingQuestRouter.swift; sourceTree = "<group>"; };
+		243012EF22F83EDD003656C4 /* PlayTimeTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PlayTimeTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		243012F022F83EDD003656C4 /* ActionCreatore+tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActionCreatore+tests.swift"; sourceTree = "<group>"; };
 		24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDragonViewController.swift; sourceTree = "<group>"; };
 		24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailDragonViewController.xib; sourceTree = "<group>"; };
 		24317C7B22D1D84A00BA1C3E /* DetailDragonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDragonViewModel.swift; sourceTree = "<group>"; };
@@ -423,6 +428,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243012F222F84108003656C4 /* RxSwift.framework in Frameworks */,
+				243012F322F84108003656C4 /* RxCocoa.framework in Frameworks */,
+				243012F422F84108003656C4 /* RxRelay.framework in Frameworks */,
 				7E3E22BBB94A8C3DC8D14801 /* Pods_PlayTimeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +526,8 @@
 			isa = PBXGroup;
 			children = (
 				240CE8B82212EBDA00D32E9A /* Info.plist */,
+				243012F022F83EDD003656C4 /* ActionCreatore+tests.swift */,
+				243012EF22F83EDD003656C4 /* PlayTimeTests-Bridging-Header.h */,
 			);
 			path = PlayTimeTests;
 			sourceTree = "<group>";
@@ -655,7 +665,6 @@
 				24186DF622F31B0200461EF7 /* Quest+Tests.swift */,
 				24186DF822F44E1A00461EF7 /* MeanTime+Tests.swift */,
 				24186DFA22F44E8A00461EF7 /* PlayTimeTestsUtility.swift */,
-				24186E8622F55E2B00461EF7 /* PlayTimeObjectTests.swift */,
 				24186E8822F55E2B00461EF7 /* Info.plist */,
 			);
 			path = PlayTimeObjectTests;
@@ -1125,6 +1134,7 @@
 				TargetAttributes = {
 					240CE8B32212EBDA00D32E9A = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6E48429F1FFA723000DD3CE0;
 					};
@@ -1431,6 +1441,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243012F122F83EDD003656C4 /* ActionCreatore+tests.swift in Sources */,
+				243012F622F867CB003656C4 /* PlayTimeTestsUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1472,7 +1484,6 @@
 				24186E9A22F55F6A00461EF7 /* MeanTime+Tests.swift in Sources */,
 				24186E9B22F55F6A00461EF7 /* PlayTimeTestsUtility.swift in Sources */,
 				24186E9922F55F6A00461EF7 /* Quest+Tests.swift in Sources */,
-				24186E8722F55E2B00461EF7 /* PlayTimeObjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1651,11 +1662,16 @@
 			baseConfigurationReference = A32F61A669E56E7F64CFF40B /* Pods-PlayTimeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H6UU7923NK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PlayTimeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1663,6 +1679,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.po-miyasaka.PlayTimeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlayTimeTests/PlayTimeTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlayTime.app/PlayTime";
@@ -1674,17 +1692,23 @@
 			baseConfigurationReference = 2A3824709A357F9FB8C078F3 /* Pods-PlayTimeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H6UU7923NK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = PlayTimeTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.po-miyasaka.PlayTimeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlayTimeTests/PlayTimeTests-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlayTime.temp_caseinsensitive_rename.app/PlayTime.temp_caseinsensitive_rename";

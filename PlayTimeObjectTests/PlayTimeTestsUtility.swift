@@ -64,3 +64,7 @@ var mockStory: Story {
 func date(_ with: TimeInterval) -> Date {
     return Date(timeIntervalSinceReferenceDate: with)
 }
+
+var testQuest: Quest {
+    return Quest.new(title: "test", isNotify: true, dragonName: .momo, story: mockStory)
+}

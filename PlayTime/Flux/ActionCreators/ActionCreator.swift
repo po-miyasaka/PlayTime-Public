@@ -10,8 +10,6 @@ import Foundation
 import UserNotifications
 import PlayTimeObject
 import Utilities
-import PlayTimeObject
-import Utilities
 
 protocol ActionCreatorProtocol {
 
@@ -76,9 +74,9 @@ protocol ActionCreatorProtocol {
 class ActionCreator {
 
     static let `default` = ActionCreator()
-    let dispatcher: DispatcherProtocol
+    private let dispatcher: DispatcherProtocol
 
-    init(dispatcher: Dispatcher = Dispatcher.default) {
+    init(dispatcher: DispatcherProtocol = Dispatcher.default) {
         self.dispatcher = dispatcher
     }
 }
