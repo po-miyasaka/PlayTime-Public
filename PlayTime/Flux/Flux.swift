@@ -26,6 +26,7 @@ class Flux: FluxProtocol {
          actionCreator: ActionCreatorProtocol = ActionCreator.default,
          storiesStore: StoryStoreProtocol = StoryStore.default,
          settingsStore: SettingsStoreProtocol = SettingsStore.default) {
+
         self.dispatcher = dispatcher
         self.actionCreator = actionCreator
         self.storiesStore = storiesStore

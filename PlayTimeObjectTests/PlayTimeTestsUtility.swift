@@ -66,5 +66,8 @@ func date(_ with: TimeInterval) -> Date {
 }
 
 var testQuest: Quest {
-    return Quest.new(title: "test", isNotify: true, dragonName: .momo, story: mockStory)
+    var random = TimeInterval(10000.random)
+    var q = Quest.new(title: "test\(random)", isNotify: true, dragonName: .momo, story: mockStory)
+    q.id = QuestUniqueID.init(from: date(random))
+    return q
 }

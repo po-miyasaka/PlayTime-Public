@@ -75,9 +75,12 @@ class ActionCreator {
 
     static let `default` = ActionCreator()
     private let dispatcher: DispatcherProtocol
+    private let storiesStore: StoryStoreProtocol
 
-    init(dispatcher: DispatcherProtocol = Dispatcher.default) {
+    init(dispatcher: DispatcherProtocol = Dispatcher.default,
+         storiesStore: StoryStoreProtocol = StoryStore.default) {
         self.dispatcher = dispatcher
+        self.storiesStore = storiesStore
     }
 }
 
@@ -88,7 +91,7 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func start(quest: QuestUniqueID, activeReason: ActiveRoot) {
-        if let targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest)?.start() {
+        if let targetQuest = storiesStore.allQuest.fetch(from: quest)?.start() {
             dispatcher.dispatch(action: .editQuest([targetQuest]))
             dispatcher.dispatch(action: .explore(targetQuest.id, activeReason))
 
@@ -100,7 +103,7 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func addComment(quest: QuestUniqueID, text: String, type: CommentType) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             let comment = Comment.new(text: text, type: type)
             targetQuest.comments += [comment]
             dispatcher.dispatch(action: .editQuest([targetQuest]))
@@ -108,7 +111,7 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func editComment(quest: QuestUniqueID, comment: CommentID, expression: String) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             targetQuest.comments = targetQuest.comments.map {
                 guard $0.id == comment else { return $0 }
                 var refreshed = $0
@@ -120,36 +123,36 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func deleteComment(quest: QuestUniqueID, comment: CommentID) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             targetQuest.comments = targetQuest.comments.filter { $0.id != comment }
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
     }
 
     func change(story: StoryUniqueID, for quest: QuestUniqueID) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest),
-            let targetStory = Flux.default.storiesStore.stories.fetch(from: story) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest),
+            let targetStory = storiesStore.stories.fetch(from: story) {
             targetQuest.story = targetStory
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
     }
 
     func change(dragon: Dragon.Name, for quest: QuestUniqueID) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             targetQuest.dragonName = dragon
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
     }
 
     func edit(limitTime: TimeInterval, for quest: QuestUniqueID) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             targetQuest.limitTime = limitTime
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
     }
 
     func edit(title: String, for quest: QuestUniqueID) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             targetQuest.title = title
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
@@ -157,7 +160,7 @@ extension ActionCreator: ActionCreatorProtocol {
 
     func userSetNotification(userWill: Bool, for quest: QuestUniqueID) {
 
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: quest) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: quest) {
             targetQuest.isNotify = userWill
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
@@ -177,14 +180,14 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func selectForDeleting(_ target: QuestUniqueID) {
-        if var targetQuest = Flux.default.storiesStore.allQuest.fetch(from: target) {
+        if var targetQuest = storiesStore.allQuest.fetch(from: target) {
             targetQuest.beingSelectedForDelete = !targetQuest.beingSelectedForDelete
             dispatcher.dispatch(action: .editQuest([targetQuest]))
         }
     }
 
     func varidateQuests(by date: Date) {
-        let varidated = Flux.default.storiesStore.allQuest.validateAll(accurateDate: date)
+        let varidated = storiesStore.allQuest.validateAll(accurateDate: date)
         dispatcher.dispatch(action: .editQuest(varidated))
     }
 
@@ -197,7 +200,7 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func cancel() {
-        let quests = Flux.default.storiesStore.allQuest.finishAllIfNeed(nil, isCancelled: true)
+        let quests = storiesStore.allQuest.finishAllIfNeed(nil, isCancelled: true)
         dispatcher.dispatch(action: .editQuest(quests))
         dispatcher.dispatch(action: .returnBase)
         notificationService().cancel()
@@ -205,29 +208,29 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func stop(with limitTime: TimeInterval?) {
-        let quests = Flux.default.storiesStore.allQuest.finishAllIfNeed(limitTime, isCancelled: false)
+        let quests = storiesStore.allQuest.finishAllIfNeed(limitTime, isCancelled: false)
         dispatcher.dispatch(action: .editQuest(quests))
         dispatcher.dispatch(action: .returnBase)
         notificationService().cancel()
     }
 
     func renameStory(_ story: StoryUniqueID, newName: String) {
-        guard var targetStory = Flux.default.storiesStore.stories.fetch(from: story) else { return }
+        guard var targetStory = storiesStore.stories.fetch(from: story) else { return }
         targetStory.title = newName
         dispatcher.dispatch(action: .editStory(targetStory))
 
-        let refreshed = Flux.default.storiesStore.questsFor(targetStory).map { $0.copy(story: targetStory) }
+        let refreshed = storiesStore.questsFor(targetStory).map { $0.copy(story: targetStory) }
         dispatcher.dispatch(action: .editQuest(refreshed))
 
     }
 
     func deleteStory(_ story: StoryUniqueID) {
 
-        guard var targetStory = Flux.default.storiesStore.stories.fetch(from: story) else { return }
+        guard var targetStory = storiesStore.stories.fetch(from: story) else { return }
         targetStory.isDeleted = true
         dispatcher.dispatch(action: .editStory(targetStory))
 
-        let deleted = Flux.default.storiesStore.questsFor(targetStory).map { $0.copy(beingSelectedForDelete: true, story: targetStory) }.attachDeleteFlag()
+        let deleted = storiesStore.questsFor(targetStory).map { $0.copy(beingSelectedForDelete: true, story: targetStory) }.attachDeleteFlag()
         dispatcher.dispatch(action: .editQuest(deleted))
 
     }
@@ -261,7 +264,7 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func excuteDeleting() {
-        let deleted = Flux.default.storiesStore.allQuest.attachDeleteFlag()
+        let deleted = storiesStore.allQuest.attachDeleteFlag()
         dispatcher.dispatch(action: .editQuest(deleted))
         dispatcher.dispatch(action: .endDeletingQuests)
     }
