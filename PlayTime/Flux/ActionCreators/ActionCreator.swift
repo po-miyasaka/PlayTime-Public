@@ -270,7 +270,12 @@ extension ActionCreator: ActionCreatorProtocol {
     }
 
     func cancelDeleting() {
+        let quests = storiesStore.allQuest.filter { $0.beingSelectedForDelete }.map {
+            $0.copy(beingSelectedForDelete: false)
+        }
+        dispatcher.dispatch(action: .editQuest(quests))
         dispatcher.dispatch(action: .endDeletingQuests)
+
     }
 
     func add(status: ExplorerStatus) {

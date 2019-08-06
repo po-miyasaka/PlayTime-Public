@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailDragonViewController" customModule="playTime" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailDragonViewController" customModule="PlayTime" customModuleProvider="target">
             <connections>
                 <outlet property="ibBackButton" destination="4MQ-73-SGw" id="RZO-Jy-Yqh"/>
                 <outlet property="ibDesignerLinkButton" destination="Q5I-iX-3Fr" id="dPc-Pp-tRd"/>
@@ -27,7 +27,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="1351"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-lY-MLo">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-lY-MLo">
                     <rect key="frame" x="0.0" y="44" width="414" height="1307"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mqn-Gi-LqP">

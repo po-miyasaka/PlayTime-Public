@@ -18,13 +18,11 @@ enum Action {
     case endDeletingQuests
     case sort(SortType)
     case addStatus(ExplorerStatus)
-    case userSetNotification(Bool)
     case osSetNotification(Bool)
     case settingsError(SettingsError)
     case selected(QuestUniqueID)
 
     case editStory(Story)
-    case deleteStory(Story)
     case editQuest([Quest])
 
     case didBecomeActive

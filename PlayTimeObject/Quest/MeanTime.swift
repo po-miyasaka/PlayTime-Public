@@ -52,7 +52,7 @@ public enum MeanTimeStatus: Int, Codable {
 
 public extension Sequence where Element == MeanTime {
 
-    public var sum: TimeInterval {
+    var sum: TimeInterval {
         return reduce(TimeInterval(0)) { result, meanTime in
             result + meanTime.playTime
         }
@@ -69,23 +69,23 @@ public extension Sequence where Element == MeanTime {
     //        return matches
     //    }
 
-    public func getLatest() -> MeanTime? {
+    func getLatest() -> MeanTime? {
         return self.max { $0.start < $1.start }
     }
 
-    public func getFirst() -> MeanTime? {
+    func getFirst() -> MeanTime? {
         return self.min { $0.start < $1.start }
     }
 
-    public var validMeanTimes: [MeanTime] {
+    var validMeanTimes: [MeanTime] {
         return self.filter { $0.isValid == .varidated }
     }
 
-    public var shouldVaridateMeanTime: Bool {
+    var shouldVaridateMeanTime: Bool {
         return self.contains(where: { $0.isValid ==  .shouldVaridate })
     }
 
-    public func continueCount(from today: Date = DateUtil.now()) -> Int {
+    func continueCount(from today: Date = DateUtil.now()) -> Int {
         let startDates: [Date] = compactMap { $0.start.originDate }.sorted(by: { $0 > $1 })
         // 上から回す
         var tmpDates: [Date] = []
@@ -120,7 +120,7 @@ public extension Sequence where Element == MeanTime {
         }
     }
 
-    public func maxContinueCount() -> Int {
+    func maxContinueCount() -> Int {
         let startDates: [Date] = compactMap { $0.start.originDate }.sorted(by: { $0 > $1 })
         var maxConsectiveCount = 0
         var consectiveCount = 0

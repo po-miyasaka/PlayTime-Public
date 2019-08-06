@@ -12,10 +12,4 @@ target 'PlayTime' do
     pod 'Nimble'
   end
 
-  target 'PlayTimeObjectTests' do
-    inherit! :search_paths
-    pod 'Quick'
-    pod 'Nimble'
-  end
-
 end

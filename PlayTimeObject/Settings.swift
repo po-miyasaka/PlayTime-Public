@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import Utilities
 
 public struct UUID {

@@ -76,50 +76,52 @@ class DetailQuestViewModel {
             self._items.accept(self.cellData)
         }.subscribe().disposed(by: disposeBag)
 
-        let questObservable = flux.storiesStore
-            .selectedObservable
-            .map {[weak self] in
-                self?.flux.storiesStore.allQuest.fetch(from: $0)
-            }
+        let questObservable = Observable.combineLatest(flux.storiesStore.allQuestObservable, flux.storiesStore.selectedObservable) { quests, selected in
+            quests.fetch(from: selected)
+        }
             .filter { $0 != nil }
             .map { $0! }
 
-        questObservable
-            .bind(onNext: {[weak self] quest in
-                guard let self = self else { return }
-                self._selected.accept(quest)
-                self._items.accept(self.cellData)
+        questObservable.map {[weak self] quest in
+            guard let self = self else { return }
 
-                let dragon = self.flux.storiesStore.dragons.first(where: { dragon in quest.dragonName == dragon.name })
-                self._dragon.accept(dragon)
+            self._selected.accept(quest)
+            self._items.accept(self.cellData)
 
-                self._dragonImage.accept(dragon?.images.illust)
+            let dragon = self.flux.storiesStore.dragons.first(where: { dragon in quest.dragonName == dragon.name })
+            self._dragon.accept(dragon)
+            self._dragonImage.accept(dragon?.images.illust)
 
-                let sorted = quest.comments.sorted(by: {lhs, rhs in
-                    lhs.id.id > rhs.id.id
-                })
-                self._comments.accept(Diff(old: self._comments.value.new, new: sorted))
+            let sorted = quest.comments.sorted(by: {lhs, rhs in
+                lhs.id.id > rhs.id.id
             })
+
+            self._comments.accept(Diff(old: self._comments.value.new, new: sorted))
+        }
+            .subscribe()
             .disposed(by: disposeBag)
 
         Observable.combineLatest(questObservable, _segment.asObservable()).map {[weak self] quest, segment in
             guard let self = self else { return }
-            let sorted = quest.comments.filter { comment in
-                switch segment {
-                case .user:
-                    return comment.type == .user
-                case .play:
-                    return comment.type == .finishQuest
-                case .all:
-                    return true
+            let sorted = quest.comments
+                .filter { comment in
+                    switch segment {
+                    case .user:
+                        return comment.type == .user
+                    case .play:
+                        return comment.type == .finishQuest
+                    case .all:
+                        return true
+
+                    }
 
                 }
-
-            }.sorted(by: {lhs, rhs in
+                .sorted(by: {lhs, rhs in
                     lhs.id.id > rhs.id.id
                 })
 
-            self._comments.accept(Diff(old: self._comments.value.new, new: sorted))
+            self._comments
+                .accept(Diff(old: self._comments.value.new, new: sorted))
         }.subscribe().disposed(by: disposeBag)
     }
 
