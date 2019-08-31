@@ -142,7 +142,6 @@
 		24FB5C0A22871C4800B0E915 /* EditStoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */; };
 		24FB5C0C22871C5300B0E915 /* EditStoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */; };
 		24FB5C0E22871CF200B0E915 /* StoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */; };
-		561B51AEE5BD828A94F2426E /* Pods_PlayTimeObjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C256501E2B17E55CFA62D3D1 /* Pods_PlayTimeObjectTests.framework */; };
 		6E014EA51FFB520100EFF438 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E014EA31FFB520000EFF438 /* Result.framework */; };
 		6E1B60B92033159E00689218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60872033101700689218 /* AppDelegate.swift */; };
 		6E1B60C12033159E00689218 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60A32033101700689218 /* Error.swift */; };
@@ -381,7 +380,6 @@
 		24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRouter.swift; sourceTree = "<group>"; };
 		24FE31CE22AD3C1900020756 /* Diffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
 		2A3824709A357F9FB8C078F3 /* Pods-PlayTimeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTimeTests.release.xcconfig"; path = "Target Support Files/Pods-PlayTimeTests/Pods-PlayTimeTests.release.xcconfig"; sourceTree = "<group>"; };
-		2F12EDB9D15D65C28F699EEF /* Pods-PlayTimeObjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTimeObjectTests.release.xcconfig"; path = "Target Support Files/Pods-PlayTimeObjectTests/Pods-PlayTimeObjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		594AB30306E28AB5FD86C22C /* Pods_PlayTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C649A9CAB01F0A8EE15D36 /* Pods-PlayTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTime.debug.xcconfig"; path = "Target Support Files/Pods-PlayTime/Pods-PlayTime.debug.xcconfig"; sourceTree = "<group>"; };
 		6E014EA31FFB520000EFF438 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 		6EFEE98B203F277600C67DBC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		6EFEE98D203F2AD200C67DBC /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		A32F61A669E56E7F64CFF40B /* Pods-PlayTimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTimeTests.debug.xcconfig"; path = "Target Support Files/Pods-PlayTimeTests/Pods-PlayTimeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B3E57C974AB57BC371A654DF /* Pods-PlayTimeObjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTimeObjectTests.debug.xcconfig"; path = "Target Support Files/Pods-PlayTimeObjectTests/Pods-PlayTimeObjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C256501E2B17E55CFA62D3D1 /* Pods_PlayTimeObjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayTimeObjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A8E987FF73EE96A3D6B336 /* Pods_PlayTimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayTimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCD310A9DD1A05114C51240 /* Pods-PlayTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayTime.release.xcconfig"; path = "Target Support Files/Pods-PlayTime/Pods-PlayTime.release.xcconfig"; sourceTree = "<group>"; };
@@ -469,7 +466,6 @@
 				24186EE722F56EF400461EF7 /* Nimble.framework in Frameworks */,
 				24186EE922F56EF400461EF7 /* Quick.framework in Frameworks */,
 				24186E8022F55E2B00461EF7 /* PlayTimeObject.framework in Frameworks */,
-				561B51AEE5BD828A94F2426E /* Pods_PlayTimeObjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,8 +927,6 @@
 				CBCD310A9DD1A05114C51240 /* Pods-PlayTime.release.xcconfig */,
 				A32F61A669E56E7F64CFF40B /* Pods-PlayTimeTests.debug.xcconfig */,
 				2A3824709A357F9FB8C078F3 /* Pods-PlayTimeTests.release.xcconfig */,
-				B3E57C974AB57BC371A654DF /* Pods-PlayTimeObjectTests.debug.xcconfig */,
-				2F12EDB9D15D65C28F699EEF /* Pods-PlayTimeObjectTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1044,11 +1038,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24186E9122F55E2B00461EF7 /* Build configuration list for PBXNativeTarget "PlayTimeObjectTests" */;
 			buildPhases = (
-				BD93A26324A320C68C4734E2 /* [CP] Check Pods Manifest.lock */,
 				24186E7B22F55E2B00461EF7 /* Sources */,
 				24186E7C22F55E2B00461EF7 /* Frameworks */,
 				24186E7D22F55E2B00461EF7 /* Resources */,
-				B14A9FB99970DCA5467D61A4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1344,48 +1336,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-PlayTime-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B14A9FB99970DCA5467D61A4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlayTimeObjectTests/Pods-PlayTimeObjectTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayTimeObjectTests/Pods-PlayTimeObjectTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD93A26324A320C68C4734E2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PlayTimeObjectTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1870,7 +1820,6 @@
 		};
 		24186E9222F55E2B00461EF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3E57C974AB57BC371A654DF /* Pods-PlayTimeObjectTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1891,7 +1840,6 @@
 		};
 		24186E9322F55E2B00461EF7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F12EDB9D15D65C28F699EEF /* Pods-PlayTimeObjectTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
