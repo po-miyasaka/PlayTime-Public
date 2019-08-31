@@ -142,7 +142,6 @@
 		24FB5C0A22871C4800B0E915 /* EditStoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */; };
 		24FB5C0C22871C5300B0E915 /* EditStoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */; };
 		24FB5C0E22871CF200B0E915 /* StoriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */; };
-		6E014EA51FFB520100EFF438 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E014EA31FFB520000EFF438 /* Result.framework */; };
 		6E1B60B92033159E00689218 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60872033101700689218 /* AppDelegate.swift */; };
 		6E1B60C12033159E00689218 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60A32033101700689218 /* Error.swift */; };
 		6E1B60C52033159E00689218 /* QuestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1B60AC2033101700689218 /* QuestItem.swift */; };
@@ -496,7 +495,6 @@
 				6E310487205D52580038A80F /* RxCocoa.framework in Frameworks */,
 				6E83C0BB1FFEC25100CC7E5E /* APIKit.framework in Frameworks */,
 				24186ED922F5672100461EF7 /* Utilities.framework in Frameworks */,
-				6E014EA51FFB520100EFF438 /* Result.framework in Frameworks */,
 				ADF2CB0689E298FD3F4FB9F1 /* Pods_PlayTime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1306,7 +1304,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
