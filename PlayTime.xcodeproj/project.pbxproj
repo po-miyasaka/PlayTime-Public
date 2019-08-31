@@ -359,7 +359,7 @@
 		24C4AC6522CF5C3000F0ACA0 /* ImageViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewCell.xib; sourceTree = "<group>"; };
 		24C55C0022EEA69700E66AE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24C55C0222EF0C6B00E66AE2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		24DD5D5D2221B5D800904F94 /* DragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DragonViewController.swift; path = playTime/Views/Dragon/DragonViewController.swift; sourceTree = SOURCE_ROOT; };
+		24DD5D5D2221B5D800904F94 /* DragonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonViewController.swift; sourceTree = "<group>"; };
 		24DD5D612221BCF300904F94 /* Quests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quests.swift; sourceTree = "<group>"; };
 		24DD5D632221BEFF00904F94 /* DragonViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DragonViewController.storyboard; sourceTree = "<group>"; };
 		24E067A42277F0BF004EEF3C /* StoriesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoriesViewController.storyboard; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 		24FB5C022285DC8900B0E915 /* EditStoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryViewModel.swift; sourceTree = "<group>"; };
 		24FB5C0422868C1F00B0E915 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		24FB5C0622868F4400B0E915 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
-		24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditStoryRouter.swift; path = playTime/DataStore/EditStoryRouter.swift; sourceTree = SOURCE_ROOT; };
+		24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoryRouter.swift; sourceTree = "<group>"; };
 		24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStoriesRouter.swift; sourceTree = "<group>"; };
 		24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesRouter.swift; sourceTree = "<group>"; };
 		24FE31CE22AD3C1900020756 /* Diffable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diffable.swift; sourceTree = "<group>"; };
@@ -507,13 +507,13 @@
 		2402DB74227338A700EA170F /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				6E1B60B22033101700689218 /* DeletingButtonView.swift */,
+				6E7846242039C92E003470FA /* DeletingButtonView.xib */,
 				24E067A42277F0BF004EEF3C /* StoriesViewController.storyboard */,
 				2402DB7C22734F1400EA170F /* StoriesViewController.swift */,
 				2402DB84227407D200EA170F /* StoryTitleCollectionView.swift */,
 				2402DB7822734CBF00EA170F /* StoryTitleItem.swift */,
 				2402DB7A22734CF600EA170F /* StoryTitleItem.xib */,
-				6E1B60B22033101700689218 /* DeletingButtonView.swift */,
-				6E7846242039C92E003470FA /* DeletingButtonView.xib */,
 			);
 			path = Story;
 			sourceTree = "<group>";
@@ -521,8 +521,8 @@
 		240CE8B52212EBDA00D32E9A /* PlayTimeTests */ = {
 			isa = PBXGroup;
 			children = (
-				240CE8B82212EBDA00D32E9A /* Info.plist */,
 				243012F022F83EDD003656C4 /* ActionCreatore+tests.swift */,
+				240CE8B82212EBDA00D32E9A /* Info.plist */,
 				243012EF22F83EDD003656C4 /* PlayTimeTests-Bridging-Header.h */,
 			);
 			path = PlayTimeTests;
@@ -532,8 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				240CE8E02215BFA800D32E9A /* AddQuestStore.swift */,
-				2402DB68226F50FB00EA170F /* StoriesStore.swift */,
 				240CE8F122190D1900D32E9A /* SettingsStore.swift */,
+				2402DB68226F50FB00EA170F /* StoriesStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -549,7 +549,6 @@
 		240CE8E52215C00700D32E9A /* ActionCreators */ = {
 			isa = PBXGroup;
 			children = (
-				240CE8FD2219199300D32E9A /* AppDelegateService.swift */,
 				240CE90C2219880800D32E9A /* ActionCreator.swift */,
 			);
 			path = ActionCreators;
@@ -566,9 +565,9 @@
 		240CE8E92218794E00D32E9A /* Quest */ = {
 			isa = PBXGroup;
 			children = (
+				240CE8EA2218795E00D32E9A /* MeanTime.swift */,
 				6EFEE989203F189F00C67DBC /* Quest.swift */,
 				24DD5D612221BCF300904F94 /* Quests.swift */,
-				240CE8EA2218795E00D32E9A /* MeanTime.swift */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -576,11 +575,11 @@
 		240CE90122195AE500D32E9A /* Flux */ = {
 			isa = PBXGroup;
 			children = (
-				240CE90E22198F9300D32E9A /* Flux.swift */,
-				240CE8E62215C00F00D32E9A /* Actions */,
 				240CE8E52215C00700D32E9A /* ActionCreators */,
+				240CE8E62215C00F00D32E9A /* Actions */,
 				240CE8E22215BFC200D32E9A /* Dispatchers */,
 				240CE8DF2215BF8600D32E9A /* Stores */,
+				240CE90E22198F9300D32E9A /* Flux.swift */,
 			);
 			path = Flux;
 			sourceTree = "<group>";
@@ -588,27 +587,26 @@
 		240CE9102219E21C00D32E9A /* Dragon */ = {
 			isa = PBXGroup;
 			children = (
-				24DD5D5D2221B5D800904F94 /* DragonViewController.swift */,
 				24317C7722D1B8A400BA1C3E /* DetailDragonViewController.swift */,
 				24317C7822D1B8A400BA1C3E /* DetailDragonViewController.xib */,
-				24DD5D632221BEFF00904F94 /* DragonViewController.storyboard */,
 				24C4AC5D22CF1A5D00F0ACA0 /* DragonLibraryView.swift */,
+				24C4AC6122CF1C5300F0ACA0 /* DragonLibraryViewModel.swift */,
+				24DD5D632221BEFF00904F94 /* DragonViewController.storyboard */,
+				24DD5D5D2221B5D800904F94 /* DragonViewController.swift */,
 				24C4AC6322CF5AD400F0ACA0 /* ImageViewCell.swift */,
 				24C4AC6522CF5C3000F0ACA0 /* ImageViewCell.xib */,
-				24C4AC6122CF1C5300F0ACA0 /* DragonLibraryViewModel.swift */,
 			);
-			name = Dragon;
-			path = "New Group";
+			path = Dragon;
 			sourceTree = "<group>";
 		};
 		240CE9112219E24F00D32E9A /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				6E74A8A6203C3D4800AE248F /* questing.sks */,
-				24E067A622780EC4004EEF3C /* QuestItem.xib */,
-				6E1B60AC2033101700689218 /* QuestItem.swift */,
 				24E067A822789A9A004EEF3C /* AddQuestItem.swift */,
 				24E067A922789A9A004EEF3C /* AddQuestItem.xib */,
+				6E1B60AC2033101700689218 /* QuestItem.swift */,
+				24E067A622780EC4004EEF3C /* QuestItem.xib */,
+				6E74A8A6203C3D4800AE248F /* questing.sks */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -624,10 +622,10 @@
 		24186E0222F547FC00461EF7 /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				6EFEE98D203F2AD200C67DBC /* RealmService.swift */,
-				24186EF122F5A3EF00461EF7 /* RealmObjects.swift */,
 				24186E0322F547FC00461EF7 /* DataStore.h */,
 				24186E0422F547FC00461EF7 /* Info.plist */,
+				24186EF122F5A3EF00461EF7 /* RealmObjects.swift */,
+				6EFEE98D203F2AD200C67DBC /* RealmService.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -645,12 +643,12 @@
 			isa = PBXGroup;
 			children = (
 				240CE8E92218794E00D32E9A /* Quest */,
-				6EFEE98B203F277600C67DBC /* Settings.swift */,
 				6E43625B2052BB8100926E78 /* Dragon.swift */,
-				24BF9446226E66AA006B5C99 /* Story.swift */,
-				2402DB6C226F5A4D00EA170F /* Stories.swift */,
-				24186E7922F55E2B00461EF7 /* PlayTimeObject.h */,
 				24186E7A22F55E2B00461EF7 /* Info.plist */,
+				24186E7922F55E2B00461EF7 /* PlayTimeObject.h */,
+				6EFEE98B203F277600C67DBC /* Settings.swift */,
+				2402DB6C226F5A4D00EA170F /* Stories.swift */,
+				24BF9446226E66AA006B5C99 /* Story.swift */,
 			);
 			path = PlayTimeObject;
 			sourceTree = "<group>";
@@ -658,10 +656,10 @@
 		24186E8522F55E2B00461EF7 /* PlayTimeObjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				24186DF622F31B0200461EF7 /* Quest+Tests.swift */,
+				24186E8822F55E2B00461EF7 /* Info.plist */,
 				24186DF822F44E1A00461EF7 /* MeanTime+Tests.swift */,
 				24186DFA22F44E8A00461EF7 /* PlayTimeTestsUtility.swift */,
-				24186E8822F55E2B00461EF7 /* Info.plist */,
+				24186DF622F31B0200461EF7 /* Quest+Tests.swift */,
 			);
 			path = PlayTimeObjectTests;
 			sourceTree = "<group>";
@@ -669,12 +667,12 @@
 		24186EC522F5672100461EF7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				6E1B60A22033101700689218 /* DateUtility.swift */,
-				6E1B60A42033101700689218 /* Extensions.swift */,
-				24FE31CE22AD3C1900020756 /* Diffable.swift */,
 				24C55C0222EF0C6B00E66AE2 /* Colors.swift */,
-				24186EC622F5672100461EF7 /* Utilities.h */,
+				6E1B60A22033101700689218 /* DateUtility.swift */,
+				24FE31CE22AD3C1900020756 /* Diffable.swift */,
+				6E1B60A42033101700689218 /* Extensions.swift */,
 				24186EC722F5672100461EF7 /* Info.plist */,
+				24186EC622F5672100461EF7 /* Utilities.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -682,8 +680,8 @@
 		24186ED222F5672100461EF7 /* UtilitiesTests */ = {
 			isa = PBXGroup;
 			children = (
-				24186ED322F5672100461EF7 /* UtilitiesTests.swift */,
 				24186ED522F5672100461EF7 /* Info.plist */,
+				24186ED322F5672100461EF7 /* UtilitiesTests.swift */,
 			);
 			path = UtilitiesTests;
 			sourceTree = "<group>";
@@ -700,30 +698,30 @@
 		245C9326222ABE9A00C1A41C /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				24A6B90D22959E2D00AE411F /* CommentsView.swift */,
-				24A6B90B22959D1B00AE411F /* CommentsView.xib */,
-				2412422C22E4351D0028B98E /* CommentWriteViewController.swift */,
-				2412422D22E4351D0028B98E /* CommentWriteViewController.xib */,
-				245C9327222ABEB100C1A41C /* DetailQuestViewController.swift */,
-				245C9329222AC0CF00C1A41C /* DetailQuestViewController.storyboard */,
 				241347EF2291A87A007F4A7D /* CommentCell.swift */,
 				241347ED2291A879007F4A7D /* CommentCell.xib */,
+				2412422C22E4351D0028B98E /* CommentWriteViewController.swift */,
+				2412422D22E4351D0028B98E /* CommentWriteViewController.xib */,
+				24A6B90D22959E2D00AE411F /* CommentsView.swift */,
+				24A6B90B22959D1B00AE411F /* CommentsView.xib */,
+				245C9329222AC0CF00C1A41C /* DetailQuestViewController.storyboard */,
+				245C9327222ABEB100C1A41C /* DetailQuestViewController.swift */,
 				241347EA2291A879007F4A7D /* DragonCell.swift */,
 				241347E82291A878007F4A7D /* DragonCell.xib */,
 				241347F12291A87A007F4A7D /* GraphCell.swift */,
 				241347EC2291A879007F4A7D /* GraphCell.xib */,
+				240902F7229A636800598B92 /* SelectDragonItem.swift */,
+				240902F8229A636800598B92 /* SelectDragonItem.xib */,
+				240902F3229A591500598B92 /* SelectDragonViewController.swift */,
+				240902F4229A591500598B92 /* SelectDragonViewController.xib */,
+				24077F972299F6C100376395 /* SelectStoryViewController.swift */,
+				24077F992299F77500376395 /* SelectStoryViewController.xib */,
 				241347E92291A879007F4A7D /* SubTextCell.swift */,
 				241347F32291A87A007F4A7D /* SubTextCell.xib */,
 				241347EE2291A879007F4A7D /* SwitchCell.swift */,
 				241347F02291A87A007F4A7D /* SwitchCell.xib */,
 				241347F22291A87A007F4A7D /* TextFieldCell.swift */,
 				241347EB2291A879007F4A7D /* TextFieldCell.xib */,
-				240902F3229A591500598B92 /* SelectDragonViewController.swift */,
-				240902F4229A591500598B92 /* SelectDragonViewController.xib */,
-				240902F7229A636800598B92 /* SelectDragonItem.swift */,
-				240902F8229A636800598B92 /* SelectDragonItem.xib */,
-				24077F972299F6C100376395 /* SelectStoryViewController.swift */,
-				24077F992299F77500376395 /* SelectStoryViewController.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -735,6 +733,16 @@
 				2498DBE52278BB0000CB8C24 /* AddQuestViewController.xib */,
 			);
 			path = Add;
+			sourceTree = "<group>";
+		};
+		24D7855C231AD81400677B64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				24C55C0022EEA69700E66AE2 /* Assets.xcassets */,
+				6E444C28205433A10071C106 /* Localizable.strings */,
+				6E444C2E205443D50071C106 /* infoPlist.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		24FB5BF72285A7E000B0E915 /* StoryEdit */ = {
@@ -770,41 +778,33 @@
 		6E1B60852033101700689218 /* PlayTime */ = {
 			isa = PBXGroup;
 			children = (
-				6E1B60862033101700689218 /* Application */,
 				240CE90122195AE500D32E9A /* Flux */,
+				24D7855C231AD81400677B64 /* Resources */,
+				6E1B608D2033101700689218 /* Router */,
+				6E1B609F2033101700689218 /* Utilities */,
 				6E6AEE1720399BF100615331 /* ViewModels */,
 				6E1B60A72033101700689218 /* Views */,
-				6E1B609F2033101700689218 /* Utilities */,
+				6E1B60872033101700689218 /* AppDelegate.swift */,
+				240CE8FD2219199300D32E9A /* AppDelegateService.swift */,
+				6E1B608C2033101700689218 /* Info.plist */,
+				6E5D8C672062E90E002BB925 /* LaunchScreen.storyboard */,
 			);
 			path = PlayTime;
-			sourceTree = "<group>";
-		};
-		6E1B60862033101700689218 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				24C55C0022EEA69700E66AE2 /* Assets.xcassets */,
-				6E1B60872033101700689218 /* AppDelegate.swift */,
-				6E5D8C672062E90E002BB925 /* LaunchScreen.storyboard */,
-				6E1B608C2033101700689218 /* Info.plist */,
-				6E444C2E205443D50071C106 /* infoPlist.strings */,
-				6E444C28205433A10071C106 /* Localizable.strings */,
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		6E1B608D2033101700689218 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				24FB5C0422868C1F00B0E915 /* Router.swift */,
-				24FB5C0622868F4400B0E915 /* SettingsRouter.swift */,
-				24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */,
-				24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */,
-				24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */,
 				24C4AC5B22CB5FB300F0ACA0 /* AddQuestRouter.swift */,
 				240B6B82228B08CD0010B8D6 /* DetailQuestRouter.swift */,
-				24246512228B176600E852C2 /* StartingQuestRouter.swift */,
-				2410464B228F1D1100328A61 /* PlayingQuestRouter.swift */,
 				24317C7F22D1FA8200BA1C3E /* DragonRouter.swift */,
+				24FB5C0B22871C5300B0E915 /* EditStoriesRouter.swift */,
+				24FB5C0922871C4800B0E915 /* EditStoryRouter.swift */,
+				2410464B228F1D1100328A61 /* PlayingQuestRouter.swift */,
+				24FB5C0422868C1F00B0E915 /* Router.swift */,
+				24FB5C0622868F4400B0E915 /* SettingsRouter.swift */,
+				24246512228B176600E852C2 /* StartingQuestRouter.swift */,
+				24FB5C0D22871CF200B0E915 /* StoriesRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -812,12 +812,12 @@
 		6E1B609F2033101700689218 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				240CE8ED2218FF6200D32E9A /* QuestRepository.swift */,
-				2402DB6A226F51EA00EA170F /* StoryRepository.swift */,
-				240CE8EF2218FF7100D32E9A /* SettingsRepository.swift */,
 				24186E6E22F55D0900461EF7 /* DomainObjectDataTranslator.swift */,
-				6EB13887207582E90092942D /* NotificationService.swift */,
 				6E1B60A32033101700689218 /* Error.swift */,
+				6EB13887207582E90092942D /* NotificationService.swift */,
+				240CE8ED2218FF6200D32E9A /* QuestRepository.swift */,
+				240CE8EF2218FF7100D32E9A /* SettingsRepository.swift */,
+				2402DB6A226F51EA00EA170F /* StoryRepository.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -825,14 +825,13 @@
 		6E1B60A72033101700689218 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6E1B608D2033101700689218 /* Router */,
-				2402DB74227338A700EA170F /* Story */,
-				6E1B60AB2033101700689218 /* QuestList */,
-				243952BF227C767A001DCB6D /* PlayingQuest */,
 				245C9326222ABE9A00C1A41C /* Detail */,
-				240CE9122219E28100D32E9A /* Tutorial */,
 				240CE9102219E21C00D32E9A /* Dragon */,
+				243952BF227C767A001DCB6D /* PlayingQuest */,
+				6E1B60AB2033101700689218 /* QuestList */,
 				6EFEE988203F0F7100C67DBC /* Settings */,
+				2402DB74227338A700EA170F /* Story */,
+				240CE9122219E28100D32E9A /* Tutorial */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -842,10 +841,10 @@
 			children = (
 				2498DBE32278BACD00CB8C24 /* Add */,
 				240CE9112219E24F00D32E9A /* Item */,
-				243952BD227C6F11001DCB6D /* quest.xcassets */,
-				2402DB72227336B900EA170F /* QuestListViewController.xib */,
 				6E1B60AE2033101700689218 /* QuestListViewController.swift */,
+				2402DB72227336B900EA170F /* QuestListViewController.xib */,
 				6E1B60AF2033101700689218 /* QuestListViewControllerDataSource.swift */,
+				243952BD227C6F11001DCB6D /* quest.xcassets */,
 			);
 			path = QuestList;
 			sourceTree = "<group>";
@@ -853,17 +852,17 @@
 		6E4842971FFA723000DD3CE0 = {
 			isa = PBXGroup;
 			children = (
-				6E1B60852033101700689218 /* PlayTime */,
 				24186E0222F547FC00461EF7 /* DataStore */,
-				24186E7822F55E2B00461EF7 /* PlayTimeObject */,
-				24186EC522F5672100461EF7 /* Utilities */,
-				240CE8B52212EBDA00D32E9A /* PlayTimeTests */,
 				24186E3D22F5521900461EF7 /* DataStoreTests */,
-				24186E8522F55E2B00461EF7 /* PlayTimeObjectTests */,
-				24186ED222F5672100461EF7 /* UtilitiesTests */,
-				6E4842A11FFA723000DD3CE0 /* Products */,
 				6E014EA21FFB520000EFF438 /* Frameworks */,
+				6E1B60852033101700689218 /* PlayTime */,
+				24186E7822F55E2B00461EF7 /* PlayTimeObject */,
+				24186E8522F55E2B00461EF7 /* PlayTimeObjectTests */,
+				240CE8B52212EBDA00D32E9A /* PlayTimeTests */,
 				74E294CD821172B7CA765A60 /* Pods */,
+				6E4842A11FFA723000DD3CE0 /* Products */,
+				24186EC522F5672100461EF7 /* Utilities */,
+				24186ED222F5672100461EF7 /* UtilitiesTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -885,18 +884,18 @@
 		6E6AEE1720399BF100615331 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				240CE90422195B4C00D32E9A /* SettingsViewModel.swift */,
-				240CE8BE2214421700D32E9A /* QuestListViewModel.swift */,
 				2498DBE82278BBA000CB8C24 /* AddQuestViewModel.swift */,
-				24E17DD4227D655100EF70DC /* PlayingQuestViewModel.swift */,
-				2402DB822273692D00EA170F /* StoryViewModel.swift */,
-				240CE90622195C0400D32E9A /* DetailQuestViewModel.swift */,
 				24317C7B22D1D84A00BA1C3E /* DetailDragonViewModel.swift */,
+				240CE90622195C0400D32E9A /* DetailQuestViewModel.swift */,
 				240CE90822195CAB00D32E9A /* DragonViewModel.swift */,
 				24FB5BFC2285A9C700B0E915 /* EditStoriesViewModel.swift */,
 				24FB5C022285DC8900B0E915 /* EditStoryViewModel.swift */,
-				24077F9B2299F8C100376395 /* SelectStoryViewModel.swift */,
+				24E17DD4227D655100EF70DC /* PlayingQuestViewModel.swift */,
+				240CE8BE2214421700D32E9A /* QuestListViewModel.swift */,
 				240902FB229A828E00598B92 /* SelectDragonVIewModel.swift */,
+				24077F9B2299F8C100376395 /* SelectStoryViewModel.swift */,
+				240CE90422195B4C00D32E9A /* SettingsViewModel.swift */,
+				2402DB822273692D00EA170F /* StoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -905,17 +904,17 @@
 			isa = PBXGroup;
 			children = (
 				24FB5BF72285A7E000B0E915 /* StoryEdit */,
+				6EDD7CEA203C8E0300289708 /* PlayTimeCell.swift */,
+				6E3FCC722069661E00ECAC06 /* PlayTimeCell.xib */,
 				6EDD7CE4203C8C5E00289708 /* SettingsViewController.storyboard */,
 				6EDD7CE6203C8D3700289708 /* SettingsViewController.swift */,
 				6EDD7CE8203C8DBF00289708 /* SettingsViewControllerDataSource.swift */,
-				6EDD7CEA203C8E0300289708 /* PlayTimeCell.swift */,
-				6E3FCC722069661E00ECAC06 /* PlayTimeCell.xib */,
 				244DEBD3226000D1001855E7 /* SortCell.swift */,
 				244DEBD5226000D2001855E7 /* SortCell.xib */,
 				244DEBD4226000D1001855E7 /* TextCell.swift */,
 				244DEBD6226000D2001855E7 /* TextCell.xib */,
-				6EDA9316206AFACA008384C7 /* TimerPickerView.xib */,
 				6EDA9318206AFC50008384C7 /* TimerPickerView.swift */,
+				6EDA9316206AFACA008384C7 /* TimerPickerView.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1590,10 +1589,11 @@
 		6E444C28205433A10071C106 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6E444C29205433AE0071C106 /* ja */,
 				6ECF3ACD2066479300CE0193 /* Base */,
+				6E444C29205433AE0071C106 /* ja */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		6E444C2E205443D50071C106 /* infoPlist.strings */ = {
@@ -1602,6 +1602,7 @@
 				6E444C2D205443D50071C106 /* ja */,
 			);
 			name = infoPlist.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2077,7 +2078,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/PlayTime/Application/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/PlayTime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
@@ -2103,7 +2104,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/PlayTime/Application/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/PlayTime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CFLAGS = "$(inherited)";

@@ -88,6 +88,7 @@ final class StoryStore: StoryStoreProtocol {
                 let refreshed = self._stories.value + [story]
                 storiesRepository.set(stories: refreshed)
                 self._stories.accept(refreshed)
+
             // エンティティAを編集後に保存したあとにエンティティAをもつ何かを保存すると上書きされる。
             case .editStory(let target):
                 let refreshed = self._stories.value.replaceTo(stories: [target])
