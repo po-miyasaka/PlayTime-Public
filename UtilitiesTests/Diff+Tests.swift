@@ -196,12 +196,15 @@ class DiffTests: XCTestCase {
                          deleted:[3, 4, 5], section: 1)
     }
     
-    // TODO: 要改善
+    // TODO: より改善できそう
+    // https://speakerdeck.com/banjun/difference-update-uitableview-with-5000-rows
+    
     func test_パフォーマンス() {
         
-        let old = (0...5000).map { _ in 10000.random }.toSet.toArray.mock
-        let new = (0...5000).map { _ in 10000.random }.toSet.toArray.mock
+        let old = (0...5000).map{ $0 }.toSet.toArray.mock
+        let new = (0...6000).filter{ $0 % 3 == 0 }.reversed().toSet.toArray.mock
         var result: ClassifiedIndexPaths!
+        
         measure {
             result = target(old: old, new: new)
         }

@@ -81,3 +81,54 @@ public protocol Diffable: Equatable {
     associatedtype Expression: Equatable
     var expression: Expression { get }
 }
+
+
+
+extension Diff {
+    
+// 改善前
+    
+//    func classifyIndice(section: Int = 0) -> ClassifiedIndexPaths {
+//
+//        var reloaded = [IndexPath]()
+//        var moved = [MovedIndexPath]()
+//
+//        new.enumerated().forEach { afterElement in
+//            old.enumerated().forEach { beforeElement in
+//                if afterElement.element == beforeElement.element {
+//
+//                    if beforeElement.offset != afterElement.offset {
+//                        moved.append(MovedIndexPath(IndexPath(row: beforeElement.offset, section: section),
+//                                                    IndexPath(row: afterElement.offset, section: section)))
+//                    } else if afterElement.element.expression != beforeElement.element.expression {
+//                        // 変更がある。
+//                        reloaded.append(IndexPath(row: afterElement.offset, section: section))
+//                        reloaded.append(IndexPath(row: beforeElement.offset, section: section))
+//                    }
+//                }
+//            }
+//        }
+//
+//        let deleted = old.enumerated()
+//            .compactMap {beforeElement -> Int? in
+//                if !new.contains(where: { afterElement in afterElement == beforeElement.element }) {
+//                    return beforeElement.offset
+//                } else {
+//                    return nil
+//                }
+//            }
+//            .map { IndexPath(row: $0, section: section) }
+//
+//        let inserted = new.enumerated()
+//            .compactMap { afterElement -> Int? in
+//                if !old.contains(where: { beforeElement in beforeElement == afterElement.element }) {
+//                    return afterElement.offset
+//                } else {
+//                    return nil
+//                }
+//            }
+//            .map { IndexPath(row: $0, section: section) }
+//
+//        return (reloaded: reloaded.toSet.toArray, moved: moved, deleted: deleted, inserted: inserted)
+//    }
+}
