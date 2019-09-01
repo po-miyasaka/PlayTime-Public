@@ -9,6 +9,8 @@
 import XCTest
 @testable import Utilities
 
+infix operator =~=
+
 class DiffTests: XCTestCase {
     
     // 1 = 空の場合
@@ -193,7 +195,11 @@ class DiffTests: XCTestCase {
                                  (2, 0)],
                          deleted:[3, 4, 5], section: 1)
     }
-    
+}
+
+// - MARK: 以下Diff + Tests用のUtilities
+
+extension DiffTests {
     func target(old : [DiffableMock], new: [DiffableMock], section: Int = 0) -> ClassifiedIndexPaths {
         let diff = Diff(old: old, new: new)
         return diff.classifyIndice(section: section)
@@ -201,7 +207,7 @@ class DiffTests: XCTestCase {
     
     
     // 奇数はリロード対象
-    var empty = [DiffableMock]()
+    var empty: [DiffableMock] { return [] }
     var v2_4_6: [DiffableMock] { return  [2, 4, 6].mock }
     var v1_3_5: [DiffableMock] { return  [1, 3, 5].mock }
     
@@ -287,23 +293,17 @@ fileprivate func expected(inserted: [Int] = [],
                           moved: [(Int, Int)] = [],
                           deleted: [Int] = [],
                           section: Int = 0) -> DiffExpectation {
-    let inserted = inserted.map{ IndexPath.init(row: $0, section: section) }
-        .toSet
+    let inserted = inserted.map{ IndexPath.init(row: $0, section: section) }.toSet
     
-    let reloaded = reloaded.map{ IndexPath.init(row: $0, section: section) }
-        .toSet
+    let reloaded = reloaded.map{ IndexPath.init(row: $0, section: section) }.toSet
     
     let moved: Set<MovedIndexPath> = moved.map {
         let before = IndexPath.init(row: $0.0, section: section)
         let after = IndexPath.init(row: $0.1, section: section)
         return MovedIndexPath.init(before, after)
-        }
-        .toSet
+        }.toSet
     
-    let deleted = deleted.map{ IndexPath.init(row: $0, section: section) }
-        .toSet
+    let deleted = deleted.map{ IndexPath.init(row: $0, section: section) }.toSet
     
     return DiffExpectation.init(inserted: inserted, reloaded: reloaded, moved: moved, deleted: deleted, section: section)
 }
-
-infix operator =~=
