@@ -12,6 +12,8 @@ import DataStore
 import RealmSwift
 import Utilities
 
+// TODO: Repositoryモジュールに移す。
+
 protocol EntityMaker {
     associatedtype Entity
     func generate() -> Entity

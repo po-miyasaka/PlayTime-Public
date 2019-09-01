@@ -41,20 +41,7 @@ class EditStoriesViewController: UIViewController {
         viewModel.inputs.setUp()
         viewModel.outputs.cellDatasObservable.map {[weak self] diff in
             guard let self = self else { return }
-            let tuple = diff.classifyIndice()
-
-            self.ibTableView.beginUpdates()
-            if tuple.reloaded.isNotEmpty {
-                self.ibTableView.reloadRows(at: tuple.reloaded, with: .fade)
-            }
-            if tuple.deleted.isNotEmpty {
-                self.ibTableView.deleteRows(at: tuple.deleted, with: .fade)
-            }
-            if tuple.inserted.isNotEmpty {
-                self.ibTableView.insertRows(at: tuple.inserted, with: .fade)
-            }
-            self.ibTableView.endUpdates()
-
+            diff.update(self.ibTableView)
         }.subscribe().disposed(by: disposeBag)
         ibBackButton.rx.tap.map(viewModel.inputs.back).subscribe().disposed(by: disposeBag)
         ibAddStoryButton.rx.tap.map(viewModel.inputs.add).subscribe().disposed(by: disposeBag)

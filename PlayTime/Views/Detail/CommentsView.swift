@@ -88,21 +88,8 @@ class CommentsView: UIView {
         viewModel?.outputs
             .commentsDriver
             .map {[weak self] diff in
-
                 guard let self = self else { return }
-                let tuple = diff.classifyIndice()
-                self.ibTableView.beginUpdates()
-                if tuple.reloaded.isNotEmpty {
-                    self.ibTableView.reloadRows(at: tuple.reloaded, with: .fade)
-                }
-                if tuple.deleted.isNotEmpty {
-                    self.ibTableView.deleteRows(at: tuple.deleted, with: .fade)
-                }
-                if tuple.inserted.isNotEmpty {
-                    self.ibTableView.insertRows(at: tuple.inserted, with: .fade)
-                }
-                self.ibTableView.endUpdates()
-
+                diff.update(self.ibTableView)
             }
             .drive()
             .disposed(by: disposeBag)

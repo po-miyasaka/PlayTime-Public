@@ -25,6 +25,7 @@ class QuestTests: QuickSpec { // itの中でitは使えない
         var firstDate: Date?
         var continueCount: Int
         var continueCountMax: Int
+        var title: String
     }
     
     
@@ -51,7 +52,8 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                                                        latestDate: questWithActiveDateAndMeanTime.activeDate,
                                                        firstDate: questWithActiveDateAndMeanTime.meanTimes.map{ $0.start }.min(),
                                                        continueCount: 0,
-                                                       continueCountMax: 0)
+                                                       continueCountMax: 0,
+                                                       title: baseQuest.title)
                     
                     match(date(200), questWithActiveDateAndMeanTime, expectation)
                     
@@ -115,7 +117,8 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                                                        latestDate: activeQuest.activeDate,
                                                        firstDate: activeQuest.activeDate,
                                                        continueCount: 0,
-                                                       continueCountMax: 0)
+                                                       continueCountMax: 0,
+                                                       title: baseQuest.title)
                     
                     match(date(200), activeQuest, expectation)
                     
@@ -179,7 +182,8 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                                                        latestDate: questWithMeanTime.meanTimes.map{ $0.end }.max(),
                                                        firstDate: questWithMeanTime.meanTimes.map{ $0.start }.min(),
                                                        continueCount: 0,
-                                                       continueCountMax: 0)
+                                                       continueCountMax: 0,
+                                                       title: baseQuest.title)
                     
                     match(date(200), questWithMeanTime, expectation)
                     
@@ -218,7 +222,8 @@ class QuestTests: QuickSpec { // itの中でitは使えない
                                                        latestDate: nil,
                                                        firstDate: nil,
                                                        continueCount: 0,
-                                                       continueCountMax: 0)
+                                                       continueCountMax: 0,
+                                                       title: baseQuest.title)
                     
                     match(date(200), baseQuest, expectation)
                     
@@ -282,7 +287,7 @@ class QuestTests: QuickSpec { // itの中でitは使えない
         }
         
         it("title") {
-            expect(quest.title).to(equal("test"))
+            expect(quest.title).to(equal(expectation.title))
         }
         
         it("isNotify") {

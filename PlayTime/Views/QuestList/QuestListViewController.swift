@@ -54,27 +54,9 @@ final class QuestListViewController: UIViewController {
             .outputs
             .itemsDriver
             .skip(1)
-            .drive(onNext: {[weak self] items in
-
-                // 重要なのは performBatchUpdates
-                self?.collectionView.performBatchUpdates({
-                    let tuple = items.classifyIndice()
-
-                    if tuple.reloaded.isNotEmpty {
-                        self?.collectionView.reloadItems(at: tuple.reloaded)
-                    }
-
-                    if tuple.deleted.isNotEmpty {
-                        self?.collectionView.deleteItems(at: tuple.deleted)
-                    }
-
-                    if tuple.inserted.isNotEmpty {
-                        self?.collectionView.insertItems(at: tuple.inserted)
-                    }
-                }, completion: { _ in
-                    self?.view.layoutIfNeeded()
-                })
-
+            .drive(onNext: {[weak self] diff in
+                guard let self = self else { return }
+                diff.update(self.collectionView)
             }).disposed(by: disposeBag)
     }
 
