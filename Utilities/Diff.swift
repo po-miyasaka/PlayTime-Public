@@ -34,46 +34,45 @@ public struct Diff<T: Diffable> {
     
     func classifyIndice(section: Int = 0) -> ClassifiedIndexPaths {
         
+        let oldEnumerated: [(offset: Int, element: T)] = Array(old.enumerated())
+        
         var reloaded = [IndexPath]()
         var moved = [MovedIndexPath]()
+        var inserted = [IndexPath]()
+        var deletedItems: [(offset: Int, element: T)?] = oldEnumerated
         
-        new.enumerated().forEach { afterElement in
-            old.enumerated().forEach { beforeElement in
-                if afterElement.element == beforeElement.element {
+        new.enumerated().forEach { (newOffset, newElement) in
+            var isInserted = true
+            
+            for (oldOffset, oldElement) in oldEnumerated {
+                if oldElement == newElement {
+                    isInserted = false
                     
-                    if beforeElement.offset != afterElement.offset {
-                        moved.append(MovedIndexPath(IndexPath(row: beforeElement.offset, section: section),
-                                      IndexPath(row: afterElement.offset, section: section)))
-                    } else if afterElement.element.expression != beforeElement.element.expression {
+                    deletedItems[oldOffset] = nil
+                    
+                    if oldOffset != newOffset {
+                        moved.append(MovedIndexPath(IndexPath(row: oldOffset, section: section),
+                                                    IndexPath(row: newOffset, section: section)))
+                    } else if oldElement.expression != newElement.expression {
                         // 変更がある。
-                        reloaded.append(IndexPath(row: afterElement.offset, section: section))
-                        reloaded.append(IndexPath(row: beforeElement.offset, section: section))
+                        reloaded.append(IndexPath(row: newOffset, section: section))
+                        reloaded.append(IndexPath(row: oldOffset, section: section))
                     }
+                    break
                 }
+            }
+            
+            if isInserted {
+                inserted.append(IndexPath(row: newOffset, section: section) )
             }
         }
         
-        let deleted = old.enumerated()
-            .compactMap {beforeElement -> Int? in
-                if !new.contains(where: { afterElement in afterElement == beforeElement.element }) {
-                    return beforeElement.offset
-                } else {
-                    return nil
-                }
-            }
-            .map { IndexPath(row: $0, section: section) }
+        let deletedIndexPaths = deletedItems.compactMap{ $0 }.map{ IndexPath(row: $0.offset, section: section) }
         
-        let inserted = new.enumerated()
-            .compactMap { afterElement -> Int? in
-                if !old.contains(where: { beforeElement in beforeElement == afterElement.element }) {
-                    return afterElement.offset
-                } else {
-                    return nil
-                }
-            }
-            .map { IndexPath(row: $0, section: section) }
-        
-        return (reloaded: reloaded.toSet.toArray, moved: moved, deleted: deleted, inserted: inserted)
+        return (reloaded: reloaded.toSet.toArray,
+                moved: moved,
+                deleted: deletedIndexPaths,
+                inserted: inserted)
     }
     
 }
