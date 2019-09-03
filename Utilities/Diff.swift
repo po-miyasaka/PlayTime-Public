@@ -71,7 +71,7 @@ public struct Diff<T: Diffable> {
         
         let inserted = table.values.map { IndexPath.init(row: $1, section: section) }
         
-        return (reloaded: reloaded.toSet.toArray,
+        return (reloaded: reloaded,
                 moved: moved,
                 deleted: deleted,
                 inserted: inserted)
@@ -90,7 +90,7 @@ public protocol Diffable {
 
 extension Diff {
     
-// 改善前
+// 改善前 version1
     
 //    func classifyIndice(section: Int = 0) -> ClassifiedIndexPaths {
 //
@@ -135,6 +135,9 @@ extension Diff {
 //
 //        return (reloaded: reloaded.toSet.toArray, moved: moved, deleted: deleted, inserted: inserted)
 //    }
+    
+    
+// 改善前 version2
     
 //    func classifyIndice(section: Int = 0) -> ClassifiedIndexPaths {
 //
