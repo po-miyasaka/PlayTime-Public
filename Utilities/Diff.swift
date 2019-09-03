@@ -90,7 +90,7 @@ public protocol Diffable {
 
 extension Diff {
     
-// 改善前 version1
+    // - MARK: 改善前 version1
     
 //    func classifyIndice(section: Int = 0) -> ClassifiedIndexPaths {
 //
@@ -137,7 +137,7 @@ extension Diff {
 //    }
     
     
-// 改善前 version2
+    // - MARK: 改善前 version2
     
 //    func classifyIndice(section: Int = 0) -> ClassifiedIndexPaths {
 //

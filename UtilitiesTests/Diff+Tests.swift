@@ -326,7 +326,6 @@ fileprivate func expected(inserted: [Int] = [],
                           deleted: [Int] = [],
                           section: Int = 0) -> DiffExpectation {
     let inserted = inserted.map{ IndexPath.init(row: $0, section: section) }.toSet
-    
     let reloaded = reloaded.map{ IndexPath.init(row: $0, section: section) }.toSet
     
     let moved: Set<MovedIndexPath> = moved.map {
