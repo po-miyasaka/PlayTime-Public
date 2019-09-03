@@ -190,6 +190,8 @@ enum QuestListItemType: Diffable {
         }
     }
 
+    var id: String { return quest?.id.getIDString() ?? "add" }
+
     var quest: Quest? {
         switch self {
         case .quest(let data):

@@ -204,7 +204,7 @@ public struct Comment: Codable, Diffable {
 
 }
 
-public struct CommentID: UniqueID {
+public struct CommentID: UniqueID, Hashable {
     public var id: Date
 
     public init() {
@@ -214,6 +214,9 @@ public struct CommentID: UniqueID {
     public init(from: Date) {
         self.id = from
     }
+    
+    public func hash(into hasher: inout Hasher) { }
+    public var hashValue: Int { return id.timeIntervalSince1970.toInt }
 }
 
 public enum CommentType: Int, Codable {

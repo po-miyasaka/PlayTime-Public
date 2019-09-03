@@ -161,7 +161,9 @@ extension DetailQuestViewModel: DetailQuestViewModelInput {
 
     func delete(_ comment: Comment) {
         guard let quest = _selected.value else { return }
-        _comments.accept(.init(old: _comments.value.new, new: _comments.value.new.filter { $0 != comment }))
+
+        let diff = Diff(old: _comments.value.new, new: _comments.value.new.filter { $0.id != comment.id })
+        _comments.accept(diff)
         flux.actionCreator.deleteComment(quest: quest.id, comment: comment.id)
     }
 
