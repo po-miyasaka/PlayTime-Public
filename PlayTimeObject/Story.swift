@@ -47,18 +47,9 @@ public struct Story: Codable, Diffable {
 
 }
 
-extension Story: Hashable {
-
-    public var hashValue: Int { return Int(id.id.timeIntervalSince1970) }
-    public func hash(into hasher: inout Hasher) {
-
-    }
-
-}
 
 
-
-public struct StoryUniqueID: UniqueID {
+public struct StoryUniqueID: UniqueID, Hashable {
     public var id: Date
     public init() {
         self.id = DateUtil.now()
@@ -67,6 +58,9 @@ public struct StoryUniqueID: UniqueID {
     public init(from: Date) {
         self.id = from
     }
+    
+    public var hashValue: Int { return Int(id.timeIntervalSince1970) }
+    public func hash(into hasher: inout Hasher) { }
 }
 
 public protocol UniqueID: Codable, Comparable {

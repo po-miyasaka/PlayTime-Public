@@ -285,7 +285,7 @@ enum VCType {
     case add
 
     func isEqual(type: VCType) -> Bool {
-        return self.story == type.story
+        return self.story?.id == type.story?.id
     }
 
     var story: Story? {

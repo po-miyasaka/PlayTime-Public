@@ -23,7 +23,7 @@ class TextFieldCell: UITableViewCell, Nibable, Configurable {
         ibQuestNameTextField.text = data.textFieldValue
         ibQuestNameTextField.placeholder = data.placeHolderValue
 
-        if data.uniqueID.isEmpty {
+        if data.id.isEmpty {
             ibQuestNameTextField.becomeFirstResponder()
         }
     }
@@ -48,10 +48,10 @@ extension TextFieldCell: UITextFieldDelegate {
 
 struct TextFieldCellData: Diffable {
     static func == (lhs: TextFieldCellData, rhs: TextFieldCellData) -> Bool {
-        return lhs.uniqueID == rhs.uniqueID
+        return lhs.id == rhs.id
     }
 
-    var uniqueID: String
+    var id: String
     var subject: String
     var textFieldValue: String
     var placeHolderValue: String

@@ -45,7 +45,7 @@ class EditStoriesViewModel {
             .map {[weak self] stories -> Void in
                 guard let self = self else { return () }
                 let cellDatas: [TextFieldCellData] = stories.tuple.living.map { story in
-                    let data = TextFieldCellData(uniqueID: story.id.getIDString(), subject: story.title, textFieldValue: story.title, placeHolderValue: story.title, tapAction: {  }, userAction: {
+                    let data = TextFieldCellData(id: story.id.getIDString(), subject: story.title, textFieldValue: story.title, placeHolderValue: story.title, tapAction: {  }, userAction: {
                         self.flux.actionCreator.renameStory(story.id, newName: $0)
                     })
                     return data
@@ -60,8 +60,8 @@ class EditStoriesViewModel {
 
 extension EditStoriesViewModel: EditStoriesViewModelInput {
     func add() {
-        guard !self.cellDatas.contains(where: { $0.uniqueID.isEmpty }) else { return }
-        let new = TextFieldCellData(uniqueID: "", subject: "", textFieldValue: "", placeHolderValue: "newStory".localized, tapAction: { }, userAction: {[weak self] in
+        guard !self.cellDatas.contains(where: { $0.id.isEmpty }) else { return }
+        let new = TextFieldCellData(id: "", subject: "", textFieldValue: "", placeHolderValue: "newStory".localized, tapAction: { }, userAction: {[weak self] in
             guard let self = self else { return }
             if !$0.isEmpty {
                 self.flux.actionCreator.add(storyName: $0)
@@ -81,7 +81,7 @@ extension EditStoriesViewModel: EditStoriesViewModelInput {
     }
 
     func delete(_ cellData: TextFieldCellData) {
-        guard let target = flux.storiesStore.stories.first(where: { cellData.uniqueID == $0.id.getIDString() }) else { return }
+        guard let target = flux.storiesStore.stories.first(where: { cellData.id == $0.id.getIDString() }) else { return }
         flux.actionCreator.deleteStory(target.id)
     }
 }
