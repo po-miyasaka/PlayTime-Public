@@ -1,0 +1,59 @@
+name: PlayTime
+options:
+  minimumXcodeGenVersion: 2.6.0
+configFiles:
+  Debug: configs/Debug.xcconfig
+  Release: configs/Release.xcconfig
+targets:
+  PlayTime:
+    platform: iOS
+    type: application
+    sources:
+      - PlayTime
+      - PlayTimeObject
+      - Utilities
+      - DataStore
+    configFiles:
+      Debug: configs/PlayTime-Debug.xcconfig
+      Release: configs/PlayTime-Release.xcconfig
+    dependencies:
+      - target: PlayTime
+      - target: PlayTimeObject
+      - target: Utilities
+      - target: DataStore
+      - carthage: APIKit
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: RxCocoa
+      - carthage: RxRelay
+      - carthage: RxSwift
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+  PlayTimeObject:
+    platform: iOS
+    type: framework
+    sources:
+      - PlayTimeObject/
+    configFiles:
+      Debug: configs/PlayTimeObject-Debug.xcconfig
+      Release: configs/PlayTimeObject-Release.xcconfig
+  Utilities:
+    platform: iOS
+    type: framework
+    sources:
+      - Utilities/
+    configFiles:
+      Debug: configs/Utilities-Debug.xcconfig
+      Release: configs/Utilities-Release.xcconfig
+  DataStore:
+    platform: iOS
+    type: framework
+    sources:
+      - DataStore/
+    configFiles:
+      Debug: configs/DataStore-Debug.xcconfig
+      Release: configs/DataStore-Release.xcconfig
+    dependencies:
+      - carthage: Realm
+      - carthage: RealmSwift

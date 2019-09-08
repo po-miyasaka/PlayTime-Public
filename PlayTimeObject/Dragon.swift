@@ -204,7 +204,7 @@ public class DragonImages {
     }
 }
 
-public extension Dragon {
+extension Dragon {
     public enum Name: Int, Codable, CaseIterable {
         case nii = 0
         case travan
