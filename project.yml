@@ -13,7 +13,7 @@ targets:
     platform: iOS
     type: application
     sources:
-      - PlayTime
+      - PlayTime/
       - path: PlayTime
         excludes: "*PlayTime.app" 
     configFiles:
@@ -32,6 +32,8 @@ targets:
     scheme:
       environmentVariables:
         ENABLE_SIGNPOST: YES
+      testTargets:
+        - PlayTimeTests
   PlayTimeTests:
     platform: iOS
     type: bundle.unit-test
@@ -46,9 +48,6 @@ targets:
       - carthage: RxCocoa
       - carthage: RxRelay
       - carthage: RxSwift
-    scheme:
-      testTargets:
-        PlayTimeTests
   PlayTimeObject:
     platform: iOS
     type: framework
@@ -75,6 +74,7 @@ targets:
       Debug: configs/DataStore-Debug.xcconfig
       Release: configs/DataStore-Release.xcconfig
     dependencies:
+      - target: Utilities
       - carthage: Realm
       - carthage: RealmSwift
   PlayTimeObjectTests:
@@ -101,3 +101,4 @@ targets:
     configFiles:
       Debug: configs/Utilities-Debug.xcconfig
       Release: configs/Utilities-Release.xcconfig
+
