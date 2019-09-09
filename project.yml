@@ -10,6 +10,8 @@ targets:
     type: application
     sources:
       - PlayTime
+      - path: PlayTime
+        excludes: "*PlayTime.app" 
       - PlayTimeObject
       - Utilities
       - DataStore
