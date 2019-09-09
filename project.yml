@@ -4,6 +4,10 @@ options:
 configFiles:
   Debug: configs/Debug.xcconfig
   Release: configs/Release.xcconfig
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 11.0
+    SWIFT_VERSION: 4.2
 targets:
   PlayTime:
     platform: iOS
@@ -28,6 +32,23 @@ targets:
     scheme:
       environmentVariables:
         ENABLE_SIGNPOST: YES
+  PlayTimeTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - PlayTimeTests/
+      - PlayTimeObjectTests/PlayTimeTestsUtility.swift
+    dependencies:
+      - target: PlayTimeObject
+      - target: PlayTime
+      - target: Utilities
+      - target: DataStore
+      - carthage: RxCocoa
+      - carthage: RxRelay
+      - carthage: RxSwift
+    scheme:
+      testTargets:
+        PlayTimeTests
   PlayTimeObject:
     platform: iOS
     type: framework
@@ -36,14 +57,15 @@ targets:
     configFiles:
       Debug: configs/PlayTimeObject-Debug.xcconfig
       Release: configs/PlayTimeObject-Release.xcconfig
-  Utilities:
+    dependencies:
+      - target: Utilities
+  UtilitiesTests:
     platform: iOS
-    type: framework
+    type: bundle.unit-test
     sources:
-      - Utilities/
-    configFiles:
-      Debug: configs/Utilities-Debug.xcconfig
-      Release: configs/Utilities-Release.xcconfig
+      - UtilitiesTests/
+    dependencies:
+      - target: Utilities
   DataStore:
     platform: iOS
     type: framework
@@ -55,3 +77,27 @@ targets:
     dependencies:
       - carthage: Realm
       - carthage: RealmSwift
+  PlayTimeObjectTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - PlayTimeObjectTests/
+    dependencies:
+      - target: PlayTimeObject
+      - target: Utilities
+  DataStoreTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - DataStoreTests/
+    dependencies:
+      - carthage: Realm
+      - carthage: RealmSwift
+  Utilities:
+    platform: iOS
+    type: framework
+    sources:
+      - Utilities/
+    configFiles:
+      Debug: configs/Utilities-Debug.xcconfig
+      Release: configs/Utilities-Release.xcconfig

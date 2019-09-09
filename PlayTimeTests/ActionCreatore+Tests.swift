@@ -19,7 +19,6 @@ class ActionCreatore_tests: XCTestCase {
         let keys = ["addQuest"]
         // テスト用に適当にクエスト作成
         let mockQuest = testQuest
-        
         //　DispatchされたActionを監視して、目的のアクションが届けば成功。
         // 目的以外のアクションが届いてしまった場合はisUnexpectActionをTrueにして返却(テストが失敗する。)
         expectActionHandler = {
