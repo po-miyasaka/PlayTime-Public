@@ -34,3 +34,5 @@ Pods/
 
 ## reference
 reference/
+
+*.xcodeproj

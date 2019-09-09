@@ -12,14 +12,10 @@ targets:
       - PlayTime
       - path: PlayTime
         excludes: "*PlayTime.app" 
-      - PlayTimeObject
-      - Utilities
-      - DataStore
     configFiles:
       Debug: configs/PlayTime-Debug.xcconfig
       Release: configs/PlayTime-Release.xcconfig
     dependencies:
-      - target: PlayTime
       - target: PlayTimeObject
       - target: Utilities
       - target: DataStore
