@@ -1,3 +1,4 @@
 // Generated using xcconfig-extractor 0.5.0 by Toshihiro Suzuki - https://github.com/toshi0383/xcconfig-extractor
 #include "DataStore.xcconfig"
 
+#include "Pods/Target Support Files/Pods-DataStore/Pods-DataStore.release.xcconfig"

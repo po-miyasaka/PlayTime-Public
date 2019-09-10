@@ -14,8 +14,6 @@ targets:
     type: application
     sources:
       - PlayTime/
-      - path: PlayTime
-        excludes: "*PlayTime.app" 
     configFiles:
       Debug: configs/PlayTime-Debug.xcconfig
       Release: configs/PlayTime-Release.xcconfig
