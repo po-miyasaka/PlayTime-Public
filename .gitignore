@@ -36,3 +36,4 @@ Pods/
 reference/
 
 *.xcodeproj
+*.xcworkspace
