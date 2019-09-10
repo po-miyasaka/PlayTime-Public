@@ -1,0 +1,102 @@
+name: PlayTime
+options:
+  minimumXcodeGenVersion: 2.6.0
+configFiles:
+  Debug: configs/Debug.xcconfig
+  Release: configs/Release.xcconfig
+settings:
+  base:
+    IPHONEOS_DEPLOYMENT_TARGET: 11.0
+    SWIFT_VERSION: 4.2
+targets:
+  PlayTime:
+    platform: iOS
+    type: application
+    sources:
+      - PlayTime/
+    configFiles:
+      Debug: configs/PlayTime-Debug.xcconfig
+      Release: configs/PlayTime-Release.xcconfig
+    dependencies:
+      - target: PlayTimeObject
+      - target: Utilities
+      - target: DataStore
+      - carthage: APIKit
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: RxCocoa
+      - carthage: RxRelay
+      - carthage: RxSwift
+    scheme:
+      environmentVariables:
+        ENABLE_SIGNPOST: YES
+      testTargets:
+        - PlayTimeTests
+  PlayTimeTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - PlayTimeTests/
+      - PlayTimeObjectTests/PlayTimeTestsUtility.swift
+    dependencies:
+      - target: PlayTimeObject
+      - target: PlayTime
+      - target: Utilities
+      - target: DataStore
+      - carthage: RxCocoa
+      - carthage: RxRelay
+      - carthage: RxSwift
+  PlayTimeObject:
+    platform: iOS
+    type: framework
+    sources:
+      - PlayTimeObject/
+    configFiles:
+      Debug: configs/PlayTimeObject-Debug.xcconfig
+      Release: configs/PlayTimeObject-Release.xcconfig
+    dependencies:
+      - target: Utilities
+  UtilitiesTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - UtilitiesTests/
+    dependencies:
+      - target: Utilities
+  DataStore:
+    platform: iOS
+    type: framework
+    sources:
+      - DataStore/
+    configFiles:
+      Debug: configs/DataStore-Debug.xcconfig
+      Release: configs/DataStore-Release.xcconfig
+    dependencies:
+      - target: Utilities
+      - carthage: Realm
+      - carthage: RealmSwift
+  PlayTimeObjectTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - PlayTimeObjectTests/
+    dependencies:
+      - target: PlayTimeObject
+      - target: Utilities
+  DataStoreTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources:
+      - DataStoreTests/
+    dependencies:
+      - carthage: Realm
+      - carthage: RealmSwift
+  Utilities:
+    platform: iOS
+    type: framework
+    sources:
+      - Utilities/
+    configFiles:
+      Debug: configs/Utilities-Debug.xcconfig
+      Release: configs/Utilities-Release.xcconfig
+

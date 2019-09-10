@@ -196,9 +196,6 @@ class DiffTests: XCTestCase {
                          deleted:[3, 4, 5], section: 1)
     }
     
-    // TODO: より改善できそう
-    // https://speakerdeck.com/banjun/difference-update-uitableview-with-5000-rows
-    
     func test_パフォーマンス() {
         
         let old = (0...5000).map{ $0 }.toSet.toArray.mock

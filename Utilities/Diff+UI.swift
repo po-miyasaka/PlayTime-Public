@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 extension Diff {
     public func update(_ tableView: UITableView, section: Int = 0) {
         let tuple = classifyIndice(section: section)

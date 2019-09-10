@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Router {
-    weak var transitioner: Transitioner? { get }
+    var transitioner: Transitioner? { get }
     init(transitioner: Transitioner?)
 }
 

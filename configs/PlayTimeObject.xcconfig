@@ -1,0 +1,13 @@
+// Generated using xcconfig-extractor 0.5.0 by Toshihiro Suzuki - https://github.com/toshi0383/xcconfig-extractor
+CURRENT_PROJECT_VERSION = 1
+DEFINES_MODULE = YES
+VERSIONING_SYSTEM = apple-generic
+DYLIB_COMPATIBILITY_VERSION = 1
+TARGETED_DEVICE_FAMILY = 1,2
+SKIP_INSTALL = YES
+CODE_SIGN_IDENTITY = 
+INSTALL_PATH = $(LOCAL_LIBRARY_DIR)/Frameworks
+DYLIB_INSTALL_NAME_BASE = @rpath
+DYLIB_CURRENT_VERSION = 1
+INFOPLIST_FILE = PlayTimeObject/Info.plist
+
